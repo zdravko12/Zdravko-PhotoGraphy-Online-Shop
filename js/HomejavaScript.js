@@ -1,7 +1,9 @@
+// sliki slideshow home page 
 $(document).ready(function() {
     var images = [
         "/Images/FrameZp10.jpg",
         "/Images/FrameZp9.jpg",
+        "/Images/FrameZp13.jpg"
         // Add more image URLs as needed
     ];
 
@@ -18,6 +20,7 @@ $(document).ready(function() {
     slideShow();
 });
 
+// za Akcija odobruvanje za kolku dena
 document.addEventListener("DOMContentLoaded", function() {
     var endDate = new Date();
     endDate.setDate(endDate.getDate() + 10); // Set the end date 10 days from now

@@ -7,7 +7,7 @@ window.addEventListener('scroll', function() {
         header.classList.remove('scrolled');
     }
 });
-
+// za text zoom out Home
 window.addEventListener('scroll', function() {
     var scrollPosition = window.scrollY;
     var highlightedElements = document.querySelectorAll('.TextNewAnimation');
@@ -21,7 +21,7 @@ window.addEventListener('scroll', function() {
     });
   });
 
-
+// za logo od gore pa nadole 
   let logo = document.getElementById('LogoZP');
     let lastScrollTop = 0;
 
@@ -40,7 +40,7 @@ window.addEventListener('scroll', function() {
     });
 
 
-
+// za boja na button home shop now 
     window.addEventListener('scroll', function() {
         var button = document.getElementById('ButtonColor');
         var scrollPosition = window.scrollY;

@@ -1,9 +1,4 @@
-/*
-* Template Name: UntreeStore
-* Template Author: Untree.co
-* Author URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 body {
   overflow-x: hidden;
@@ -121,7 +116,7 @@ a {
     color: rgba(255, 255, 255, 0.5);
     margin-botom: 30px; }
   .hero .hero-img-wrap {
-    position: relative; }
+    position: relative; z-index: 999; }
     .hero .hero-img-wrap img {
       position: relative;
       top: 0px;
@@ -720,7 +715,13 @@ textarea {
     #LogoZP{
         width: 130px;
         margin-top: -25px;
+       
     }
+    /* vo proces seuste */
+    
+   
+
+
     /* slika 1 na home pocetok */
 
     .img-fluidZP{
@@ -728,9 +729,18 @@ textarea {
       margin-top: 0%;
       margin-left: 4%;
       box-shadow: #0000009b 1px 0px 15px;
-      
+      animation: zoomOut 3s forwards; 
     }
-
+    @keyframes zoomOut {
+      0% {
+          transform: scale(0.9);
+      }
+      100% {
+          transform: scale(1);
+      }
+  }
+   
+    
      /* slika 1 na home katicki ispod dole frame */
     .img-fluid2{
         width: 140px;
@@ -811,6 +821,22 @@ textarea {
  .text1Home{
   font-family:Georgia, 'Times New Roman', Times, serif;
  }
+
+ .TextMoveHome{
+  animation: TextRightLeft 2s ease-out;
+  
+ }
+ @keyframes TextRightLeft {
+  0% {
+      transform: translateX(200%);
+      opacity: 0;
+      
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
  /* ZA iconite za categori za stilovi na slikanje */
  .WildlifeIcon{
   margin-left: 25px;
@@ -841,19 +867,20 @@ textarea {
 }
 
  /* Icon za login i card hovver */
+
 /* Keyframes for zoom animation for nav link animacija na home i tn */
-@keyframes zoomIn {
+@keyframes opacityNav {
   from {
-    transform: scale(0.2);
+    opacity: 0;
   }
   to {
-    transform: scale(1);
+    opacity: 1;
   }
 }
 
 /* Apply animation to nav links */
 .nav-link {
-  animation: zoomIn 1.1s ease-in-out;
+  animation: opacityNav 1.4s ease-in-out;
 }
 
 .nav-link {
@@ -884,12 +911,24 @@ textarea {
 /* za text zoom out zoom in Home*/
 
 /* Logo gore pa nadole pa dole nagore Home */
-.LogoAnimation {
+.LogoMoveUpDown {
   bottom: 0;
   left: 50%;
   transform: translateY(0%);
   transition: transform 2.1s;
+  animation: moveFromTop1 1s ease-in-out;
+ 
 }
+/* ZA LOGOTO UP DOWN DA IDE */
+@keyframes moveFromTop1 {
+  0% {
+      transform: translateY(-200%);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
 
 .scrolling-up {
   transform: translateY(-100%);
@@ -901,8 +940,35 @@ textarea {
 #ButtonColor {
   background-color: #dca50d; /* Light gray */
   color: #000; /* Black */
+  animation: slideInRightLeft 1s ease-out;
+  
+}
+/* za levo desno kopceto animacija */
+@keyframes slideInRightLeft {
+  0% {
+      transform: translateX(-210%);
+  }
+  100% {
+      transform: translateX(0);
+  }
 }
 
 #ButtonColor:hover{
   color: white!important; 
+}
+
+.ButtonColorTwo{
+  animation: ColorButtonTwo 2s ease-out;
+}
+/* color change more  */
+@keyframes ColorButtonTwo {
+  0% {
+      color: #bae50d;
+      background-color: #dca50d4d;
+      transform: scale(0.5);
+  }
+  100% {
+      color: #0b9de192;
+     
+  }
 }
