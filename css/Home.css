@@ -823,20 +823,11 @@ textarea {
  }
 
  .TextMoveHome{
-  animation: TextRightLeft 2s ease-out;
+  animation: TextRightLeft 4s ease-out;
   
  }
- @keyframes TextRightLeft {
-  0% {
-      transform: translateX(200%);
-      opacity: 0;
-      
-  }
-  100% {
-      transform: translateX(0);
-      opacity: 1;
-  }
-}
+
+
  /* ZA iconite za categori za stilovi na slikanje */
  .WildlifeIcon{
   margin-left: 25px;
@@ -965,10 +956,141 @@ textarea {
   0% {
       color: #bae50d;
       background-color: #dca50d4d;
-      transform: scale(0.5);
+      transform: scale(0.7);
   }
   100% {
       color: #0b9de192;
-     
+      transform: scale(1);
   }
+}
+
+.TextMoveHome {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* za scrool effect na text store Crafted with excellent material. */
+.TextHelp {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-effect {
+  opacity: 1 !important;
+  animation: EffectsLeft 1s ease-in-out;
+}
+
+@keyframes EffectsLeft {
+  0% {
+     
+      transform: scale(0.7);
+  }
+  100% {
+    
+      transform: scale(1);
+  }
+}
+
+
+
+/* za text so effdects odma do nego od text store Crafted with excellent material. */
+.fadeIn {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* Define the animation for the plus sign */
+@keyframes plusFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.plus {
+  animation: plusFadeIn 1s ease;
+}
+
+/* za slikite edna po edna effects */
+.product-thumbnail {
+  opacity: 0; /* Start with zero opacity */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Add transitions for opacity and transform */
+  transform: translateY(-60px); /* Initial vertical translation */
+}
+
+
+/* Define styles for the button */
+.ColorChangeButton {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.ColorChangeButton:hover{
+  background-color: #314d43!important;
+}
+
+/* Define styles for the button when it's gray */
+.gray {
+  background-color: gray !important;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9); /* Shadow style */
+}
+/* za naslov effects ChooseUs  */
+
+.TextMoveChooseUs {
+  transition: color 0.5s ease-in-out;
+
+}
+
+.scroll-down .TextMoveChooseUs {
+  animation: moveRight 1s forwards;
+}
+
+@keyframes moveRight {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+
+
+/* Define initial states  for Why Choose Us Text*/
+.Text24 {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.paragrafText {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Define animation when scrolled into view */
+.Text24.active,
+.paragrafText.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.img-wrap img {
+  transition: transform 0.5s ease; /* Transition for smooth animation */
+  
+}
+
+.move {
+  transform: translate(650px); /* Move the image down by 100 pixels */
+  opacity: 0.5;
 }
