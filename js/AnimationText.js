@@ -236,7 +236,7 @@ addActiveClass();
 window.addEventListener('scroll', addActiveClass);
 
 
-
+// slikata desno kon levo
 
 window.addEventListener('scroll', function() {
   var image = document.getElementById('image');
@@ -249,3 +249,5 @@ window.addEventListener('scroll', function() {
     image.classList.add('move');
   }
 });
+
+
