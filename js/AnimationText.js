@@ -170,6 +170,7 @@ window.addEventListener('scroll', function() {
       window.oldScroll = window.scrollY;
   };
 
+
 // za tekst effects ChooseUs Home
   let lastScrollTopMoveText = 0;
 
@@ -249,5 +250,49 @@ window.addEventListener('scroll', function() {
     image.classList.add('move');
   }
 });
+
+
+// slika od 3 prvata grid move1
+
+window.addEventListener('scroll', function() {
+  var image = document.getElementById('PhotoGridHome');
+  var imagePosition = image.getBoundingClientRect().top;
+  var screenPosition = window.innerHeight / 1.2; /* Adjust scroll position as needed */
+
+  if (imagePosition < screenPosition) {
+    image.classList.remove('moveNewFrist');
+  } else {
+    image.classList.add('moveNewFrist');
+  }
+});
+
+// slika 2 od grid move
+
+window.addEventListener('scroll', function() {
+  var image = document.getElementById('PhotoGridHome1');
+  var imagePosition2 = image.getBoundingClientRect().top;
+  var screenPosition3 = window.innerHeight / 1.2; /* Adjust scroll position as needed */
+
+  if (imagePosition2 < screenPosition3) {
+    image.classList.remove('moveNewFrist2');
+  } else {
+    image.classList.add('moveNewFrist2');
+  }
+});
+
+// slika 3 od grid move
+
+window.addEventListener('scroll', function() {
+  var image = document.getElementById('PhotoGridHome2');
+  var imagePosition2 = image.getBoundingClientRect().top;
+  var screenPosition3 = window.innerHeight / 1.1; /* Adjust scroll position as needed */
+
+  if (imagePosition2 < screenPosition3) {
+    image.classList.remove('moveNewFrist3');
+  } else {
+    image.classList.add('moveNewFrist3');
+  }
+});
+
 
 

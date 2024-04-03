@@ -971,7 +971,7 @@ textarea {
 
 /* za scrool effect na text store Crafted with excellent material. */
 .TextHelp {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease;
 }
 
@@ -1089,8 +1089,52 @@ textarea {
   transition: transform 0.5s ease; /* Transition for smooth animation */
   
 }
-
+/* Why Choose Us slikata move */
 .move {
   transform: translate(650px); /* Move the image down by 100 pixels */
   opacity: 0.5;
 }
+
+
+
+/* slika od 3 prvata grid move1 */
+
+
+
+
+.PictureMove1 img {
+  transition: transform 0.5s ease; /* Transition for smooth animation */
+  
+}
+
+.moveNewFrist {
+  transform: translate(-620px); /* Move the image down by 100 pixels */
+  opacity: 0.6;
+}
+/* slika 2 */
+.moveNewFrist2{
+  transform: translateY(100px); /* Move the image down by 100 pixels */
+  opacity: 0.7;
+}
+/* slika 3 */
+.moveNewFrist3{
+  transform: scale(0.8); /* Move the image down by 100 pixels */
+  opacity: 0.7;
+}
+
+
+#scrolling-text{
+  animation: scrolling-text 10s linear infinite;
+}
+
+@keyframes scrolling-text {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+
+
