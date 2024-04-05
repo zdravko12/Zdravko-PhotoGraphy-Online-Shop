@@ -293,6 +293,5 @@ window.addEventListener('scroll', function() {
     image.classList.add('moveNewFrist3');
   }
 });
-
-
+// text 1 od grid 
 
