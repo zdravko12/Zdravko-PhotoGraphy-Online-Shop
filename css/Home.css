@@ -1121,8 +1121,17 @@ textarea {
   transform: scale(0.8); /* Move the image down by 100 pixels */
   opacity: 0.7;
 }
-/* text grid od slite */
- 
+/* text grid od slite  1*/
+
+.section-title3 {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.show-animation {
+  opacity: 1;
+  transform: scale(1);
+}
 
 
 

@@ -294,4 +294,15 @@ window.addEventListener('scroll', function() {
   }
 });
 // text 1 od grid 
+window.addEventListener('scroll', function() {
+  var element = document.getElementById('scrolling-text');
+  var position = element.getBoundingClientRect();
+
+  // Checking if the element is in the viewport
+  if (position.top < window.innerHeight) {
+    element.classList.add('show-animation');
+  } else {
+    element.classList.remove('show-animation');
+  }
+});
 
