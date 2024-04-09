@@ -361,7 +361,7 @@ $(document).ready(function() {
       var scrollPosition = $(window).scrollTop();
       var windowHeight = $(window).height();
 
-      if (position < scrollPosition + windowHeight - 100) {
+      if (position < scrollPosition + windowHeight - 80) {
         $(this).addClass('show');
       }else{
         $(this).removeClass('show');
@@ -378,7 +378,7 @@ $(document).ready(function() {
       var scrollPosition = $(window).scrollTop();
       var windowHeight = $(window).height();
 
-      if (position < scrollPosition + windowHeight - 70) {
+      if (position < scrollPosition + windowHeight - 100) {
         $(this).addClass('move');
       }else{
         $(this).removeClass('move');
@@ -413,7 +413,7 @@ $(document).ready(function() {
       var scrollPosition = $(window).scrollTop();
       var windowHeight = $(window).height();
 
-      if (position < scrollPosition + windowHeight - 50) {
+      if (position < scrollPosition + windowHeight - 150) {
         $(this).addClass('move2');
       }else{
         $(this).removeClass('move2');
@@ -421,6 +421,45 @@ $(document).ready(function() {
     });
   });
 });
+
+
+// SlikaFrameView
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.ChangePhotoMove').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 150) {
+        $(this).addClass('PhotoFrameViewMove');
+      }else{
+        $(this).removeClass('PhotoFrameViewMove');
+      }
+    });
+  });
+});
+
+
+// ImageSubscribe to Newsletter
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.SubscribeMove').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 80) {
+        $(this).addClass('InputMove');
+      }else{
+        $(this).removeClass('InputMove');
+      }
+    });
+  });
+});
+
+
+
 
 
 
