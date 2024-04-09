@@ -353,4 +353,74 @@ window.addEventListener('scroll', checkPosition);
 checkPosition();
 
 
+// Most Wanted slikite effects
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.product-item-sm').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 100) {
+        $(this).addClass('show');
+      }else{
+        $(this).removeClass('show');
+      }
+    });
+  });
+});
+
+// Recent Blog za blog slikata
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.ChangeEffects').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 70) {
+        $(this).addClass('move');
+      }else{
+        $(this).removeClass('move');
+      }
+    });
+  });
+});
+
+
+// Recent Blog za blog slikata 2
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.ChangeEffects1').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 40) {
+        $(this).addClass('move1');
+      }else{
+        $(this).removeClass('move1');
+      }
+    });
+  });
+});
+
+// Recent Blog za blog slikata 2
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.ChangeEffects2').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 50) {
+        $(this).addClass('move2');
+      }else{
+        $(this).removeClass('move2');
+      }
+    });
+  });
+});
+
+
 

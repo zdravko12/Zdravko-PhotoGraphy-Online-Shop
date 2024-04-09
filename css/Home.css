@@ -769,6 +769,7 @@ textarea {
     box-shadow: gray 1px 1px 1px;
   }
   
+  
   #countdown {
     font-size: 36px;
 
@@ -1161,8 +1162,53 @@ textarea {
   transform: scale(1);
 }
 
+/* Most Wanted slikite effects */
+.product-item-sm {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
 
+.product-item-sm.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
+/* Recent Blog za blog slikite */
+.ChangeEffects{
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 1s;
+}
+
+.ChangeEffects.move{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Recent Blog za blog slikite 1 */
+.ChangeEffects1{
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 0.5s, transform 1s;
+}
+
+.ChangeEffects1.move1{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Recent Blog za blog slikite 2 */
+.ChangeEffects2{
+  opacity: 0;
+  transform: translate(610px);
+  transition: opacity 0.5s, transform 1s;
+}
+
+.ChangeEffects2.move2{
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 
