@@ -1134,5 +1134,35 @@ textarea {
 }
 
 
+.section-title2 {
+  top: 0;
+  left: 50%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0; /* Initially hidden */
+}
+.show {
+  opacity: 1; /* Make visible when scrolling */
+}
+
+/* ispod text za We help you make a modern */
+.item {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Add transform transition */
+  transform: scale(0.6); /* Initial scale down */
+ 
+  
+}
+
+.item.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+
+
 
 

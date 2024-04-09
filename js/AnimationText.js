@@ -306,3 +306,51 @@ window.addEventListener('scroll', function() {
   }
 });
 
+ // Function to check if an element is in the viewport --- za  We help you make a modern text
+ function isInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+// Function to handle scroll event
+function handleScroll() {
+  var element = document.getElementById('scrolling-textMove1');
+  if (isInViewport(element)) {
+      element.classList.add('show');
+  } else {
+      element.classList.remove('show');
+  }
+}
+
+// Add scroll event listener ----- za sliki kategori We help you make a modern
+window.addEventListener('scroll', handleScroll);
+// Call the handleScroll function initially to check if the element is already in view
+handleScroll();
+
+
+const items = document.querySelectorAll('.item');
+
+function checkPosition() {
+  const triggerBottom = window.innerHeight * 0.8;
+
+  items.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
+
+    if (itemTop < triggerBottom) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', checkPosition);
+checkPosition();
+
+
+
