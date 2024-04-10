@@ -459,6 +459,24 @@ $(document).ready(function() {
 });
 
 
+// ImageSubscribe to Newsletter
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('#footer-logo1').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 80) {
+        $(this).addClass('LogoMoveFrame');
+      }else{
+        $(this).removeClass('LogoMoveFrame');
+      }
+    });
+  });
+});
+
+
 
 
 
