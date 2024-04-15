@@ -1,0 +1,41 @@
+/* ShopText Left right*/
+.ShopTextMove{
+    animation: MoveTextShop 3s forwards;
+}
+
+@keyframes MoveTextShop  {
+    from {
+        transform: translateX(-100%);
+        opacity: 0.9;
+        
+        
+       
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+        text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+
+    }
+  }
+
+  .img-ShopZpCover{
+    margin-top: -10%;
+    animation: PhotoCoverMove 3s forwards;
+  }
+
+  @keyframes PhotoCoverMove  {
+    from {
+        transform: translateX(130%);
+        opacity: 0.4;
+        
+        
+       
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+        text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+
+    }
+  }
