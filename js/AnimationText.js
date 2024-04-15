@@ -459,7 +459,7 @@ $(document).ready(function() {
 });
 
 
-// ImageSubscribe to Newsletter
+// Logo footer move up down 
 $(document).ready(function() {
   $(window).scroll(function() {
     $('#footer-logo1').each(function() {
@@ -467,7 +467,7 @@ $(document).ready(function() {
       var scrollPosition = $(window).scrollTop();
       var windowHeight = $(window).height();
 
-      if (position < scrollPosition + windowHeight - 80) {
+      if (position < scrollPosition + windowHeight - 120) {
         $(this).addClass('LogoMoveFrame');
       }else{
         $(this).removeClass('LogoMoveFrame');
@@ -475,6 +475,26 @@ $(document).ready(function() {
     });
   });
 });
+
+//  We help you make a modern interior design in a room Button change 
+window.addEventListener('scroll', function() {
+  var scrollBtn = document.getElementById('scrollBtn');
+  if (window.scrollY > 0) {
+    scrollBtn.classList.add('scroll-down');
+  } else {
+    scrollBtn.classList.remove('scroll-down');
+  }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
