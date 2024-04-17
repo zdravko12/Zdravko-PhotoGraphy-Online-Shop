@@ -136,3 +136,15 @@ $(document).ready(function() {
 
     slideShow();
 });
+
+
+//  Text shop h1 element
+window.addEventListener('scroll', function() {
+  var scrollPosition = window.scrollY;
+  var header = document.querySelector('.ShopTextMove11');
+  if (scrollPosition > 100) { // Adjust as needed
+      header.classList.add('scrolled');
+  } else {
+      header.classList.remove('scrolled');
+  }
+});
