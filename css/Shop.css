@@ -26,8 +26,8 @@
 
   @keyframes PhotoCoverMove  {
     from {
-        transform: translateX(130%);
-        opacity: 0.4;
+        transform: translateX(820px) scale(0.4);
+        opacity: 0;
         
         
        
