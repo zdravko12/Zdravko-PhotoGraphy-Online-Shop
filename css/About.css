@@ -1,0 +1,11 @@
+/* Text shop h1 element */
+.ShopTextMove11 {
+    transform: translateX(0%);
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .ShopTextMove11.scrolled {
+    transform: translateX(30%) scale(1.5);
+  }
+
+
