@@ -3,7 +3,9 @@ $(document).ready(function() {
     var images = [
         "/Images/FrameZp10.jpg",
         "/Images/FrameZp9.jpg",
-        "/Images/FrameZp13.jpg"
+        "/Images/FrameZp13.jpg",
+        "/Images/FramePhotosZP1.jpg",
+        "/Images/FramePhotosZP3.png",
         // Add more image URLs as needed
     ];
 

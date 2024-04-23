@@ -98,7 +98,7 @@ window.addEventListener('scroll', function() {
   });
 
 
-// sliki slideshow home page 
+// sliki slideshow About page 
 $(document).ready(function() {
     var images = [
         "/Images/img-grid-1.png",
@@ -109,6 +109,8 @@ $(document).ready(function() {
         "/Images/Choose-Us-About6.jpg",
         "/Images/Choose-Us-About7.jpg",
         "/Images/Choose-Us-About3.jpg",
+        "/Images/NewSiteRoom4.png",
+        
         // Add more image URLs as needed
     ];
 
@@ -150,3 +152,68 @@ window.addEventListener('scroll', function() {
       }
     });
   });
+
+
+  // Logo footer move up down 
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('#footer-logo1').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 120) {
+        $(this).addClass('LogoMoveFrame');
+      }else{
+        $(this).removeClass('LogoMoveFrame');
+      }
+    });
+  });
+});
+
+
+// SlikaFrameView
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.ChangePhotoMove').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 150) {
+        $(this).addClass('PhotoFrameViewMove');
+      }else{
+        $(this).removeClass('PhotoFrameViewMove');
+      }
+    });
+  });
+});
+
+
+// ImageSubscribe to Newsletter
+$(document).ready(function() {
+  $(window).scroll(function() {
+    $('.SubscribeMove').each(function() {
+      var position = $(this).offset().top;
+      var scrollPosition = $(window).scrollTop();
+      var windowHeight = $(window).height();
+
+      if (position < scrollPosition + windowHeight - 80) {
+        $(this).addClass('InputMove');
+      }else{
+        $(this).removeClass('InputMove');
+      }
+    });
+  });
+});
+
+
+
+function toggleVisibility(id) {
+  var element = document.getElementById(id);
+  if (element.style.display === "none") {
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}
