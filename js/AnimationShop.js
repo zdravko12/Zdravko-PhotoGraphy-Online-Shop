@@ -115,7 +115,7 @@ $(document).ready(function() {
   // sliki slideshow Shop cover  page 
 $(document).ready(function() {
     var images = [
-        "/Images/Shop1Cover.png",
+        "/Images/Shop1CoverReflection1.png",
         "/Images/Shop2Cover.png",
         "/Images/Shop3Cover.png",
         "/Images/Shop4Cover.png",

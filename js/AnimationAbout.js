@@ -217,3 +217,17 @@ function toggleVisibility(id) {
     element.style.display = "none";
   }
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Select the elements with the class "TextMoveHome"
+  const textElements = document.querySelectorAll('.TextMoveHome');
+
+  // Loop through each text element and add fading effect
+  textElements.forEach(function(element, index) {
+    // Set a timeout to start fading in for each element
+    setTimeout(function() {
+      element.style.opacity = 1;
+    }, index * 1000); // Change 3000 to the desired duration in milliseconds
+  });
+});
