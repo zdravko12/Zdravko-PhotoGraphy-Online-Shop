@@ -208,13 +208,15 @@ $(document).ready(function() {
 });
 
 
-
-function toggleVisibility(id) {
+// Contact us for any questions or other requests 
+function toggleVisibility(id, link) {
   var element = document.getElementById(id);
   if (element.style.display === "none") {
     element.style.display = "block";
+    link.innerText = "See Less ↑";
   } else {
     element.style.display = "none";
+    link.innerText = "Learn More ";
   }
 }
 
