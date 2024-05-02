@@ -1,0 +1,39 @@
+/* Text shop h1 element */
+.BlogTextMove11 {
+    transform: translateX(0%);
+    transition: transform 0.4s ease-in-out;
+    text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+
+  }
+  
+  .BlogTextMove11.scrolled {
+    transform: translateX(25%) scale(1.5);
+    text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+
+  }
+
+
+/* AboutUs text Left right*/
+#TextMoveContact{
+    animation: MoveTextShop1 2s ease-in-out;
+  }
+  
+  @keyframes MoveTextShop1  {
+    from {
+        transform: translateX(-100%);
+        opacity: 0.9;
+    
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+        text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+  
+    }
+  }
+
+  #ButtonColor {
+    background-color: #dca50d;
+    color: #000;
+    animation: slideInRightLeft 1s ease-out;
+  }
