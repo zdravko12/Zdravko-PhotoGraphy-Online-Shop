@@ -518,7 +518,7 @@ a {
       border-radius: 20px;
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;
-      transition: .3s all ease; }
+      transition: .3s all ease;}     
   .blog-section .post-entry .post-content-entry {
     padding-left: 15px;
     padding-right: 15px; }
