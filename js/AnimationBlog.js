@@ -126,7 +126,7 @@ $(document).ready(function() {
   });
 
 
-  // sliki slideshow home page 
+  // sliki slideshow Blog page 
 $(document).ready(function() {
     var images = [
         "/Images/FrameZp10.jpg",

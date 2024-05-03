@@ -536,7 +536,9 @@ a {
 
 .footer-section {
   padding: 80px 0;
-  background: #ffffff; }
+  background: #ffffff; 
+  margin-top: 16%;
+}
   .footer-section .relative {
     position: relative; }
   .footer-section a {
@@ -587,7 +589,7 @@ a {
     z-index: 1;
     right: 0; }
     .footer-section .sofa-img img {
-      max-width: 600px; }
+      max-width: 440px; }
   .footer-section .links-wrap {
     margin-top: 0px; }
     @media (min-width: 992px) {
@@ -815,7 +817,8 @@ textarea {
     -moz-box-shadow: 13px 14px 5px -3px rgba(0,0,0,0.14);
   }
  .img-fluidZPFoter{
-  margin-top: -20px;
+  margin-top: -35px;
+  
 
  }
  /* text home font style */
@@ -844,7 +847,7 @@ textarea {
 .zpIcon::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -7%;
   left: 50%;
   transform: translateX(-50%);
   width: 30px; /* Adjust width as needed */
