@@ -152,3 +152,41 @@ $(document).ready(function() {
       }, index * 1000); // Change 3000 to the desired duration in milliseconds
     });
   });
+
+
+
+  // za fade na contact
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var lastScrollTop = 0;
+    var fadeImages = document.querySelectorAll(".fade-image");
+  
+    function fadeInImage() {
+      fadeImages.forEach(function(image) {
+        var positionFromTop = image.getBoundingClientRect().top;
+        var windowHeight = window.innerHeight;
+  
+        if (positionFromTop - windowHeight <= 0) {
+          image.style.animation = "fadeIn 2s ease-in-out forwards";
+        } else {
+          image.style.animation = "fadeOut 2s ease-in-out forwards";
+        }
+      });
+    }
+  
+    window.addEventListener("scroll", function() {
+      var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  
+      if (currentScroll > lastScrollTop) {
+        // Scrolling down
+        fadeInImage();
+      } else {
+        // Scrolling up
+        fadeInImage();
+      }
+      lastScrollTop = currentScroll;
+    });
+  
+    // Initially fade in images in view on page load
+    fadeInImage();
+  });
