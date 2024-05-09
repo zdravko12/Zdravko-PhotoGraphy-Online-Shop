@@ -49,3 +49,45 @@
   .ShopTextMove11.scrolled {
     transform: translateX(50%) scale(1.5);
   }
+
+
+
+  /* Pagination 12345 next prev shop  */
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pagination {
+    display: flex;
+    
+  }
+  
+  .pagination a,
+  .pagination span {
+    color: black;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+  }
+  
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-bottom-color: rgba(6, 164, 75, 0.575);
+
+  }
+  
+  .disabled {
+    background: #dddddd;
+    pointer-events: none; /* Disable pointer events */
+  }
+
+
+  
