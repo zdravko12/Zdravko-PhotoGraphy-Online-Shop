@@ -150,3 +150,151 @@ window.addEventListener('scroll', function() {
 });
 
 
+// Define variables  pagination number and next prev for shop [PHOTOS]
+var currentPage = 0; // Initial page index
+var itemsPerPage = 8; // Number of items per page
+
+// Function to show items for the current page
+function showItems() {
+    var startIndex = currentPage * itemsPerPage;
+    var endIndex = startIndex + itemsPerPage;
+
+    // Hide all items
+    $('.col-12').hide();
+
+    // Show items for the current page
+    $('.col-12').slice(startIndex, endIndex).show();
+}
+
+// Function to generate pagination links
+function generatePaginationLinks() {
+    var totalItems = $('.col-12').length;
+    var totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    $('#pagination').empty(); // Clear existing pagination links
+
+    // Add "Previous" button
+    if (currentPage > 0) {
+        $('#pagination').append('<a href="##" id="prevBtn">&laquo; Prev</a>');
+    } else {
+        $('#pagination').append('<span class="disabled">&laquo; Prev</span>');
+    }
+
+    // Add numbered page links
+    for (var i = 0; i < totalPages; i++) {
+        var pageNum = i + 1;
+        if (i === currentPage) {
+            $('#pagination').append('<a href="##" class="active">' + pageNum + '</a>');
+        } else {
+            $('#pagination').append('<a href="##">' + pageNum + '</a>');
+        }
+    }
+
+    // Add "Next" button
+    if (currentPage < totalPages - 1) {
+        $('#pagination').append('<a href="##" id="nextBtn">Next &raquo;</a>');
+    } else {
+        $('#pagination').append('<span class="disabled">Next &raquo;</span>');
+    }
+}
+// Function to show items for the current page with fade effect
+function showItemsWithFade() {
+  var startIndex = currentPage * itemsPerPage;
+  var endIndex = startIndex + itemsPerPage;
+
+  // Hide all items with fade effect
+  $('#productItemsContainer').children('.col-12').fadeOut(200);
+
+  // Show items for the current page with fade effect
+  $('#productItemsContainer').children('.col-12').slice(startIndex, endIndex).delay(300).fadeIn(600);
+}
+// Pagination event handler for "Previous" button
+$(document).on('click', '#prevBtn', function() {
+  if (currentPage > 0) {
+      currentPage--;
+      showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
+      generatePaginationLinks();
+  }
+});
+
+// Pagination event handler for "Next" button
+$(document).on('click', '#nextBtn', function() {
+  var totalItems = $('#productItemsContainer').children('.col-12').length;
+  var totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  if (currentPage < totalPages - 1) {
+      currentPage++;
+      showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
+      generatePaginationLinks();
+  }
+});
+// Pagination event handler for page numbers
+$(document).on('click', '.pagination a:not(#prevBtn, #nextBtn)', function() {
+  var pageNum = parseInt($(this).text()) - 1;
+  if (pageNum !== currentPage) {
+      currentPage = pageNum;
+      showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
+      generatePaginationLinks();
+  }
+});
+
+// Function to show items for the current page with fade effect
+function showItemsWithFade() {
+  var startIndex = currentPage * itemsPerPage;
+  var endIndex = startIndex + itemsPerPage;
+
+  // Hide all items with fade effect
+  $('#productItemsContainer').children('.col-12').fadeOut(200);
+
+  // Show items for the current page with fade effect
+  $('#productItemsContainer').children('.col-12').slice(startIndex, endIndex).delay(200).fadeIn(200);
+}
+
+
+// Pagination event handler for "Previous" button
+$(document).on('click', '#prevBtn', function() {
+  if (currentPage > 0) {
+      currentPage--;
+      showItems();
+      generatePaginationLinks();
+  }
+});
+
+// Pagination event handler for "Next" button
+$(document).on('click', '#nextBtn', function() {
+  var totalItems = $('.col-12').length;
+  var totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  if (currentPage < totalPages - 1) {
+      currentPage++;
+      showItems();
+      generatePaginationLinks();
+  }
+});
+
+// Show initial page and generate pagination links
+showItems();
+generatePaginationLinks();
+
+// Pagination event handlers
+$(document).on('click', '#prevBtn', function() {
+    if (currentPage > 0) {
+        currentPage--;
+        showItems();
+        generatePaginationLinks();
+    }
+});
+
+$(document).on('click', '#nextBtn', function() {
+    var totalItems = $('.col-12').length;
+    var totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    if (currentPage < totalPages - 1) {
+        currentPage++;
+        showItems();
+        generatePaginationLinks();
+    }
+});
+
+
+
