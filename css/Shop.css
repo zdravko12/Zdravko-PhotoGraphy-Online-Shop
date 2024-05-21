@@ -167,7 +167,9 @@
   border-radius: 0 3px 3px 0;
   user-select: none;
   background-color: rgba(255, 255, 255, 0.5);
+  user-select: none;
 }
+
 
 .prev:hover, .next:hover {
   background-color: rgba(255, 255, 255, 0.8);
@@ -477,5 +479,153 @@ select::-ms-expand {
   box-shadow: #0000004e 1px 1px 10px;
   
 }
+/* hr pomegu button i quet */
 
+
+/* The second modal styling */
+#secondModal .modal-content {
+  position: relative;
+  max-width: 65%;
+  background-color: transparent;
+  border: none;
+}
+
+#second-modal-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(200vh - 60px); /* Adjusted to account for the modal title and close button */
+  object-fit: contain;
+  margin: auto;
+}
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 600px) {
+  #second-modal-image {
+      max-height: calc(100vh - 320px); /* Adjusted for smaller screens */
+      margin-top: 50%; /* Vertically center the image */
+      transform: translateY(-50%); /* Adjust for vertical centering */
+      width: 130%;
+      margin-left:-15%;
+      
+  }
+}
+
+
+@media only screen and (max-width: 744px) {
+  #second-modal-image {
+      max-height: calc(160vh - 320px); /* Adjusted for smaller screens */
+      margin-top: 50%; /* Vertically center the image */
+      transform: translateY(-50%); /* Adjust for vertical centering */
+      width: 130%;
+      margin-left:-15%;
+      
+  }
+}
+@media only screen and (max-width: 844px) {
+  #second-modal-image {
+      max-height: calc(160vh - 320px); /* Adjusted for smaller screens */
+      margin-top: 50%; /* Vertically center the image */
+      transform: translateY(-50%); /* Adjust for vertical centering */
+      width: 130%;
+      margin-left:-15%;
+      
+  }
+}
+/* Media Query for Desktop Devices (1512 x 639) */
+@media only screen and (min-width: 1200px) {
+  .prev, .next {
+      margin-top: -35%;
+      
+  
+  }
+}
+
+@media only screen and (min-width: 644px) {
+  .prev, .next {
+      margin-top: -35%;
+  
+  }
+}
+@media only screen and (min-width: 300px) {
+  .prev, .next {
+      margin-top: -45%!important; 
+  
+  }
+}
+@media only screen and (min-width: 300px) {
+  .prev, .next {
+      margin-top: -50%!important; 
+  
+  }
+}
+
+
+
+/* za zoom na slikata cursor Property */
+
+#modal-image {
+  transition: transform 0.3s ease;
+}
+
+#modal-image.zoom-in {
+  transform: scale(1.2);
+}
+
+
+#modal-image {
+  cursor: zoom-in;
+}
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* za zoom slika text  */
+.zoom-text {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  font-size: 24px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  background-color: #42414138;
+  border-radius: 10%;
+  animation: zoomIn 0.3s forwards;
+}
+@keyframes zoomIn {
+  0% {
+      transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+      transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.zoom-in {
+  display: none;
+}
+
+
+
+.image-container:hover .zoom-in,
+.image-container:hover  {
+  display: block;
+}
+
+.image-container:hover .zoom-in {
+  display: block;
+}
+
+.image-container img:hover ~ .zoom-in {
+  display: block;
+}
+
+.image-container img:not(:hover) ~ .zoom-in {
+  display: none;
+}
+/* za zoom na slikata cursor Property */
 

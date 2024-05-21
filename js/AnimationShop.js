@@ -175,7 +175,7 @@ function generatePaginationLinks() {
 
     // Add "Previous" button
     if (currentPage > 0) {
-        $('#pagination').append('<a href="##" id="prevBtn">&laquo; Prev</a>');
+        $('#pagination').append('<a href="#" id="prevBtn">&laquo; Prev</a>');
     } else {
         $('#pagination').append('<span class="disabled">&laquo; Prev</span>');
     }
@@ -184,15 +184,15 @@ function generatePaginationLinks() {
     for (var i = 0; i < totalPages; i++) {
         var pageNum = i + 1;
         if (i === currentPage) {
-            $('#pagination').append('<a href="##" class="active">' + pageNum + '</a>');
+            $('#pagination').append('<a href="#" class="active">' + pageNum + '</a>');
         } else {
-            $('#pagination').append('<a href="##">' + pageNum + '</a>');
+            $('#pagination').append('<a href="#">' + pageNum + '</a>');
         }
     }
 
     // Add "Next" button
     if (currentPage < totalPages - 1) {
-        $('#pagination').append('<a href="##" id="nextBtn">Next &raquo;</a>');
+        $('#pagination').append('<a href="#" id="nextBtn">Next &raquo;</a>');
     } else {
         $('#pagination').append('<span class="disabled">Next &raquo;</span>');
     }
@@ -206,7 +206,7 @@ function showItemsWithFade() {
   $('#productItemsContainer').children('.col-12').fadeOut(200);
 
   // Show items for the current page with fade effect
-  $('#productItemsContainer').children('.col-12').slice(startIndex, endIndex).delay(300).fadeIn(600);
+  $('#productItemsContainer').children('.col-12').slice(startIndex, endIndex).delay(400).fadeIn(600);
 }
 // Pagination event handler for "Previous" button
 $(document).on('click', '#prevBtn', function() {
@@ -295,6 +295,162 @@ $(document).on('click', '#nextBtn', function() {
         generatePaginationLinks();
     }
 });
+
+
+var prevImages, nextImages;
+ 
+ // Get the modal
+var modal = document.getElementById("myModal");
+var prevImages, nextImages, prevTitle, nextTitle;
+
+function openModal(images, title) {
+    // Get the modal and update content
+    var modal = document.getElementById("myModal");
+    document.getElementById('modal-image').src = images[0];
+    document.getElementById('modal-title').textContent = title;
+    modal.style.display = "block";
+
+    // Store images and title for later use
+    prevImages = images;
+    nextImages = images;
+    prevTitle = title;
+    nextTitle = title;
+}
+
+// Get the button that opens the modal
+var btns = document.querySelectorAll(".product-item");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btns.forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    modal.style.display = "block";
+  });
+});
+
+// When the user clicks on the close button, close the modal
+var closeBtn = document.querySelector(".close");
+closeBtn.addEventListener("click", function() {
+  closeModal(); // Close the modal
+});
+
+// When the user clicks anywhere outside of the modal, close it
+// Function to close the modal and reset its content
+function closeModal() {
+  
+  var modal = document.getElementById("myModal");
+  $('#modal-image').attr('src', ''); // Clear image
+  $('#modal-title').text(''); // Clear title
+  modal.style.display = "none"; // Hide modal
+}
+
+// JavaScript for slideshow functionality
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+}
+var currentIndex = 0; // Initialize currentIndex outside the function
+
+function plusSlides(n, images, title) {
+    currentIndex += n;
+    if (currentIndex < 0) {
+        currentIndex = images.length - 1; // Go to the last image
+    } else if (currentIndex >= images.length) {
+        currentIndex = 0; // Go to the first image
+    }
+    document.getElementById('modal-image').src = images[currentIndex];
+   
+}
+
+// Update price based on selected dimensions
+document.getElementById("dimensions").addEventListener("change", function() {
+  var price = document.getElementById("dimensions").value;
+  document.getElementById("price").innerText = "€" + price;
+});
+
+// Add to cart functionality
+document.getElementById("addToCart").addEventListener("click", function() {
+  var quantity = document.getElementById("quantity").value;
+  var price = document.getElementById("dimensions").value * quantity;
+  var material = document.getElementById("material").value;
+  // You can handle adding the item to the cart here
+  console.log("Added to cart - Quantity: " + quantity + ", Price: €" + price + ", Material: " + material);
+});
+
+
+// quantity za plus minus click na quantity
+(function () {
+  const quantityContainer = document.querySelector(".quantity");
+  const minusBtn = quantityContainer.querySelector(".minus");
+  const plusBtn = quantityContainer.querySelector(".plus");
+  const inputBox = quantityContainer.querySelector(".input-box");
+
+  updateButtonStates();
+
+  quantityContainer.addEventListener("click", handleButtonClick);
+  inputBox.addEventListener("input", handleQuantityChange);
+
+  function updateButtonStates() {
+    const value = parseInt(inputBox.value);
+    minusBtn.disabled = value <= 1;
+    plusBtn.disabled = value >= parseInt(inputBox.max);
+  }
+
+  function handleButtonClick(event) {
+    if (event.target.classList.contains("minus")) {
+      decreaseValue();
+    } else if (event.target.classList.contains("plus")) {
+      increaseValue();
+    }
+  }
+
+  function decreaseValue() {
+    let value = parseInt(inputBox.value);
+    value = isNaN(value) ? 1 : Math.max(value - 1, 1);
+    inputBox.value = value;
+    updateButtonStates();
+    handleQuantityChange();
+  }
+
+  function increaseValue() {
+    let value = parseInt(inputBox.value);
+    value = isNaN(value) ? 1 : Math.min(value + 1, parseInt(inputBox.max));
+    inputBox.value = value;
+    updateButtonStates();
+    handleQuantityChange();
+  }
+
+  function handleQuantityChange() {
+    let value = parseInt(inputBox.value);
+    value = isNaN(value) ? 1 : value;
+
+    // Execute your code here based on the updated quantity value
+    console.log("Quantity changed:", value);
+  }
+})();
+
+
+
+
 
 
 
