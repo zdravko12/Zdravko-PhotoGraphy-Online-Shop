@@ -150,8 +150,8 @@ window.addEventListener('scroll', function() {
 });
 
 
-// Define variables  pagination number and next prev for shop [PHOTOS]
-var currentPage = 0; // Initial page index
+// Define variables pagination number and next prev for shop [PHOTOS]
+var currentPage = parseInt(localStorage.getItem('currentPage')) || 0; // Retrieve current page from localStorage or default to 0
 var itemsPerPage = 8; // Number of items per page
 
 // Function to show items for the current page
@@ -197,104 +197,56 @@ function generatePaginationLinks() {
         $('#pagination').append('<span class="disabled">Next &raquo;</span>');
     }
 }
+
 // Function to show items for the current page with fade effect
 function showItemsWithFade() {
-  var startIndex = currentPage * itemsPerPage;
-  var endIndex = startIndex + itemsPerPage;
+    var startIndex = currentPage * itemsPerPage;
+    var endIndex = startIndex + itemsPerPage;
 
-  // Hide all items with fade effect
-  $('#productItemsContainer').children('.col-12').fadeOut(200);
+    // Hide all items with fade effect
+    $('#productItemsContainer').children('.col-12').fadeOut(200);
 
-  // Show items for the current page with fade effect
-  $('#productItemsContainer').children('.col-12').slice(startIndex, endIndex).delay(400).fadeIn(600);
+    // Show items for the current page with fade effect
+    $('#productItemsContainer').children('.col-12').slice(startIndex, endIndex).delay(200).fadeIn(200);
 }
+
 // Pagination event handler for "Previous" button
-$(document).on('click', '#prevBtn', function() {
-  if (currentPage > 0) {
-      currentPage--;
-      showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
-      generatePaginationLinks();
-  }
+$(document).on('click', '#prevBtn', function () {
+    if (currentPage > 0) {
+        currentPage--;
+        localStorage.setItem('currentPage', currentPage); // Save current page to localStorage
+        showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
+        generatePaginationLinks();
+    }
 });
 
 // Pagination event handler for "Next" button
-$(document).on('click', '#nextBtn', function() {
-  var totalItems = $('#productItemsContainer').children('.col-12').length;
-  var totalPages = Math.ceil(totalItems / itemsPerPage);
+$(document).on('click', '#nextBtn', function () {
+    var totalItems = $('#productItemsContainer').children('.col-12').length;
+    var totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  if (currentPage < totalPages - 1) {
-      currentPage++;
-      showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
-      generatePaginationLinks();
-  }
+    if (currentPage < totalPages - 1) {
+        currentPage++;
+        localStorage.setItem('currentPage', currentPage); // Save current page to localStorage
+        showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
+        generatePaginationLinks();
+    }
 });
+
 // Pagination event handler for page numbers
-$(document).on('click', '.pagination a:not(#prevBtn, #nextBtn)', function() {
-  var pageNum = parseInt($(this).text()) - 1;
-  if (pageNum !== currentPage) {
-      currentPage = pageNum;
-      showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
-      generatePaginationLinks();
-  }
-});
-
-// Function to show items for the current page with fade effect
-function showItemsWithFade() {
-  var startIndex = currentPage * itemsPerPage;
-  var endIndex = startIndex + itemsPerPage;
-
-  // Hide all items with fade effect
-  $('#productItemsContainer').children('.col-12').fadeOut(200);
-
-  // Show items for the current page with fade effect
-  $('#productItemsContainer').children('.col-12').slice(startIndex, endIndex).delay(200).fadeIn(200);
-}
-
-
-// Pagination event handler for "Previous" button
-$(document).on('click', '#prevBtn', function() {
-  if (currentPage > 0) {
-      currentPage--;
-      showItems();
-      generatePaginationLinks();
-  }
-});
-
-// Pagination event handler for "Next" button
-$(document).on('click', '#nextBtn', function() {
-  var totalItems = $('.col-12').length;
-  var totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  if (currentPage < totalPages - 1) {
-      currentPage++;
-      showItems();
-      generatePaginationLinks();
-  }
+$(document).on('click', '.pagination a:not(#prevBtn, #nextBtn)', function () {
+    var pageNum = parseInt($(this).text()) - 1;
+    if (pageNum !== currentPage) {
+        currentPage = pageNum;
+        localStorage.setItem('currentPage', currentPage); // Save current page to localStorage
+        showItemsWithFade(); // Use showItemsWithFade() instead of showItems()
+        generatePaginationLinks();
+    }
 });
 
 // Show initial page and generate pagination links
 showItems();
 generatePaginationLinks();
-
-// Pagination event handlers
-$(document).on('click', '#prevBtn', function() {
-    if (currentPage > 0) {
-        currentPage--;
-        showItems();
-        generatePaginationLinks();
-    }
-});
-
-$(document).on('click', '#nextBtn', function() {
-    var totalItems = $('.col-12').length;
-    var totalPages = Math.ceil(totalItems / itemsPerPage);
-
-    if (currentPage < totalPages - 1) {
-        currentPage++;
-        showItems();
-        generatePaginationLinks();
-    }
-});
 
 
 var prevImages, nextImages;
@@ -330,11 +282,7 @@ btns.forEach(function(btn) {
   });
 });
 
-// When the user clicks the close button, close the modal
-var closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", function() {
-    closeModal('myModal'); // Ensure the correct modalId is passed
-});
+
 
 
 // When the user clicks anywhere outside of the modal, close it

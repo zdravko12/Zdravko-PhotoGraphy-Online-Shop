@@ -504,6 +504,7 @@ input[type="number"]::-webkit-inner-spin-button {
   object-fit: contain;
   margin: auto;
 }
+
 /* Media Query for Mobile Devices */
 @media only screen and (max-width: 600px) {
   #second-modal-image {
@@ -572,6 +573,18 @@ input[type="number"]::-webkit-inner-spin-button {
 #modal-image {
   transition: transform 0.3s ease;
 }
+#modal-image:hover{
+  opacity: 0.9;
+  animation: HoverPhoto 1.2s forwards;
+}
+@keyframes HoverPhoto {
+  0% {
+      opacity: 1;;
+  }
+  100% {
+      opacity: 0.9;;
+  }
+}
 
 #modal-image.zoom-in {
   transform: scale(1.2);
@@ -580,6 +593,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
 #modal-image {
   cursor: zoom-in;
+  
+
 }
 
 
