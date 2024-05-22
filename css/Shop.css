@@ -364,10 +364,16 @@ select::-ms-expand {
   margin: 0;
 }
 .input-box[type="number"] {
-  -moz-appearance: textfield;
+  -ms-appearance: textfield;
+    appearance: textfield;
  
 }
-
+/* For Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 
 .quantity-button {
