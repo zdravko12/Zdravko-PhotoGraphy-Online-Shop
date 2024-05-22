@@ -330,11 +330,12 @@ btns.forEach(function(btn) {
   });
 });
 
-// When the user clicks on the close button, close the modal
+// When the user clicks the close button, close the modal
 var closeBtn = document.querySelector(".close");
 closeBtn.addEventListener("click", function() {
-  closeModal(); // Close the modal
+    closeModal('myModal'); // Ensure the correct modalId is passed
 });
+
 
 // When the user clicks anywhere outside of the modal, close it
 // Function to close the modal and reset its content
