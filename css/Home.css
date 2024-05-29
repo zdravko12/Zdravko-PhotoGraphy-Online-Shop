@@ -464,9 +464,9 @@ a {
       .testimonial-slider-wrap #testimonial-nav > span:hover {
         background: #3b5d50;
         color: #ffffff; }
-    .testimonial-slider-wrap #testimonial-nav .prev {
+    .testimonial-slider-wrap #testimonial-nav .prevHome {
       left: -10px; }
-    .testimonial-slider-wrap #testimonial-nav .next {
+    .testimonial-slider-wrap #testimonial-nav .nextHome {
       right: 0; }
   .testimonial-slider-wrap .tns-nav {
     position: absolute;
@@ -828,8 +828,67 @@ textarea {
 
  .TextMoveHome{
   animation: TextRightLeft 4s ease-out;
+
   
  }
+/* .textZdravkoMove{
+  margin-left: 12%;
+}
+@media only screen and (max-width: 600px) {
+  .textZdravkoMove {
+      margin-left: 0%;
+      
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .textZdravkoMove {
+      margin-left: 0%;
+      
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .textZdravkoMove {
+      margin-left: 0%;
+      
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .textZdravkoMove {
+      margin-left: 0%;
+      
+  }
+} */
+/* za view more photos shop */
+@media only screen and (max-width: 744px) {
+  .viewText {
+    margin-top: 0%!important;
+    display: flex;        /* Use flexbox layout */
+    align-items: center;  /* Vertically center the items */
+    justify-content: center;  /* Horizontally center the items */
+      
+  }
+}
+@media only screen and (max-width: 844px) {
+  .viewText {
+    margin-top: 0%!important;
+    display: flex;        /* Use flexbox layout */
+    align-items: center;  /* Vertically center the items */
+    justify-content: center;  /* Horizontally center the items */
+      
+  }
+}
+@media only screen and (max-width: 944px) {
+  .viewText {
+    margin-top: 0%!important;
+    display: flex;        /* Use flexbox layout */
+    align-items: center;  /* Vertically center the items */
+    justify-content: center;  /* Horizontally center the items */
+  }
+}
+
+
+
 
 
  /* ZA iconite za categori za stilovi na slikanje */
@@ -1284,6 +1343,18 @@ textarea {
   background-color: #080808b7;
 }
 
+
+.original-price {
+  text-decoration: line-through;
+  color: black;
+}
+.discounted-price {
+  color: red;
+}
+.no-discount {
+  text-decoration: none;
+  color: black;
+}
 
 
 

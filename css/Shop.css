@@ -571,18 +571,19 @@ input[type="number"]::-webkit-inner-spin-button {
 /* za zoom na slikata cursor Property */
 
 #modal-image {
-  transition: transform 0.3s ease;
+  transition: opacity 1.2s;
 }
 #modal-image:hover{
-  opacity: 0.9;
-  animation: HoverPhoto 1.2s forwards;
+  opacity: 0.9; /* Target opacity on hover */
+  animation: none; /* Disable animation on hover */
 }
+/* Define keyframes for a smooth opacity change */
 @keyframes HoverPhoto {
   0% {
-      opacity: 1;;
+    opacity: 1;
   }
   100% {
-      opacity: 0.9;;
+    opacity: 0.9;
   }
 }
 

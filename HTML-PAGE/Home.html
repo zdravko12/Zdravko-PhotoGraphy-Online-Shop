@@ -20,6 +20,8 @@
 		<link href="css/style.css" rel="stylesheet">
 		<link rel="stylesheet" href="/css/Home.css">
 		<link rel="stylesheet" href="/css/tiny-slider.css">
+		<link rel="stylesheet" href="/css/ModalHome.css">
+
 		
 		<title>Home </title>
 	</head>
@@ -66,7 +68,7 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1 class="text1Home "><span class="TextMoveHome">Zdravko</span> <span class="TextMoveHome">PhotoGraphy Online Shop<span clsas="d-block"></span></h1>
+								<h1 class="text1Home "><span class="TextMoveHome textZdravkoMove">Zdravko</span> <span class="TextMoveHome">PhotoGraphy Online Shop<span clsas="d-block"></span></h1>
 								<p class="mb-5 TextNewAnimation"><span class="TextMoveHome">Welcome to my site</span> <span class="TextMoveHome">& Enjoy the moment of my pictures.</span></p>
 								<p><a href="" class="btn btn-secondary me-2" id="ButtonColor">Shop Now</a><a href="#" class="btn btn-white-outline ButtonColorTwo">Explore</a></p>
 							</div>
@@ -108,7 +110,7 @@
 
 					<!-- Start Column 2 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="##">
+						<a class="product-item" href="##" data-modal-index="0" data-discount="false" onclick="openModal(['/Images/FrameModalSlideShow1.1.png', '/Images/FrameModalSlideShow1.png'], 'Autumn Park in Skopje', 0)">
 							<img src="/Images/HomeFrameShopp1.png" class="img-fluid	 product-thumbnail PhotoEffects1">
 							<h3 class="product-title">Autumn Park in Skopje</h3>
 							<strong class="product-price"> 25 € – 139 € </strong>
@@ -122,7 +124,7 @@
 
 					<!-- Start Column 3 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
+						<a class="product-item" href="##" data-modal-index="1"  data-discount="false" onclick="openModal(['/Images/FrameModalSlideShow2.1.png', '/Images/FrameModalSlideShow2.png'], 'Winter Mountain Matka',0)">
 							<img src="/Images/HomeFrameShopp.png" class="img-fluid product-thumbnail PhotoEffects2">
 							<h3 class="product-title">Winter Mountain Matka</h3>
 							<strong class="product-price"> 25 € – 139 € </strong>
@@ -137,7 +139,7 @@
 
 					<!-- Start Column 4 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
+						<a class="product-item" href="##" data-modal-index="2"  data-discount="false"  onclick="openModal(['/Images/FrameModalSlideShow3.png', '/Images/FrameModalSlideShow3.1.png'] , 'Sunset Day in Park Skopje',0)">
 							<img src="/Images/HomeFrameShopp2.png" class="img-fluid product-thumbnail PhotoEffects3">
 							<h3 class="product-title">Sunset Day in Park Skopje</h3>
 							<strong class="product-price"> 25 € – 139 € </strong>
@@ -148,7 +150,7 @@
 						</a>
 					</div>
 					<div class="  text-start text-md-end p-1 ">
-						<a href="#" class="more1">View All Posts</a>
+						<a href="#" class="more1 viewText">View All Posts</a>
 					</div>
 					<!-- End Column 4 -->
 
@@ -259,10 +261,10 @@
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
 						<div class="product-item-sm d-flex MostWAntedPhoto">
 							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-3New.png" alt="Image" class="img-fluid2"></a>
+								<a href="##"><img src="/Images/product-3New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="7" onclick="openModal(['/Images/FrameModalSlideShow5.png', '/Images/FrameModalSlideShow5.1.png'], 'Bogomila Falls', 0)"></a> 
 							</div>
 							<div class="pt-3">
-								<h3>Bogomila Falls</h3>
+								<h3>Bogomila Falls <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span> </h3>
 								<p>The The springs of waterfalls is unrivaled in scenery and breathtaking natural wonders </p>
 								<p><a href="#">Read More</a></p>
 							</div>
@@ -272,7 +274,7 @@
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
 						<div class="product-item-sm d-flex MostWAntedPhoto">
 							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-2New.png" alt="Image" class="img-fluid2"></a>
+								<a href="##"><img src="/Images/product-2New.png" alt="Image" class="img-fluid2" data-discount="false" data-modal-index="8" onclick="openModal(['/Images/FrameModalSlideShow20.png', '/Images/FrameModalSlideShow20.1.png'], 'Sunset Wallpaper', 0)"></a>
 							</div>
 							<div class="pt-3">
 								<h3>Sunset Wallpaper </h3>
@@ -285,15 +287,16 @@
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
 						<div class="product-item-sm d-flex MostWAntedPhoto">
 							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-1New.png" alt="Image" class="img-fluid2"></a>
+								<a href="##"><img src="/Images/product-1New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="8" onclick="openModal(['/Images/FrameModalSlideShow8.png', '/Images/FrameModalSlideShow8.1.png'], 'Butterfly ', 0)"></a>
 							</div>
 							<div class="pt-3">
-								<h3>Butterfly</h3>
+								<h3>Butterfly <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></h3>
 								<p>Butterfly with blur background and beautiful color shades </p>
 								<p><a href="#">Read More</a></p>
 							</div>
 						</div>
 					</div>
+					
 					
 
 				</div>
@@ -319,8 +322,8 @@
 						<div class="testimonial-slider-wrap text-center">
 
 							<div id="testimonial-nav">
-								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
-								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+								<span class="prevHome" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+								<span class="nextHome" data-controls="next"><span class="fa fa-chevron-right"></span></span>
 							</div>
 
 							<div class="testimonial-slider">
@@ -337,9 +340,9 @@
 
 												<div class="author-info">
 													<div class="author-pic">
-														<a href="##"><img src="/Images/FrameZp14.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1"></a>
+														<a href="##">  <img src="/Images/FrameZp14.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1" data-discount="true" data-modal-index="4" onclick="openModal(['/Images/FrameModalSlideShow17.png', '/Images/FrameModalSlideShow17.1.png'], 'Leaf background', 0)"></a>
 													</div>
-													<h3 class="font-weight-bold">25 € – 139 € </h3>
+													<h3 class="font-weight-bold">25 € – 139 € <span class="monthlyActionsPrice" style="color: red;">(-25%)</span> </h3>
 													<span class="position d-block mb-3">Leaf background.</span>
 												</div>
 											</div>
@@ -361,9 +364,9 @@
 
 												<div class="author-info">
 													<div class="author-pic">
-														<a href="##"><img src="/Images/FrameZp6.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1"></a>
+														<a href="##"><img src="/Images/FrameZp6.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1" data-discount="true" data-modal-index="5" onclick="openModal(['/Images/FrameModalSlideShow6.png', '/Images/FrameModalSlideShow6.2.png'], 'Monkey Thoughtful', 0)"></a>
 													</div>
-													<h3 class="font-weight-bold">25 € – 139 € </h3>
+													<h3 class="font-weight-bold" >25 € – 139 € <span style="color: red;">(-25%)</span></h3>
 													<span class="position d-block mb-3">Monkey Thoughtful.</span>
 												</div>
 											</div>
@@ -385,9 +388,9 @@
 
 												<div class="author-info">
 													<div class="author-pic">
-														<a href="##"><img src="/Images/FrameZp12.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1"></a>
+														<a href="##"><img src="/Images/FrameZp12.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1" data-discount="true" data-modal-index="6" onclick="openModal(['/Images/FrameModalSlideShow18.png', '/Images/FrameModalSlideShow18.1.png'], 'Winter Park Skopje', 0)"></a>
 													</div>
-													<h3 class="font-weight-bold">25 € – 139 € </h3>
+													<h3 class="font-weight-bold">25 € – 139 € <span style="color: red;">(-25%)</span></h3>
 													<span class="position d-block mb-3">Winter Park Skopje.</span>
 												</div>
 											</div>
@@ -408,9 +411,9 @@
 
 												<div class="author-info">
 													<div class="author-pic">
-														<a href="##"><img src="/Images/FrameZp2.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1"></a>
+														<a href="##"><img src="/Images/FrameZp2.jpg" alt="ZdravkOPhotoGraphy" class="img-fluid1" data-discount="true" data-modal-index="7" onclick="openModal(['/Images/FrameModalSlideShow19.png', '/Images/FrameModalSlideShow19.1.png'], 'Matka Wallpaper', 0)"></a>
 													</div>
-													<h3 class="font-weight-bold">25 € – 139 € </h3>
+													<h3 class="font-weight-bold">25 € – 139 € <span style="color: red;">(-25%)</span></h3>
 													<span class="position d-block mb-3">Matka Wallpaper.</span>
 												</div>
 											</div>
@@ -487,6 +490,180 @@
 			</div>
 		</div>
 		<!-- End Blog Section -->	
+
+		  <!-- Modal -->
+		  <div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close"   onclick="closeModal('myModal')">&times;</span>
+				<div class="image-and-text">
+					<div class="slideshow-container">
+						<!-- Start Column 1 -->
+			  <div class="mySlides">
+				<div class="image-container">
+			<img id="modal-image" onclick="openSecondModal()" src="" alt="" >
+			<p class="zoom-text zoom-in">zoom in</p>
+			
+		</div>
+			<!-- Previous and Next buttons for Column 1 -->
+			<a class="prev" onclick="plusSlides(-1, prevImages, prevTitle)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1, nextImages, nextTitle)">&#10095;</a>
+			</div>
+			<div id="modal-title"></div>
+		<!-- End Column 1 -->
+					</div>
+					<div class="image-text">
+						<ul>
+							<li>Moments captured through the buildings of ZdravkoPohotoGraphy</li>
+							<li>High quality print on Photo paper</li>
+							<li>No frame included</li>
+							<li>Free delivery to Macedonia</li>
+							<li>Delivery outside Macedonia</li>
+							<li>Possibility of custom dimension/large format (contact no)</li>
+							<li>Crop photo in Dimension surroundings</li>
+							<li>Right or left small logo of the author</li>
+						</ul>
+					</div>
+				</div>
+				<div class="product-details">
+					<hr>
+					<div class="select">
+						<select name="format" id="dimensions" class="format">
+						   <option selected disabled>Choose a  format</option>
+						   <option value="25">30x45cm</option>
+						<option value="70">50x70cm</option>
+						<option value="139">70x100cm</option>
+						</select>
+					 </div>
+					 <div class="select">
+						<select name="format" id="material" class="format">
+						   <option selected disabled>Choose a type of material</option>
+						   <option value="canvas">Canvas</option>
+						<option value="paper">Paper</option>
+						</select>
+					 </div>
+					<hr>
+					<!-- Price display section -->
+					<h4>
+						<span id="original-price" class="original-price">€25</span>
+						<span class="monthlyActionsPrice discounted-price" id="discounted-price" style="display:none;">€18.75</span>
+					</h4>
+					<div class="button-container">
+						
+						<div class="quantity">
+							<button id="addToCart"><span>Add to Cart</span></button>
+							<div class="vertical-line-container">
+								<div class="vertical-line"></div>
+							</div>
+						  <button class="quantity-button minus" id="minusButton" aria-label="Decrease">&minus;</button>
+						  <!-- <label for=" Quantity"> Quantity</label> -->
+						  <input type="number" class="input-box" id="quantity" value="1" min="1" max="10">
+						  <button class="quantity-button plus grow_box" id="plusButton" aria-label="Increase" >&plus;</button>
+						</div>
+					  </div>
+				</div>
+			</div>
+		</div>
+		   <!-- Modal -->
+		   <!-- Second Modal -->
+		<div id="secondModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('secondModal')">&times;</span>
+				<div class="slideshow-container">
+					<img id="second-modal-image" src="" alt="">
+					<a class="prev" onclick="plusSlidesSecond(1)">&#10094;</a>
+					<a class="next" onclick="plusSlidesSecond(-1)">&#10095;</a>
+				</div>
+			</div>
+		</div>
+
+
+		
+
+
+		<!-- Modal -->
+		  <div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close"   onclick="closeModal('myModal')">&times;</span>
+				<div class="image-and-text">
+					<div class="slideshow-container">
+						<!-- Start Column 1 -->
+			  <div class="mySlides">
+				<div class="image-container">
+			<img id="modal-image" onclick="openSecondModal()" src="" alt="" >
+			<p class="zoom-text zoom-in">zoom in</p>
+			
+		</div>
+			<!-- Previous and Next buttons for Column 1 -->
+			<a class="prev" onclick="plusSlides(-1, prevImages, prevTitle)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1, nextImages, nextTitle)">&#10095;</a>
+			</div>
+			<div id="modal-title"></div>
+		<!-- End Column 1 -->
+					</div>
+					<div class="image-text">
+						<ul>
+							<li>Moments captured through the buildings of ZdravkoPohotoGraphy</li>
+							<li>High quality print on Photo paper</li>
+							<li>No frame included</li>
+							<li>Free delivery to Macedonia</li>
+							<li>Delivery outside Macedonia</li>
+							<li>Possibility of custom dimension/large format (contact no)</li>
+							<li>Crop photo in Dimension surroundings</li>
+							<li>Right or left small logo of the author</li>
+						</ul>
+					</div>
+				</div>
+				<div class="product-details">
+					<hr>
+					<div class="select">
+						<select name="format" id="dimensions" class="format">
+						   <option selected disabled>Choose a  format</option>
+						   <option value="25">30x45cm</option>
+						<option value="70">50x70cm</option>
+						<option value="139">70x100cm</option>
+						</select>
+					 </div>
+					 <div class="select">
+						<select name="format" id="material" class="format">
+						   <option selected disabled>Choose a type of material</option>
+						   <option value="canvas">Canvas</option>
+						<option value="paper">Paper</option>
+						</select>
+					 </div>
+					<hr>
+					<h4>
+						<span id="original-price">€0</span>
+						<span id="discounted-price" style="color: red; display: none;"></span>
+					</h4>
+					<div class="button-container">
+						
+						<div class="quantity">
+							<button id="addToCart"><span>Add to Cart</span></button>
+							<div class="vertical-line-container">
+								<div class="vertical-line"></div>
+							</div>
+						  <button class="quantity-button minus" id="minusButton" aria-label="Decrease">&minus;</button>
+						  <!-- <label for=" Quantity"> Quantity</label> -->
+						  <input type="number" class="input-box" id="quantity" value="1" min="1" max="10">
+						  <button class="quantity-button plus grow_box" id="plusButton" aria-label="Increase" >&plus;</button>
+						</div>
+					  </div>
+				</div>
+			</div>
+		</div>
+		   <!-- Modal -->
+		   <!-- Second Modal -->
+		<div id="secondModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('secondModal')">&times;</span>
+				<div class="slideshow-container">
+					<img id="second-modal-image" src="" alt="">
+					<a class="prev" onclick="plusSlidesSecond(1)">&#10094;</a>
+					<a class="next" onclick="plusSlidesSecond(-1)">&#10095;</a>
+				</div>
+			</div>
+		</div>
+		
 
 		<!-- Start Footer Section -->
 		<footer class="footer-section">
@@ -601,6 +778,8 @@
 		<script src="/js/custom.js"></script>
 		<script src="/js/HomejavaScript.js"></script>
 		<script src="/js/AnimationText.js"></script>
+		<script src="/js/ModalHome.js"></script>
+		<script src="/js/MultiModalShop.js"></script>
 	</body>
 
 </html>
