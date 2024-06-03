@@ -761,21 +761,78 @@ textarea {
   /* vreme traenje za akcija  */
   .countdown-container {
     text-align: center;
-    margin-top: 50px;
-    margin-left: 30%;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #ff0000;
     color: rgb(255, 255, 255);
     border: solid 2px;
-    width: 40%;
-    height: 80%;
+    width: 67%;
+    padding: 15px;
     box-shadow: gray 1px 1px 1px;
-  }
-  
-  
-  #countdown {
-    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.countdown-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    padding-right: 10px; /* Adjust spacing between the text and countdown */
+}
+
+#countdown {
+    font-size: 36px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .countdown-container {
+        width: 60%;
+        flex-direction: column;
+    }
+
+    .countdown-wrapper {
+        flex-direction: column;
+    }
+
+    h1 {
+        padding-right: 0;
+        padding-bottom: 5px;
+    }
+
+    #countdown {
+        font-size: 24px;
+    }
+}
+@media screen and (max-width: 1200px) {
+  .countdown-container {
+      width: 80%;
+      
   }
+
+  #countdown {
+      font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+    .countdown-container {
+        width: 70%;
+        margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+        
+    }
+
+    #countdown {
+        font-size: 18px;
+    }
+}
   #TextMonthly{
     font-weight: 600;
     color: #000000;
