@@ -104,16 +104,20 @@ window.defaultPrice = 25; // Set default price
 
 // Function to update prices based on discount status
 function updatePrices(price, hasDiscount) {
-    document.getElementById("original-price").innerText = "€" + price;
-    if (hasDiscount) {
-        var discountedPrice = (price * 0.75).toFixed(2); // Applying 25% discount
-        document.getElementById("discounted-price").innerText = "€" + discountedPrice;
-        document.getElementById("discounted-price").style.display = 'inline';
-        document.getElementById("original-price").style.textDecoration = 'line-through';
-    } else {
-        document.getElementById("discounted-price").style.display = 'none';
-        document.getElementById("original-price").style.textDecoration = 'none';
-    }
+  var originalPriceElement = document.getElementById("original-price");
+  var discountedPriceElement = document.getElementById("discounted-price");
+  
+  originalPriceElement.innerText = "€" + price;
+  
+  if (hasDiscount) {
+      var discountedPrice = (price * 0.75).toFixed(2); // Applying 25% discount
+      discountedPriceElement.innerText = "€" + discountedPrice;
+      discountedPriceElement.style.display = 'inline';
+      originalPriceElement.classList.add('no-discount');
+  } else {
+      discountedPriceElement.style.display = 'none';
+      originalPriceElement.classList.remove('no-discount');
+  }
 }
 
 // Initial price display

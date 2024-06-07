@@ -1402,14 +1402,14 @@ h1 {
 
 
 .original-price {
-  text-decoration: line-through;
+  text-decoration: none!important; 
   color: black;
 }
 .discounted-price {
   color: red;
 }
 .no-discount {
-  text-decoration: none;
+  text-decoration: line-through!important; 
   color: black;
 }
 

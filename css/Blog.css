@@ -61,3 +61,584 @@
   opacity: 0.7!important;
   box-shadow: 1px 1px 10px;
 }
+
+
+
+  /* Modal styles */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+     display: block;
+  }
+  
+  .close {
+    color: #aaa;
+    float: center;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Slideshow styles */
+  .slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+  }
+  
+  .mySlides {
+    display: none;
+  }
+  
+  .slideshow-container img {
+    width: 100%;
+    height: auto;
+  }
+  .prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .next {
+    right: 0;
+    border-radius: 0 1px 1px 0;
+  }
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 80%;
+    width: auto;
+    padding: 6px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 38px;
+    margin: 5%;
+    margin-top: -150px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    user-select: none;
+  }
+  
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .product-details {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .product-details label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .product-details select {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .product-details button {
+    padding: 10px 20px ;
+    margin-top: 1%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  .product-details button:hover {
+    background-color: #45a049;
+  }
+   
+  
+  
+  /* Default styles za text od slika deskripsen */
+  .image-and-text {
+    display: flex;
+  }
+  
+  .image-and-text .slideshow-container {
+    flex: 1;
+  }
+  
+  .image-text {
+    flex: 1;
+    margin-left: 40px;
+    margin-top: 10px;
+  }
+  
+  .image-text ul {
+    list-style-type: none;
+    padding: 0;
+    list-style-type: square;
+  }
+  
+  .image-text ul li {
+    margin-bottom: 5px;
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .image-and-text {
+        flex-direction: column;
+    }
+  
+    .image-text {
+        margin-top: 5px; /* Adjust as needed */
+        margin-left: 20px;
+    }
+  }
+  
+  .product-title{
+    font-weight: 600;
+  }
+  
+  select:hover {
+     
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.66) inset;
+    -webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.319) inset;
+    -moz-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.312) inset;
+    }
+  
+    /* Add animation */
+  /* Define a keyframe animation */
+  /* Define a keyframe animation */
+  #modal-title{
+    text-align: center;
+    font-weight: 600;
+    right: 0;
+    font-size: 25px;
+  }
+  
+  /* za input select option */
+  select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    border:0!important;
+    background: #5c666454;
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color:#000000;
+    cursor:pointer;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+   font-weight: 500;
+   box-shadow: gray 1px 1px 5px;
+  
+  }
+  select::-ms-expand {
+    display: none;
+  }
+  .select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    line-height: 3;
+    overflow: hidden;
+    border-radius: .25em;
+  }
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #2b2e2e;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+  }
+  .select:hover::after {
+    color: #23b499;
+  }
+  /* za input select option */
+  /* #addToCart{
+    margin-right: 11.1%;
+    margin-left: 1%;
+  } */
+  
+  /* za input select option quantit */
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Add this line to center horizontally */
+    overflow: hidden;
+    
+  
+  
+  
+  }
+  #price{
+    font-weight: 500;
+    font-size: 35px;
+    
+    
+  }
+  #plusButton{
+    margin-left: 2px!important;
+    color: #000000;
+    font-weight: 800;
+    border-radius: 0px 10px 10px 0px;
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 10px 10px 0px;
+  }
+  #minusButton{
+    margin-right: 1px;
+    color: #000000;
+    font-weight: 800;
+    border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+  }
+  #plusButton:hover, #minusButton:hover{
+    color: white;
+    background-color: #4f4e4e7e!important; 
+  }
+  .input-box:hover{
+    background-color: #f1f1f1;
+  }
+  /* Hide the number input spin buttons */
+  .input-box::-webkit-inner-spin-button,
+  .input-box::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .input-box[type="number"] {
+    -ms-appearance: textfield;
+      appearance: textfield;
+   
+  }
+  /* For Chrome, Safari, Edge, and Opera */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+  
+  
+  .quantity-button {
+    width: 40px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    background-color: #bdbebd!important; 
+    border: 1px solid #0000000e!important;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+  }
+  
+  .input-box {
+    width: 41px; /* Adjust width as needed */
+    height: 40px;
+    margin-bottom: -1%; /* Adjust height as needed */
+    text-align: center;
+    border: 1px solid #ccc;
+    }
+  
+  
+  
+  
+  /* Add Animation za modal animacija  */
+  .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+  
+  
+  
+  
+  #addToCart {
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    width: 120px;
+    /* margin-right: 5px; */
+    border-radius: 5px 5px 5px 5px;
+   -webkit-border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px 5px 5px 5px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 36px;
+    margin-top: 47px;
+    font-size: 110%;
+    font-weight: 600;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+  }
+  
+  #addToCart{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  #addToCart:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;  
+    top: 14px;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  #addToCart:hover{
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  
+  #addToCart:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
+  
+  /* hr pomegu button i quet */
+  .vertical-line-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+  }
+  
+  .vertical-line::before {
+    content: "";
+    display: block;
+    width: 2px; /* Line width */
+    height: 90px; /* Line height */
+    background-image: radial-gradient(closest-side, rgb(121, 153, 122), rgba(128, 128, 128, 0) 100%);
+    margin: 0 -20px; /* Optional spacing around the line */
+    box-shadow: #0000004e 1px 1px 10px;
+    
+  }
+  /* hr pomegu button i quet */
+  
+  
+  /* The second modal styling */
+  #secondModal .modal-content {
+    position: relative;
+    max-width: 65%;
+    background-color: transparent;
+    border: none;
+  }
+  
+  #second-modal-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: calc(200vh - 60px); /* Adjusted to account for the modal title and close button */
+    object-fit: contain;
+    margin: auto;
+  }
+  
+  /* Media Query for Mobile Devices */
+  @media only screen and (max-width: 600px) {
+    #second-modal-image {
+        max-height: calc(100vh - 320px); /* Adjusted for smaller screens */
+        margin-top: 50%; /* Vertically center the image */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+        width: 130%;
+        margin-left:-15%;
+        
+    }
+  }
+  
+  
+  @media only screen and (max-width: 744px) {
+    #second-modal-image {
+        max-height: calc(160vh - 320px); /* Adjusted for smaller screens */
+        margin-top: 50%; /* Vertically center the image */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+        width: 130%;
+        margin-left:-15%;
+        
+    }
+  }
+  @media only screen and (max-width: 844px) {
+    #second-modal-image {
+        max-height: calc(160vh - 320px); /* Adjusted for smaller screens */
+        margin-top: 50%; /* Vertically center the image */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+        width: 130%;
+        margin-left:-15%;
+        
+    }
+  }
+  /* Media Query for Desktop Devices (1512 x 639) */
+  @media only screen and (min-width: 1200px) {
+    .prev, .next {
+        margin-top: -35%;
+        
+    
+    }
+  }
+  
+  @media only screen and (min-width: 644px) {
+    .prev, .next {
+        margin-top: -35%;
+    
+    }
+  }
+  @media only screen and (min-width: 300px) {
+    .prev, .next {
+        margin-top: -45%!important; 
+    
+    }
+  }
+  @media only screen and (min-width: 300px) {
+    .prev, .next {
+        margin-top: -50%!important; 
+    
+    }
+  }
+  
+  
+  
+  /* za zoom na slikata cursor Property */
+  
+  #modal-image {
+    transition: opacity 1.2s;
+  }
+  #modal-image:hover{
+    opacity: 0.9; /* Target opacity on hover */
+    animation: none; /* Disable animation on hover */
+  }
+  /* Define keyframes for a smooth opacity change */
+  @keyframes HoverPhoto {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.9;
+    }
+  }
+  
+  #modal-image.zoom-in {
+    transform: scale(1.2);
+  }
+  
+  
+  #modal-image {
+    cursor: zoom-in;
+    
+  
+  }
+  
+  
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* za zoom slika text  */
+  .zoom-text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    font-size: 24px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    background-color: #42414138;
+    border-radius: 10%;
+    animation: zoomIn 0.3s forwards;
+  }
+  @keyframes zoomIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+  
+  .zoom-in {
+    display: none;
+  }
+  
+  
+  
+  .image-container:hover .zoom-in,
+  .image-container:hover  {
+    display: block;
+  }
+  
+  .image-container:hover .zoom-in {
+    display: block;
+  }
+  
+  .image-container img:hover ~ .zoom-in {
+    display: block;
+  }
+  
+  .image-container img:not(:hover) ~ .zoom-in {
+    display: none;
+  }
+  /* za zoom na slikata cursor Property */
+
+
+  .select .format {
+    display: none;
+  }
+
+
+  .original-price {
+    text-decoration: none!important; 
+    color: black;
+  }
+  .discounted-price {
+    color: red;
+  }
+  .no-discount {
+    text-decoration: line-through!important; 
+    color: black;
+  }
+  
+ 
