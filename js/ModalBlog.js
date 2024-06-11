@@ -1,113 +1,15 @@
-var prevImages, nextImages;
- 
- // Get the modal
-var modal = document.getElementById("myModal");
 var prevImages, nextImages, prevTitle, nextTitle;
-
-function openModal(images, title, element) {
-    // Get the modal and update content
-    var modal = document.getElementById("myModal");
-    document.getElementById('modal-image').src = images[0];
-    document.getElementById('modal-title').textContent = title;
-    modal.style.display = "block";
-
-    // Check the data-dimensionsMaterial attribute
-    var showDimensionsMaterial = element.getAttribute('data-dimensionsMaterial') === 'true';
-
-    // Toggle the display of dimensions and material inputs based on the attribute
-    var formats = modal.querySelectorAll('.format');
-    formats.forEach(function(el) {
-        el.style.display = showDimensionsMaterial ? 'block' : 'none';
-    });
-
-    // Store images and title for later use
-    prevImages = images;
-    nextImages = images;
-    prevTitle = title;
-    nextTitle = title;
-}
-
-// Function to close the modal
-function closeModal(modalId) {
-    var modal = document.getElementById(modalId);
-    modal.style.display = "none";
-    var formats = modal.querySelectorAll('.format');
-    formats.forEach(function(el) {
-        el.style.display = 'none'; // Reset to hidden when closing
-    });
-}
-
-// Event listener for closing the modal when clicking outside of it
-window.addEventListener("click", function(event) {
-    var modal = document.getElementById("myModal");
-    if (event.target == modal) {
-        closeModal('myModal');
-    }
-});
-
-// JavaScript for slideshow functionality (if needed)
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length) { slideIndex = 1; }
-    if (n < 1) { slideIndex = slides.length; }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[slideIndex - 1].style.display = "block";
-}
-var currentIndex = 0; // Initialize currentIndex outside the function
-
-function plusSlides(n, images, title) {
-    currentIndex += n;
-    if (currentIndex < 0) {
-        currentIndex = images.length - 1; // Go to the last image
-    } else if (currentIndex >= images.length) {
-        currentIndex = 0; // Go to the first image
-    }
-    document.getElementById('modal-image').src = images[currentIndex];
-   
-}
-
-
-document.querySelectorAll('.product-item, .img-fluid1, .img-fluid').forEach(item => {
-  item.addEventListener('click', function(event) {
-      event.preventDefault();
-      var hasDiscount = this.getAttribute('data-discount') === 'true';
-      var price = 25;  // Assuming the original price is 25 for the sake of this example
-
-      if (hasDiscount) {
-          var discountedPrice = (price * 0.75).toFixed(2);
-          document.getElementById("original-price").innerText = "€" + price;
-          document.getElementById("discounted-price").innerText = "€" + discountedPrice;
-          document.getElementById("discounted-price").style.display = 'inline';
-      } else {
-          document.getElementById("original-price").innerText = "€" + price;
-          document.getElementById("discounted-price").style.display = 'none';
-      }
-  });
-});
-
-// Global variable to track discount status
 window.selectedImageHasDiscount = false;
-window.defaultPrice = 25; // Set default price
-
-
-
-// Default price
 window.defaultPrice = 25;
 
 // Function to update prices
 function updatePrices(price, hasDiscount) {
     var originalPriceElement = document.getElementById("original-price");
     var discountedPriceElement = document.getElementById("discounted-price");
+
+    if (isNaN(price)) {
+        price = window.defaultPrice; // Ensure the price is set to the default if it's NaN
+    }
 
     if (hasDiscount) {
         var discountedPrice = (price * 0.75).toFixed(2);
@@ -119,7 +21,6 @@ function updatePrices(price, hasDiscount) {
         originalPriceElement.innerText = "€" + price;
         discountedPriceElement.style.display = 'none';
         originalPriceElement.classList.remove('no-discount');
-        
     }
 }
 
@@ -133,12 +34,23 @@ function openModal(images, title, element) {
 
     // Check the data-dimensionsMaterial attribute
     var showDimensionsMaterial = element.getAttribute('data-dimensionsMaterial') === 'true';
+    var hasDiscount = element.getAttribute('data-discount') === 'true';
+    window.selectedImageHasDiscount = hasDiscount;
 
     // Toggle the display of dimensions and material inputs based on the attribute
-    var formats = modal.querySelectorAll('.format');
-    formats.forEach(function(el) {
-        el.style.display = showDimensionsMaterial ? 'block' : 'none';
-    });
+    var dimensionsContainer = document.getElementById('dimensions-container');
+    var materialContainer = document.getElementById('material-container');
+    if (showDimensionsMaterial) {
+        dimensionsContainer.style.display = 'block';
+        materialContainer.style.display = 'block';
+        var savedDimension = localStorage.getItem('selectedDimension');
+        var price = savedDimension ? parseFloat(savedDimension) : window.defaultPrice;
+        updatePrices(price, window.selectedImageHasDiscount);
+    } else {
+        dimensionsContainer.style.display = 'none';
+        materialContainer.style.display = 'none';
+        updatePrices(window.defaultPrice, hasDiscount);
+    }
 
     // Store images and title for later use
     prevImages = images;
@@ -147,13 +59,13 @@ function openModal(images, title, element) {
     nextTitle = title;
 
     // Load saved selections from local storage
-    var savedDimension = localStorage.getItem('selectedDimension');
-    var savedMaterial = localStorage.getItem('selectedMaterial');
-    if (savedDimension) {
-        document.getElementById('dimensions').value = savedDimension;
-        var price = parseFloat(savedDimension) || window.defaultPrice;
-        updatePrices(price, window.selectedImageHasDiscount);
+    if (showDimensionsMaterial) {
+        var savedDimension = localStorage.getItem('selectedDimension');
+        if (savedDimension) {
+            document.getElementById('dimensions').value = savedDimension;
+        }
     }
+    var savedMaterial = localStorage.getItem('selectedMaterial');
     if (savedMaterial) {
         document.getElementById('material').value = savedMaterial;
     }
@@ -177,7 +89,7 @@ window.addEventListener("click", function(event) {
     }
 });
 
-// JavaScript for slideshow functionality (if needed)
+// JavaScript for slideshow functionality
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -216,7 +128,7 @@ document.querySelectorAll('.product-item, .img-fluid1, .img-fluid').forEach(item
         window.selectedImageHasDiscount = hasDiscount;
 
         var showDimensionsMaterial = this.getAttribute('data-dimensionsMaterial') === 'true';
-        var price = parseFloat(document.getElementById("dimensions").value) || window.defaultPrice;
+        var price = showDimensionsMaterial ? parseFloat(document.getElementById("dimensions").value) : window.defaultPrice;
         updatePrices(price, hasDiscount);
 
         // Toggle the display of dimensions and material inputs based on the attribute
@@ -273,7 +185,7 @@ document.getElementById("addToCart").addEventListener("click", function() {
     console.log("Added to cart - Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material);
 });
 
-// quantity za plus minus click na quantity
+// Quantity increment and decrement functionality
 (function () {
   const quantityContainer = document.querySelector(".quantity");
   const minusBtn = quantityContainer.querySelector(".minus");
@@ -323,10 +235,3 @@ document.getElementById("addToCart").addEventListener("click", function() {
     console.log("Quantity changed:", value);
   }
 })();
-
-
-
-
-
-
-
