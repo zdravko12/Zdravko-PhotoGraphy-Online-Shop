@@ -85,7 +85,7 @@
 
 					<div class="col-12 col-sm-6 col-md-4 mb-5">
 						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog1.jpg" alt="Image" class="img-fluid img-fluid1 fade-image"></a>
+							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog1.jpg" alt="Image" class="img-fluid dimensionsMaterial  img-fluid1 fade-image" data-modal-index="0"data-dimensionsMaterial="false" data-discount="true" onclick="openModal(['/Images/FrameModalSlideShow1.1.png', '/Images/FrameModalSlideShow1.png'], 'Autumn Park in Skopje', this)"></a>
 							<div class="post-content-entry">
 								<h3><a href="#">Collections of paintings on canvas <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></a></h3>
 								<div class="meta">
@@ -97,7 +97,7 @@
 
 					<div class="col-12 col-sm-6 col-md-4 mb-5">
 						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog2.jpg" alt="Image" class="img-fluid fade-image"></a>
+							<a href="##" class="post-thumbnail"> <img src="/Images/Cover-Blog2.jpg" alt="Image" class="img-fluid dimensionsMaterial product-item fade-image" data-modal-index="1" data-discount="false" data-dimensionsMaterial="true" onclick="openModal(['/Images/FrameModalSlideShow5.png', '/Images/FrameModalSlideShow5.1.png'], 'Bogomila Falls', this)"></a>
 							<div class="post-content-entry">
 								<h3><a href="#">creating large formats on canvas and high-quality satin paper</a></h3>
 								<div class="meta">
@@ -109,7 +109,7 @@
 
 					<div class="col-12 col-sm-6 col-md-4 mb-5">
 						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog3.jpg" alt="Image" class="img-fluid fade-image"+--+-></a>
+							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog3.jpg" alt="Image" class="img-fluid dimensionsMaterial fade-image" data-modal-index="2" data-discount="false" data-dimensionsMaterial="true" onclick="openModal(['/Images/FrameModalSlideShow5.png', '/Images/FrameModalSlideShow5.1.png'], 'Bogomila Falls', this)"></a>
 							<div class="post-content-entry">
 								<h3><a href="#">Macedonian locations pictures with good quality frames</a></h3>
 								<div class="meta">
@@ -121,9 +121,9 @@
 
 					<div class="col-12 col-sm-6 col-md-4 mb-5">
 						<div class="post-entry" id="slideshowCalendar">
-							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog4.jpg" alt="Image" class="img-fluid fade-image"></a>
+							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog4.jpg" alt="Image" class="img-fluid dimensionsMaterial fade-image"data-modal-index="3" data-discount="true" data-dimensionsMaterial="false" onclick="openModal(['/Images/Calendar20241.1.png', '/Images/Calendar20241.3.png', '/Images/Calendar20241.4.png' , '/Images/Calendar20241.5.png' , '/Images/Calendar20241.6.png' , '/Images/Calendar20241.7.png' , '/Images/Calendar20241.8.png' ], 'Calendars 2024', this)" ></a>
 							<div class="post-content-entry">
-								<h3><a href="#">Calendars 2024, the best in 3 versions of 30 calendars, limited quantity</a></h3>
+								<h3><a href="#">Calendars 2024, the best in 3 versions of 30 calendars, limited quantity <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></a></h3>
 								<div class="meta">
 									<span>by <a href="#">ZdravkOPhotoGraphy</a></span> <span>on <a href="#">April 19, 2024</a></span>
 								</div>
@@ -133,7 +133,7 @@
 
 					<div class="col-12 col-sm-6 col-md-4 mb-5">
 						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog5.jpg" alt="Image" class="img-fluid fade-image"></a>
+							<a href="#" class="post-thumbnail"><img src="/Images/Cover-Blog5.jpg" alt="Image" class="img-fluid Images/OhridColection1.1.png fade-image" data-modal-index="4" data-discount="false" data-dimensionsMaterial="false" onclick="openModal(['/Images/OhridColection1.1.png', '/Images/OhridColection1.png', '/Images/OhridColection1.4.png' , '/Images/OhridColection1.3.png' ], 'Macedonia, Ohrid on Canvas  ', this)"></a>
 							<div class="post-content-entry">
 								<h3><a href="#">Macedonia, Ohrid on Canvas with inner frame</a></h3>
 								<div class="meta">
@@ -295,7 +295,86 @@
 			</div>
 		</div>
 		<!-- End Testimonial Slider -->
-        
+
+	<!-- Main Modal -->
+<div id="myModal" class="modal">
+	<div class="modal-content">
+	  <span class="close" onclick="closeModal('myModal')">&times;</span>
+	  <div class="image-and-text">
+		<div class="slideshow-container">
+		  <!-- Slideshow content -->
+		  <div class="mySlides">
+			<div class="image-container">
+			  <img id="modal-image" onclick="openSecondModal()" src="" alt="">
+			  <p class="zoom-text zoom-in">zoom in</p>
+			</div>
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		  </div>
+		  <div id="modal-title"></div>
+		</div>
+		<div class="image-text">
+		  <!-- Image text content -->
+		  <ul>
+			<li>Moments captured through the buildings of ZdravkoPohotoGraphy</li>
+			<li>High quality print on Photo paper</li>
+			<li>No frame included</li>
+			<li>Free delivery to Macedonia</li>
+			<li>Delivery outside Macedonia</li>
+			<li>Possibility of custom dimension/large format (contact no)</li>
+			<li>Crop photo in Dimension surroundings</li>
+			<li>Right or left small logo of the author</li>
+		  </ul>
+		</div>
+	  </div>
+	  <div class="product-details">
+		<hr>
+		<div id="dimensions-container" class="select" style="display: none;">
+		  <select name="format" id="dimensions" class="format">
+			<option selected disabled>Choose a format</option>
+			<option value="25">30x45cm</option>
+			<option value="70">50x70cm</option>
+			<option value="139">70x100cm</option>
+		  </select>
+		</div>
+		<div id="material-container" class="select" >
+		  <select name="material" id="material" class="format">
+			<option selected disabled>Choose a type of material</option>
+			<option value="canvas">Canvas</option>
+			<option value="paper">Paper</option>
+		  </select>
+		</div>
+		<h4>
+		  <span id="original-price" class="original-price">€25</span>
+		  <span class="monthlyActionsPrice discounted-price" id="discounted-price" style="display:none;">€18.75</span>
+		</h4>
+		<hr>
+		<div class="button-container">
+		  <div class="quantity">
+			<button id="addToCart"><span>Add to Cart</span></button>
+			<div class="vertical-line-container">
+			  <div class="vertical-line"></div>
+			</div>
+			<button class="quantity-button minus" id="minusButton" aria-label="Decrease">&minus;</button>
+			<input type="number" class="input-box" id="quantity" value="1" min="1" max="10">
+			<button class="quantity-button plus grow_box" id="plusButton" aria-label="Increase">&plus;</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+  <!-- Second Modal -->
+  <div id="secondModal" class="modal">
+	<div class="modal-content">
+	  <span class="close" onclick="closeModal('secondModal')">&times;</span>
+	  <div class="slideshow-container">
+		<img id="second-modal-image" src="" alt="">
+		<a class="prev" onclick="plusSlidesSecond(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlidesSecond(1)">&#10095;</a>
+	  </div>
+	</div>
+  </div>
 		
 
 		<!-- Start Footer Section -->
@@ -408,6 +487,8 @@
 		<script src="/js/custom.js"></script>
 		<script src="/js/AnimationBlog.js"></script>
 		<script src="/js/CalendarBlogSlideSide.js"></script>
+		<script src="/js/ModalBlog.js"></script>
+		<script src="/js/MultiModalBlog.js"></script>
 		
 		
 	</body>
