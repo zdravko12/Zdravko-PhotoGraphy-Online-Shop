@@ -336,13 +336,38 @@ document.getElementById("dimensions").addEventListener("change", function() {
   document.getElementById("price").innerText = "€" + price;
 });
 
-// Add to cart functionality
 document.getElementById("addToCart").addEventListener("click", function() {
-  var quantity = document.getElementById("quantity").value;
-  var price = document.getElementById("dimensions").value * quantity;
+  var quantity = parseInt(document.getElementById("quantity").value);
+  var dimensionsSelect = document.getElementById("dimensions");
+  
+  // Check if an option is selected in the dimensions select element
+  if (dimensionsSelect.selectedIndex === -1) {
+      alert("Please select a format dimension.");
+      return;
+  }
+  
+  var price = parseFloat(dimensionsSelect.value);
+  if (isNaN(price)) {
+      price = window.defaultPrice;
+  }
   var material = document.getElementById("material").value;
-  // You can handle adding the item to the cart here
-  console.log("Added to cart - Quantity: " + quantity + ", Price: €" + price + ", Material: " + material);
+
+  if (isNaN(price) || !material) {
+      alert("Please select both a dimension and a material.");
+      return;
+  }
+
+  var hasDiscount = window.selectedImageHasDiscount;
+  var discountedPrice = hasDiscount ? price * 0.75 : price;
+  var totalPrice = (discountedPrice * quantity).toFixed(2);
+
+  var formatDimensions = dimensionsSelect.options[dimensionsSelect.selectedIndex].text.split(" - ")[0];
+
+  if (formatDimensions === "Select format") {
+      formatDimensions = "30x45cm"; // Default format dimension
+  }
+
+  console.log("Added to cart - Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
 });
 
 
