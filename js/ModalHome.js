@@ -134,36 +134,44 @@ document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(ite
 });
 
 // Update price based on selected dimensions
+// Update price based on selected dimensions
 document.getElementById("dimensions").addEventListener("change", function() {
-    var price = parseFloat(this.value);
-    if (isNaN(price)) {
-        price = window.defaultPrice; // Default to 25 if the parsed value is NaN
-    }
-    var hasDiscount = window.selectedImageHasDiscount;
-    updatePrices(price, hasDiscount);
+  var price = parseFloat(this.value);
+  if (isNaN(price)) {
+      price = window.defaultPrice; // Default to 25 if the parsed value is NaN
+  }
+  var hasDiscount = window.selectedImageHasDiscount;
+  updatePrices(price, hasDiscount);
 });
 
 // Add to cart functionality
 document.getElementById("addToCart").addEventListener("click", function() {
-    var quantity = parseInt(document.getElementById("quantity").value);
-    var price = parseFloat(document.getElementById("dimensions").value);
-    if (isNaN(price)) {
-        price = window.defaultPrice; // Default to 25 if the parsed value is NaN
-    }
-    var material = document.getElementById("material").value;
+  var quantity = parseInt(document.getElementById("quantity").value);
+  var price = parseFloat(document.getElementById("dimensions").value);
+  if (isNaN(price)) {
+      price = window.defaultPrice; // Default to 25 if the parsed value is NaN
+  }
+  var material = document.getElementById("material").value;
 
-    // Ensure a dimension and material are selected
-    if (isNaN(price) || !material) {
-        alert("Please select both a dimension and a material.");
-        return;
-    }
+  // Ensure a dimension and material are selected
+  if (isNaN(price) || !material) {
+      alert("Please select both a dimension and a material.");
+      return;
+  }
 
-    var hasDiscount = window.selectedImageHasDiscount;
-    var discountedPrice = hasDiscount ? price * 0.75 : price;
-    var totalPrice = (discountedPrice * quantity).toFixed(2);
+  var hasDiscount = window.selectedImageHasDiscount;
+  var discountedPrice = hasDiscount ? price * 0.75 : price;
+  var totalPrice = (discountedPrice * quantity).toFixed(2);
 
-    // You can handle adding the item to the cart here
-    console.log("Added to cart - Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material);
+  // Get product name
+  var productNameElement = document.getElementById('modal-title');
+  var productName = productNameElement ? productNameElement.textContent : "Unknown Product";
+
+  // Assuming formatDimensions is available
+  var formatDimensions = document.getElementById("dimensions").selectedOptions[0].text;
+
+  // You can handle adding the item to the cart here
+  console.log("Added to cart - Product: " + productName + ", Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
 });
 
 // quantity za plus minus click na quantity

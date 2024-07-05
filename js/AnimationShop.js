@@ -339,22 +339,22 @@ document.getElementById("dimensions").addEventListener("change", function() {
 document.getElementById("addToCart").addEventListener("click", function() {
   var quantity = parseInt(document.getElementById("quantity").value);
   var dimensionsSelect = document.getElementById("dimensions");
-  
+
   // Check if an option is selected in the dimensions select element
   if (dimensionsSelect.selectedIndex === -1) {
-      alert("Please select a format dimension.");
-      return;
+    alert("Please select a format dimension.");
+    return;
   }
-  
+
   var price = parseFloat(dimensionsSelect.value);
   if (isNaN(price)) {
-      price = window.defaultPrice;
+    price = window.defaultPrice;
   }
   var material = document.getElementById("material").value;
 
   if (isNaN(price) || !material) {
-      alert("Please select both a dimension and a material.");
-      return;
+    alert("Please select both a dimension and a material.");
+    return;
   }
 
   var hasDiscount = window.selectedImageHasDiscount;
@@ -364,10 +364,13 @@ document.getElementById("addToCart").addEventListener("click", function() {
   var formatDimensions = dimensionsSelect.options[dimensionsSelect.selectedIndex].text.split(" - ")[0];
 
   if (formatDimensions === "Select format") {
-      formatDimensions = "30x45cm"; // Default format dimension
+    formatDimensions = "30x45cm"; // Default format dimension
   }
 
-  console.log("Added to cart - Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
+  var productNameElement = document.getElementById('modal-title');
+  var productName = productNameElement ? productNameElement.textContent : "Unknown Product";
+
+  console.log("Added to cart - Product: " + productName + ", Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
 });
 
 

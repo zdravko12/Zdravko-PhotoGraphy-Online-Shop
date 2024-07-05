@@ -1,0 +1,98 @@
+/* Text shop h1 element */
+.BlogTextMove11 {
+    transform: translateX(0%);
+    transition: transform 0.4s ease-in-out;
+    text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+
+  }
+  
+  .BlogTextMove11.scrolled {
+    transform: translateX(25%) scale(1.5);
+    text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+
+  }
+  
+
+/* AboutUs text Left right*/
+#TextMoveBlog{
+  animation: MoveTextShop1 2s ease-in-out;
+}
+
+@keyframes MoveTextShop1  {
+  from {
+      transform: translateX(-100%);
+      opacity: 0.9;
+  
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+      text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+
+  }
+}
+
+
+.fade-image {
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.TextNewAnimation {
+    font-size: 25px !important;
+    margin-top: -45px!important;
+    margin-left: 12%!important; 
+   }
+
+@media (min-width: 768px) {
+    .TextNewAnimation {
+        font-size: 25px !important;
+        margin-top: -45px!important;
+        margin-left: 3%!important;
+  }
+}
+@media (min-width: 368px) {
+    .TextNewAnimation {
+      font-size: 25px !important;
+      margin-top: -45px !important;
+      margin-left: 0% !important;
+    }
+  }
+ 
+@media (min-width: 1168px) {
+    .TextNewAnimation {
+      font-size: 25px !important;
+      margin-top: -45px !important;
+      margin-left: 0% !important;
+    }
+  }
+
+@media (min-width: 1268px) {
+    .TextNewAnimation {
+      font-size: 25px !important;
+      margin-top: -45px !important;
+      margin-left: 1% !important;
+    }
+  }
+
+  .img-ShopZpCover {
+    margin-top: -8%;
+    animation: PhotoCoverMove 3s forwards;
+  }
+

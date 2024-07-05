@@ -221,54 +221,45 @@ function showSlides(n) {
     });
 });
 
+// Update price based on selected dimensions
 document.getElementById("dimensions").addEventListener("change", function() {
-  var price = parseFloat(this.value);
-  if (isNaN(price)) {
-      price = window.defaultPrice;
-  }
-  var hasDiscount = window.selectedImageHasDiscount;
-  updatePrices(price, hasDiscount);
-
-  localStorage.setItem('selectedDimension', this.value);
-});
-
-document.getElementById("material").addEventListener("change", function() {
-  localStorage.setItem('selectedMaterial', this.value);
+    var price = parseFloat(this.value);
+    if (isNaN(price)) {
+        price = window.defaultPrice; // Default to 25 if the parsed value is NaN
+    }
+    var hasDiscount = window.selectedImageHasDiscount;
+    updatePrices(price, hasDiscount);
 });
   
   
+// Add to cart functionality
 document.getElementById("addToCart").addEventListener("click", function() {
-  var quantity = parseInt(document.getElementById("quantity").value);
-  var dimensionsSelect = document.getElementById("dimensions");
-  
-  // Check if an option is selected in the dimensions select element
-  if (dimensionsSelect.selectedIndex === -1) {
-      alert("Please select a format dimension.");
-      return;
-  }
-  
-  var price = parseFloat(dimensionsSelect.value);
-  if (isNaN(price)) {
-      price = window.defaultPrice;
-  }
-  var material = document.getElementById("material").value;
+    var quantity = parseInt(document.getElementById("quantity").value);
+    var price = parseFloat(document.getElementById("dimensions").value);
+    if (isNaN(price)) {
+        price = window.defaultPrice; // Default to 25 if the parsed value is NaN
+    }
+    var material = document.getElementById("material").value;
 
-  if (isNaN(price) || !material) {
-      alert("Please select both a dimension and a material.");
-      return;
-  }
+    // Ensure a dimension and material are selected
+    if (isNaN(price) || !material) {
+        alert("Please select both a dimension and a material.");
+        return;
+    }
 
-  var hasDiscount = window.selectedImageHasDiscount;
-  var discountedPrice = hasDiscount ? price * 0.75 : price;
-  var totalPrice = (discountedPrice * quantity).toFixed(2);
+    var hasDiscount = window.selectedImageHasDiscount;
+    var discountedPrice = hasDiscount ? price * 0.75 : price;
+    var totalPrice = (discountedPrice * quantity).toFixed(2);
 
-  var formatDimensions = dimensionsSelect.options[dimensionsSelect.selectedIndex].text.split(" - ")[0];
+    // Get product name
+    var productNameElement = document.getElementById('modal-title');
+    var productName = productNameElement ? productNameElement.textContent : "Unknown Product";
 
-  if (formatDimensions === "Select format") {
-      formatDimensions = "30x45cm"; // Default format dimension
-  }
+    // Assuming formatDimensions is available
+    var formatDimensions = document.getElementById("dimensions").selectedOptions[0].text;
 
-  console.log("Added to cart - Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
+    // You can handle adding the item to the cart here
+    console.log("Added to cart - Product: " + productName + ", Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
 });
 (function() {
   const quantityContainer = document.querySelector(".quantity");

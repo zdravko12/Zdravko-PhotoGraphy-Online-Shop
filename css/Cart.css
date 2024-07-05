@@ -1,0 +1,82 @@
+/* Text shop h1 element */
+.BlogTextMove11 {
+    transform: translateX(0%);
+    transition: transform 0.4s ease-in-out;
+    text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+  
+  }
+  
+  .BlogTextMove11.scrolled {
+    transform: translateX(25%) scale(1.5);
+    text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+  
+  }
+  
+  
+  /* AboutUs text Left right*/
+  #TextMoveContact{
+    animation: MoveTextShop1 2s ease-in-out;
+  }
+  
+  @keyframes MoveTextShop1  {
+    from {
+        transform: translateX(-100%);
+        opacity: 0.9;
+    
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+        text-shadow: -2px 7px 0px rgba(0,0,0,0.15);
+  
+    }
+  }
+  
+  
+  .nav {
+    list-style-type: none;
+    
+    
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: black; /* Change color as needed */
+  }
+  
+  .nav-link.active {
+    border-bottom: 4px solid rgb(255, 213, 0); /* Change color and style as needed */
+    
+  }
+  
+  
+  
+  /* Slideshow container */
+  #slideshow1 img {
+    display: none; /* Hide images by default */
+  }
+  
+  /* fade za Login  */
+  .fade-image {
+    opacity: 0;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+      box-shadow: rgb(0, 0, 0) 1px 1px 10px;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
