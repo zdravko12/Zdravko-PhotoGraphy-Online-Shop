@@ -1513,6 +1513,20 @@ h1 {
 
 
 
+/* CARD COUNT */
+#cart-count {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  color: white;
+  padding: 1px 10px;
+  border-radius: 50%; /* Makes the element circular */
+
+
+
+}
+
+
+
 
 
 
