@@ -10,44 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to update prices based on selected dimension and apply discount if applicable
-    function updatePrices() {
-        let dimensionsSelect = document.getElementById('dimensions');
-        if (!dimensionsSelect) {
-            console.error("Element with ID 'dimensions' not found.");
-            return;
-        }
-
-        let originalPriceElement = document.getElementById('original-price');
-        if (!originalPriceElement) {
-            console.error("Element with ID 'original-price' not found.");
-            return;
-        }
-
-        let discountedPriceElement = document.getElementById('discounted-price');
-        if (!discountedPriceElement) {
-            console.error("Element with ID 'discounted-price' not found.");
-            return;
-        }
-
-        let selectedOption = dimensionsSelect.options[dimensionsSelect.selectedIndex];
-        if (selectedOption) {
-            let price = parseFloat(selectedOption.value);
-            originalPriceElement.innerText = "€" + price.toFixed(2);
-
-            // Apply 25% discount if applicable
-            if (price > 0) {
-                let discountedPrice = price * 0.75;
-                discountedPriceElement.innerText = "€" + discountedPrice.toFixed(2);
-                discountedPriceElement.style.display = 'inline';
-            } else {
-                discountedPriceElement.style.display = 'none';
-            }
-        } else {
-            console.error("No option selected in dimensions dropdown.");
-        }
-    }
-
     // Add event listener for 'Add to Cart' button
     let addToCartButton = document.getElementById('addToCart');
     if (addToCartButton) {
@@ -57,16 +19,16 @@ document.addEventListener('DOMContentLoaded', function() {
             // Gather product information from Shop.html
             let imageSrc = document.getElementById('modal-image').src;
             let title = document.getElementById('modal-title').innerText;
-            let priceElement = document.getElementById('original-price');
-            if (!priceElement) {
-                console.error("Element with ID 'original-price' not found.");
-                return;
-            }
-            let price = parseFloat(priceElement.innerText.replace('€', ''));
+            let originalPriceElement = document.getElementById('original-price');
             let discountedPriceElement = document.getElementById('discounted-price');
-            if (discountedPriceElement && discountedPriceElement.style.display !== 'none') {
+
+            let price;
+            if (discountedPriceElement.style.display !== 'none') {
                 price = parseFloat(discountedPriceElement.innerText.replace('€', ''));
+            } else {
+                price = parseFloat(originalPriceElement.innerText.replace('€', ''));
             }
+
             let material = document.getElementById('material').value;
             let dimensions = document.getElementById('dimensions').options[document.getElementById('dimensions').selectedIndex].text;
             let quantity = parseInt(document.getElementById('quantity').value);
@@ -188,13 +150,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update cart count on page load
     updateCartCount();
-    
-    // Ensure the price is updated on page load if the dimensions select element exists
-    let dimensionsSelect = document.getElementById('dimensions');
-    if (dimensionsSelect) {
-        dimensionsSelect.addEventListener('change', updatePrices);
-        updatePrices(); // Initial call to set the correct price on page load
-    } else {
-        console.error("Element with ID 'dimensions' not found.");
-    }
 });
