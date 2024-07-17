@@ -368,6 +368,8 @@ form.sign-up__form{
   left: 24px;
   
 }
+
+
 .aside__area > div img{
   width: 100%;
   pointer-events: none;
@@ -501,5 +503,10 @@ form.sign-up__form{
   to {
     opacity: 0;
   }
+}
+
+
+.ScrollForm {
+  overflow: auto;
 }
 

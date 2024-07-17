@@ -96,3 +96,9 @@
     animation: PhotoCoverMove 3s forwards;
   }
 
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+    box-shadow: gray 0px 0px 5px;
+  }

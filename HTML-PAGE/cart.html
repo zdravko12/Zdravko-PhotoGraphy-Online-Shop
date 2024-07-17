@@ -175,9 +175,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <button class="btn btn-black btn-lg py-3 btn-block proceed-checkout-btn">Proceed To Checkout</button>
-                            </div>
+							<div class="col-md-12">
+								<a id="checkout-link"class="no-drop" href="/Html-Page/checkout.html">
+									<button id="checkout-btn" class="btn btn-black  btn-lg py-3 btn-block proceed-checkout-btn" disabled>
+										Proceed To Checkout
+										<span id="disabled-icon" class="disabled-icon no-drop" style="display: none;">🚫</span>
+									</button>
+								</a>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -185,7 +190,27 @@
         </div>
     </div>
 </div>
-		
+<!-- Modal Structure -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('imageModal')">&times;</span>
+        <h2 id="modal-product-name">Product</h2>
+        <div class="image-and-text">
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <div class="image-container">
+                        <img id="modal-image" src="" alt="">
+                    </div>
+                </div>
+                <!-- Previous and Next buttons for slideshow -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 		<!-- Start Footer Section -->
 		<footer class="footer-section">
@@ -298,6 +323,7 @@
 		
         <script src="/js/AnimationContact.js"></script>
 		<script src="/js/store.js"></script>
+		<script src="/js/ModalStore.js"></script>
 		
 	</body>
 

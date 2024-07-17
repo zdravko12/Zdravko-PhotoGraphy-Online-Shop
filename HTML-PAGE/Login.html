@@ -58,7 +58,7 @@
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 nav ">
 						<li><a class="nav-link zpIcon active" href="/Html-Page/Login.html"><img src="/Images/user.svg" ></a></li>
-						<li><a class="nav-link zpIcon" href="cart.html"><img src="/Images/pngegg.png" style="width: 25px;"></a></li>
+						<li><a class="nav-link zpIcon" href="cart.html"><img src="/Images/pngegg.png" style="width: 25px;"> <span id="cart-count" style="color: red; margin-left: 5px;">0</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -93,9 +93,10 @@
 
 
 <!-- Wrapper Area -->
-<div class="wrapper__area fade-image" id="wrapper_Area">
+ <div class="ScrollForm">
+<div class="wrapper__area  fade-image" id="wrapper_Area">
     <!-- Forms Area -->
-    <div class="forms__area">
+    <div class="forms__area" >
       <!-- Login Form -->
       <form class="login__form" id="loginForm">
         <!-- Form Title -->
@@ -210,6 +211,7 @@
       </div>
     </div>
   </div>
+</div>
   <!-- End Wrapper Area -->
   
   
@@ -329,6 +331,7 @@
         <script src="/js/AnimationLogin.js"></script>
         <script src="/js/AnimationContact.js"></script>
 		<script src="/js/AnimationLoginSlideshowPhotos.js"></script>
+		<script src="/js/store.js"></script>
 	      
 		
 	</body>

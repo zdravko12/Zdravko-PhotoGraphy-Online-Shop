@@ -85,6 +85,10 @@
     height: auto; /* Maintain aspect ratio */
 }
 
+.cart-product-image:hover{
+  opacity: 0.7;
+}
+
 
 /* Quantity input styling */
 .quantity-input {
@@ -113,7 +117,7 @@
   display: inline-block;
     background-color: rgb(255, 255, 255);
     color: white;
-    padding: 1px 10px;
+    padding: 0px 10px;
     border-radius: 50%; /* Makes the element circular */
  
 }
@@ -127,9 +131,172 @@
   font-weight: bold;
 }
 
+.proceed-checkout-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  
+}
+
+.no-drop {cursor: no-drop;}
 
 
+/* Modal styles */
+/* Modal styles */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow:auto!important;  
+  background-color: rgba(0,0,0,0.8);
+}
 
+.modal-content {
+  background-color: #e9e9e900;
+    margin: 5% auto; 
+    padding: 0px;
+    border: none;
+    width: 80%; 
+     display: block;
+     
+}
 
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
+.image-container {
+  text-align: center;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 800px;
+  cursor: pointer;
+}
+
+/* Style for the prev and next buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 80%;
+  width: auto;
+  padding: 6px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 38px;
+  margin: 5%;
+  margin-top: -150px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  user-select: none;
+}
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.next {
+  right: 0;
+  border-radius: 0 1px 1px 0;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Product name styling */
+#modal-product-name {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #a8a3a3;
+}
+
+/* Disable horizontal scroll when modal is open */
+body.modal-open {
+  overflow-x: hidden !important;
+}
+
+/* Media Query for Desktop Devices (1512 x 639) */
+@media only screen and (min-width: 1200px) {
+  .prev, .next {
+      margin-top: -35%;
+      
+  
+  }
+}
+
+@media only screen and (min-width: 560px) {
+  .prev {
+      margin-top: 1%!important;
+      margin-left: -2%;
+
+      
+  
+  }
+}
+@media only screen and (min-width: 560px) {
+  .next {
+      margin-top: 1%!important;
+      margin-right: -2%;
+      
+      
+  
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .prev {
+      margin-top: 1%!important;
+      margin-left: 7%;
+
+      
+  
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .next {
+      margin-top: 1%!important;
+      margin-right: 7%;
+      
+      
+  
+  }
+}
+
+@media only screen and (min-width: 644px) {
+  .prev, .next {
+      margin-top: -35%;
+  
+  }
+}
+@media only screen and (min-width: 300px) {
+  .prev, .next {
+      margin-top: -45%!important; 
+  
+  }
+}
+@media only screen and (min-width: 300px) {
+  .prev, .next {
+      margin-top: -20%!important; 
+  
+  }
+}

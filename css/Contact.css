@@ -60,3 +60,9 @@
       opacity: 0;
     }
   }
+  @media (max-width: 1420px) {
+  .service{
+    overflow-y: auto !important;
+    
+  }
+}

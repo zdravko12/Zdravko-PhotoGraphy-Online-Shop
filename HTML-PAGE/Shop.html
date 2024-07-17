@@ -96,9 +96,9 @@
                     <div id="productItemsContainer" class="row">
 		      		<!-- Start Column 1 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="##"  data-modal-index="0" onclick="openModal(['/Images/FrameModalSlideShow1.1.png', '/Images/FrameModalSlideShow1.png'], 'Autumn Park in Skopje', 0)">
+						<a class="product-item" href="##"  data-modal-index="0" data-discount="true" onclick="openModal(['/Images/FrameModalSlideShow1.1.png', '/Images/FrameModalSlideShow1.png'], 'Autumn Park in Skopje', 0)">
 							<img src="/Images/HomeFrameShopp1.png" class="img-fluid	 product-thumbnail PhotoEffects1" >
-							<h3 class="product-title">Autumn Park in Skopje</h3>
+							<h3 class="product-title">Autumn Park in Skopje <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></h3>
 							<strong class="product-price"> 25 € – 139 € </strong>
 
 							<span class="icon-cross">
@@ -336,23 +336,23 @@
 		      	</div>
 		    </div>
 		</div>
-         <!-- Modal -->
-		 <div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close"   onclick="closeModal('myModal')">&times;</span>
-        <div class="image-and-text">
-            <div class="slideshow-container">
-                <!-- Start Column 1 -->
-      <div class="mySlides">
-		<div class="image-container">
-    <img id="modal-image" onclick="openSecondModal()" src="" alt="" >
-	<p class="zoom-text zoom-in">zoom in</p>
-	
-</div>
-    <!-- Previous and Next buttons for Column 1 -->
-    <a class="prev" onclick="plusSlides(-1, prevImages, prevTitle)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1, nextImages, nextTitle)">&#10095;</a>
-    </div>
+			<!-- Modal -->
+			<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close"   onclick="closeModal('myModal')">&times;</span>
+			<div class="image-and-text">
+				<div class="slideshow-container">
+					<!-- Start Column 1 -->
+		<div class="mySlides">
+			<div class="image-container">
+		<img id="modal-image" onclick="openSecondModal()" src="" alt="" >
+		<p class="zoom-text zoom-in">zoom in</p>
+		
+	</div>
+		<!-- Previous and Next buttons for Column 1 -->
+		<a class="prev" onclick="plusSlides(-1, prevImages, prevTitle)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1, nextImages, nextTitle)">&#10095;</a>
+		</div>
     <div id="modal-title"></div>
 <!-- End Column 1 -->
             </div>
@@ -374,7 +374,7 @@
 			<div class="select">
 				<select name="format" id="dimensions" class="format">
 				   <option selected disabled>Choose a  format</option>
-				   <option value="25">30x45cm</option>
+				   <option value="25" selected>30x45cm</option>
                 <option value="70">50x70cm</option>
                 <option value="139">70x100cm</option>
 				</select>
@@ -387,7 +387,11 @@
 				</select>
 			 </div>
             <hr>
-            <h4 id="price">€25</h4>
+            <!-- Price display section -->
+					<h4 id="price">
+						<span id="original-price" class="original-price">€25</span>
+						<span class="monthlyActionsPrice discounted-price" id="discounted-price" style="display:none;">€18.75</span>
+					</h4>
 			<div class="button-container">
 				
 				<div class="quantity">

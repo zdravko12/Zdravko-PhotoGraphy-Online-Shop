@@ -376,7 +376,7 @@
 			<div class="select">
 				<select name="format" id="dimensions" class="format">
 				   <option selected disabled>Choose a  format</option>
-				   <option value="25">30x45cm</option>
+				   <option value="25" selected>30x45cm</option>
                 <option value="70">50x70cm</option>
                 <option value="139">70x100cm</option>
 				</select>
@@ -389,7 +389,11 @@
 				</select>
 			 </div>
             <hr>
-            <h4 id="price">€25</h4>
+           <!-- Price display section -->
+					<h4 id="price">
+						<span id="original-price" class="original-price">€25</span>
+						<span class="monthlyActionsPrice discounted-price" id="discounted-price" style="display:none;">€18.75</span>
+					</h4>
 			<div class="button-container">
 				
 				<div class="quantity">

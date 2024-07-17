@@ -330,49 +330,138 @@ function plusSlides(n, images, title) {
    
 }
 
-// Update price based on selected dimensions
-document.getElementById("dimensions").addEventListener("change", function() {
-  var price = document.getElementById("dimensions").value;
-  document.getElementById("price").innerText = "€" + price;
+
+ // Set the default price
+ var defaultPrice = 25;
+ var priceElement = document.getElementById("original-price");
+ priceElement.innerText = "€" + defaultPrice;
+
+ // Handle click events for product items
+ document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(item => {
+   item.addEventListener('click', function(event) {
+     event.preventDefault();
+     var hasDiscount = this.getAttribute('data-discount') === 'true';
+
+     var price = defaultPrice;
+
+     if (hasDiscount) {
+       var discountedPrice = (price * 0.75).toFixed(2);
+       document.getElementById("original-price").innerText = "€" + price;
+       document.getElementById("discounted-price").innerText = "€" + discountedPrice;
+       document.getElementById("discounted-price").style.display = 'inline';
+     } else {
+       document.getElementById("original-price").innerText = "€" + price;
+       document.getElementById("discounted-price").style.display = 'none';
+     }
+   });
+ });
+
+ // Handle dimension changes
+ document.getElementById('dimensions').addEventListener('change', function() {
+   var selectedDimension = this.value;
+   var price = defaultPrice;
+
+   switch (selectedDimension) {
+     case '25':
+       price = 25;
+       break;
+     case '70':
+       price = 70;
+       break;
+     case '139':
+       price = 139;
+       break;
+     default:
+       price = defaultPrice;
+   }
+
+   document.getElementById("original-price").innerText = "€" + price;
+
+   var hasDiscount = document.querySelector('.product-item[data-discount="true"]');
+   if (hasDiscount) {
+     var discountedPrice = (price * 0.75).toFixed(2);
+     document.getElementById("discounted-price").innerText = "€" + discountedPrice;
+     document.getElementById("discounted-price").style.display = 'inline';
+   } else {
+     document.getElementById("discounted-price").style.display = 'none';
+   }
+ });
+
+// Global variable to track discount status
+window.selectedImageHasDiscount = false;
+window.defaultPrice = 25; // Set default price
+
+// Function to update prices based on discount status
+function updatePrices(price, hasDiscount) {
+  var originalPriceElement = document.getElementById("original-price");
+  var discountedPriceElement = document.getElementById("discounted-price");
+  
+  originalPriceElement.innerText = "€" + price;
+  
+  if (hasDiscount) {
+      var discountedPrice = (price * 0.75).toFixed(2); // Applying 25% discount
+      discountedPriceElement.innerText = "€" + discountedPrice;
+      discountedPriceElement.style.display = 'inline';
+      originalPriceElement.classList.add('no-discount');
+  } else {
+      discountedPriceElement.style.display = 'none';
+      originalPriceElement.classList.remove('no-discount');
+  }
+}
+
+// Initial price display
+updatePrices(window.defaultPrice, window.selectedImageHasDiscount);
+
+// Event listener for image clicks to set the active image and check for discounts
+document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(item => {
+    item.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.selectedImageHasDiscount = this.getAttribute('data-discount') === 'true';
+        var price = parseFloat(document.getElementById("dimensions").value) || window.defaultPrice;
+        updatePrices(price, window.selectedImageHasDiscount);
+    });
 });
 
+// Update price based on selected dimensions
+// Update price based on selected dimensions
+document.getElementById("dimensions").addEventListener("change", function() {
+  var price = parseFloat(this.value);
+  if (isNaN(price)) {
+      price = window.defaultPrice; // Default to 25 if the parsed value is NaN
+  }
+  var hasDiscount = window.selectedImageHasDiscount;
+  updatePrices(price, hasDiscount);
+});
+
+// Add to cart functionality
 document.getElementById("addToCart").addEventListener("click", function() {
   var quantity = parseInt(document.getElementById("quantity").value);
-  var dimensionsSelect = document.getElementById("dimensions");
-
-  // Check if an option is selected in the dimensions select element
-  if (dimensionsSelect.selectedIndex === -1) {
-    alert("Please select a format dimension.");
-    return;
-  }
-
-  var price = parseFloat(dimensionsSelect.value);
+  var price = parseFloat(document.getElementById("dimensions").value);
   if (isNaN(price)) {
-    price = window.defaultPrice;
+      price = window.defaultPrice; // Default to 25 if the parsed value is NaN
   }
   var material = document.getElementById("material").value;
 
+  // Ensure a dimension and material are selected
   if (isNaN(price) || !material) {
-    alert("Please select both a dimension and a material.");
-    return;
+      alert("Please select both a dimension and a material.");
+      return;
   }
 
   var hasDiscount = window.selectedImageHasDiscount;
   var discountedPrice = hasDiscount ? price * 0.75 : price;
   var totalPrice = (discountedPrice * quantity).toFixed(2);
 
-  var formatDimensions = dimensionsSelect.options[dimensionsSelect.selectedIndex].text.split(" - ")[0];
-
-  if (formatDimensions === "Select format") {
-    formatDimensions = "30x45cm"; // Default format dimension
-  }
-
+  // Get product name
   var productNameElement = document.getElementById('modal-title');
   var productName = productNameElement ? productNameElement.textContent : "Unknown Product";
 
+  // Assuming formatDimensions is available
+  var formatDimensions = document.getElementById("dimensions").selectedOptions[0].text;
+
+  // You can handle adding the item to the cart here
   console.log("Added to cart - Product: " + productName + ", Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
 });
-
 
 // quantity za plus minus click na quantity
 (function () {
@@ -424,6 +513,14 @@ document.getElementById("addToCart").addEventListener("click", function() {
     console.log("Quantity changed:", value);
   }
 })();
+
+
+
+
+
+
+
+
 
 
 

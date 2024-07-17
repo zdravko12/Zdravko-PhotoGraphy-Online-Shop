@@ -133,6 +133,25 @@ document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(ite
     });
 });
 
+ // Handle dimension changes
+ document.getElementById('dimensions').addEventListener('change', function() {
+  var selectedDimension = this.value;
+  var price = defaultPrice;
+
+  switch (selectedDimension) {
+    case '25':
+      price = 25;
+      break;
+    case '70':
+      price = 70;
+      break;
+    case '139':
+      price = 139;
+      break;
+    default:
+      price = defaultPrice;
+  }
+});
 // Update price based on selected dimensions
 // Update price based on selected dimensions
 document.getElementById("dimensions").addEventListener("change", function() {
