@@ -106,7 +106,7 @@
         <div class="row mb-5">
             <form class="col-md-12" method="post">
                 <div class="site-blocks-table">
-                    <table class="table">
+                    <table class="table" id="cartTable">
                         <thead>
                             <tr>
                                 <th class="product-image">Image</th>
@@ -116,10 +116,10 @@
                                 <th class="product-dimensions">Dimensions</th>
                                 <th class="product-quantity">Quantity</th>
                                 <th class="product-total">Total</th>
-                                <th class="product-remove">Remove</th>
+                                <th class="product-remove ">Remove</th>
                             </tr>
                         </thead>
-                        <tbody class="cart-items">
+                        <tbody class="cart-items" id="cartTableBody">
                             <!-- Cart items will be dynamically inserted here -->
                         </tbody>
                     </table>
@@ -176,8 +176,8 @@
                         </div>
                         <div class="row">
 							<div class="col-md-12">
-								<a id="checkout-link"class="no-drop" href="/Html-Page/checkout.html">
-									<button id="checkout-btn" class="btn btn-black  btn-lg py-3 btn-block proceed-checkout-btn" disabled>
+								<a id="checkout-link" class="no-drop">
+									<button id="checkout-btn" class="btn btn-black btn-lg py-3 btn-block proceed-checkout-btn" disabled>
 										Proceed To Checkout
 										<span id="disabled-icon" class="disabled-icon no-drop" style="display: none;">🚫</span>
 									</button>

@@ -1523,9 +1523,45 @@ h1 {
   
 
 }
+#addToCart {
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  width: 135px!important;  
+  /* margin-right: 5px; */
+  border-radius: 5px 5px 5px 5px;
+ -webkit-border-radius: 5px 5px 5px 5px;
+ -moz-border-radius: 5px 5px 5px 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 36px;
+  margin-top: 47px;
+  font-size: 101%;
+  font-weight: 600;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+  background-color: #077d0de6!important; 
+  
+}
 
 
+.added-to-cart {
+  opacity: 0.7;
 
+  
+}
+#addToCart:disabled {
+  opacity: 0.5!important; /* Make it look disabled */
+  cursor: not-allowed!important; /* Change cursor to indicate it's not clickable */
+}
+
+@media (max-width: 1430px) {
+  #addToCart {
+    width: 140px!important; 
+    font-size: 95%!important;
+  }
+}
 
 
 

@@ -62,6 +62,7 @@ table {
         width: 100%;
         background-color: white;
         
+        
 }
 td, th { 
   border: 1px solid #cdcdcd; padding: 1rem !important;
@@ -132,4 +133,8 @@ td, th {
 
        .TextColor{
         font-weight: 900;
+       }
+
+       td{
+        font-weight: 600;
        }

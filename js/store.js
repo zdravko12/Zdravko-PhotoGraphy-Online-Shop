@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         let cartCountElement = document.getElementById('cart-count');
         if (cartCountElement) {
-            cartCountElement.innerText = cartItems.length;
+            cartCountElement.innerText = cartItems.reduce((total, item) => total + item.quantity, 0);
         }
     }
 
@@ -16,34 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
         let checkoutButton = document.getElementById('checkout-btn');
         let emptyCartMessage = document.getElementById('empty-cart-message');
         let disabledIcon = document.getElementById('disabled-icon');
+        let checkoutLink = document.getElementById('checkout-link');
 
         if (checkoutButton) {
             if (cartItems.length === 0) {
                 checkoutButton.disabled = true;
                 emptyCartMessage.style.display = 'block';
                 disabledIcon.style.display = 'inline-block';
+                checkoutLink.removeAttribute('href');
             } else {
                 checkoutButton.disabled = false;
                 emptyCartMessage.style.display = 'none';
                 disabledIcon.style.display = 'none';
+                checkoutLink.setAttribute('href', '/Html-Page/checkout.html');
             }
         } else {
             console.error("Element with ID 'checkout-btn' not found.");
         }
-    }
-
-    // Add event listener to prevent navigation if the cart is empty
-    let checkoutLink = document.getElementById('checkout-link');
-    if (checkoutLink) {
-        checkoutLink.addEventListener('click', function(event) {
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            if (cartItems.length === 0) {
-                event.preventDefault();
-                alert("Your cart is empty. Please add items to the cart before proceeding to checkout.");
-            }
-        });
-    } else {
-        console.error("Element with ID 'checkout-link' not found.");
     }
 
     // Add event listener for 'Add to Cart' button
@@ -74,17 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
             let item = {
                 image: imageSrc,
                 title: title,
-                price: price, // Store price as a number
+                price: price,
                 material: material,
                 dimensions: dimensions,
                 quantity: quantity,
-                total: total.toFixed(2)  // Fixed to 2 decimal places
+                total: total.toFixed(2)
             };
 
             // Retrieve existing cart items from localStorage or initialize empty array
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            // Add new item to cartItems array
-            cartItems.push(item);
+
+            // Check if the product is already in the cart
+            let existingItemIndex = cartItems.findIndex(cartItem => 
+                cartItem.title === item.title &&
+                cartItem.material === item.material &&
+                cartItem.dimensions === item.dimensions
+            );
+
+            if (existingItemIndex !== -1) {
+                // Update quantity and total for the existing item
+                cartItems[existingItemIndex].quantity += quantity;
+                cartItems[existingItemIndex].total = (cartItems[existingItemIndex].price * cartItems[existingItemIndex].quantity).toFixed(2);
+            } else {
+                // Add new item to cartItems array
+                cartItems.push(item);
+            }
+
             // Store updated cartItems array back into localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
@@ -96,6 +100,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Check cart status to update checkout button
             checkCartStatus();
+
+            // Temporarily show a message that the item has been added to the cart
+            addToCartButton.innerHTML = "<span>&#10003;</span> Item added";
+            addToCartButton.classList.add("added-to-cart");
+
+            // Optionally reset the button's text and opacity after a few seconds
+            setTimeout(function() {
+                addToCartButton.innerHTML = "<span>Add to Cart</span>";
+                addToCartButton.classList.remove("added-to-cart");
+            }, 2300);
         });
     } else {
         console.error("Element with ID 'addToCart' not found.");
@@ -119,18 +133,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Loop through cartItems and create rows for each item
             cartItems.forEach(function(item, index) {
                 let row = `
-                <tr data-index="${index}">
-                    <td class="product-image"><a href="##"><img class="cart-product-image" src="${item.image}" alt="Product Image"></a></td>
-                    <td class="product-name">${item.title}</td>
-                    <td class="product-price">€${item.price.toFixed(2)}</td>
-                    <td class="product-material">${item.material}</td>
-                    <td class="product-dimensions">${item.dimensions}</td>
-                    <td class="product-quantity">
-                        <input type="number" value="${item.quantity}" min="1" max="10" data-index="${index}" class="quantity-input">
-                    </td>
-                    <td class="product-total">€${item.total}</td>
-                    <td class="product-remove"><button onclick="removeItem(${index})">Remove</button></td>
-                </tr>
+                    <tr data-index="${index}" class="cart-product-row">
+                        <td class="product-image"><a href="##"><img class="cart-product-image" src="${item.image}" alt="Product Image"></a></td>
+                        <td class="product-name">${item.title}</td>
+                        <td class="product-price">€${item.price.toFixed(2)}</td>
+                        <td class="product-material">${item.material}</td>
+                        <td class="product-dimensions">${item.dimensions}</td>
+                        <td class="product-quantity">
+                            <input type="number" value="${item.quantity}" min="1" max="10" data-index="${index}" class="quantity-input">
+                        </td>
+                        <td class="product-total">€${item.total}</td>
+                        <td class="product-remove"><button class="remove-product-button" data-index="${index}" onclick="removeItem(${index})">Remove</button></td>
+                    </tr>
                 `;
                 cartTableBody.innerHTML += row;
             });
@@ -195,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check cart status on page load
     checkCartStatus();
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');

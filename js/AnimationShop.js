@@ -433,34 +433,63 @@ document.getElementById("dimensions").addEventListener("change", function() {
   updatePrices(price, hasDiscount);
 });
 
+
+// Object to track added products
+var addedProducts = {};
+
 // Add to cart functionality
 document.getElementById("addToCart").addEventListener("click", function() {
-  var quantity = parseInt(document.getElementById("quantity").value);
-  var price = parseFloat(document.getElementById("dimensions").value);
-  if (isNaN(price)) {
-      price = window.defaultPrice; // Default to 25 if the parsed value is NaN
-  }
-  var material = document.getElementById("material").value;
+    var quantity = parseInt(document.getElementById("quantity").value);
+    var price = parseFloat(document.getElementById("dimensions").value);
+    if (isNaN(price)) {
+        price = window.defaultPrice || 25; // Defaults to 25 if the parsed value is NaN
+    }
+    var material = document.getElementById("material").value;
 
-  // Ensure a dimension and material are selected
-  if (isNaN(price) || !material) {
-      alert("Please select both a dimension and a material.");
-      return;
-  }
+    // Make sure dimension and material are selected
+    if (isNaN(price) || !material) {
+        alert("Please select both dimension and material.");
+        return;
+    }
 
-  var hasDiscount = window.selectedImageHasDiscount;
-  var discountedPrice = hasDiscount ? price * 0.75 : price;
-  var totalPrice = (discountedPrice * quantity).toFixed(2);
+    var hasDiscount = window.selectedImageHasDiscount || false;
+    var discountedPrice = hasDiscount ? price * 0.75 : price;
+    var totalPrice = (discountedPrice * quantity).toFixed(2);
 
-  // Get product name
-  var productNameElement = document.getElementById('modal-title');
-  var productName = productNameElement ? productNameElement.textContent : "Unknown Product";
+    // Get the product name
+    var productNameElement = document.getElementById('modal-title');
+    var productName = productNameElement ? productNameElement.textContent : "Unknown product";
 
-  // Assuming formatDimensions is available
-  var formatDimensions = document.getElementById("dimensions").selectedOptions[0].text;
+    // Assuming formatDimensions is available
+    var formatDimensions = document.getElementById("dimensions").selectedOptions[0].text;
 
-  // You can handle adding the item to the cart here
-  console.log("Added to cart - Product: " + productName + ", Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
+    // Create a unique key for the product
+    var productKey = productName + material + formatDimensions;
+
+    // Check if the product has already been added
+    if (addedProducts[productKey]) {
+        alert("This product has already been added to the cart.");
+        return;
+    }
+
+    // Mark the product as added
+    addedProducts[productKey] = true;
+
+    // This handles adding the item to the cart
+    console.log("Added to Cart - Product: " + productName + ", Quantity: " + quantity + ", Total Price: €" + totalPrice + ", Material: " + material + ", Format Dimensions: " + formatDimensions);
+
+    // Disable the button after adding to cart
+    var addToCartButton = document.getElementById("addToCart");
+    addToCartButton.innerHTML = "<span>&#10003;</span> Item added";
+    addToCartButton.classList.add("added-to-cart");
+    addToCartButton.disabled = true; // Disable the button
+
+  /// Optionally reset the button's text and opacity after a few seconds
+  setTimeout(function() {
+    addToCartButton.innerHTML = "<span>Add to Cart</span>";
+    addToCartButton.classList.remove("added-to-cart");
+    addToCartButton.disabled = false; // Re-enable the button
+}, 2300);
 });
 
 // quantity za plus minus click na quantity
