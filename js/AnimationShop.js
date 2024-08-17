@@ -255,7 +255,13 @@ var prevImages, nextImages;
 var modal = document.getElementById("myModal");
 var prevImages, nextImages, prevTitle, nextTitle;
 
-function openModal(images, title) {
+let currentFirstImage = "";
+
+function openModal(images, title, index) {
+
+  // Set the first image URL
+  currentFirstImage = images[0];
+
     // Get the modal and update content
     var modal = document.getElementById("myModal");
     document.getElementById('modal-image').src = images[0];
@@ -335,6 +341,7 @@ function plusSlides(n, images, title) {
  var defaultPrice = 25;
  var priceElement = document.getElementById("original-price");
  priceElement.innerText = "€" + defaultPrice;
+ 
 
  // Handle click events for product items
  document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(item => {
@@ -433,6 +440,31 @@ document.getElementById("dimensions").addEventListener("change", function() {
   updatePrices(price, hasDiscount);
 });
 
+// za dimenzi ne se klika dodeka ne se popolnat input polinja 
+const dimensionsSelect = document.getElementById('dimensions');
+const materialSelect = document.getElementById('material');
+const addToCartButton = document.getElementById('addToCart');
+
+function checkSelections() {
+  const dimensionSelected = dimensionsSelect.value !== '';
+  const materialSelected = materialSelect.value !== '';
+  addToCartButton.disabled = !(dimensionSelected && materialSelected);
+}
+
+dimensionsSelect.addEventListener('change', checkSelections);
+materialSelect.addEventListener('change', checkSelections);
+
+addToCartButton.addEventListener('click', function(event) {
+  if (addToCartButton.disabled) {
+    alert('Please select both a format and a type of material before adding this product to your cart.');
+    event.preventDefault();
+  } else {
+    // Existing add to cart functionality
+  }
+});
+
+// Initial check in case there are pre-selected options (optional)
+checkSelections();
 
 // Object to track added products
 var addedProducts = {};
@@ -451,6 +483,7 @@ document.getElementById("addToCart").addEventListener("click", function() {
         alert("Please select both dimension and material.");
         return;
     }
+    
 
     var hasDiscount = window.selectedImageHasDiscount || false;
     var discountedPrice = hasDiscount ? price * 0.75 : price;

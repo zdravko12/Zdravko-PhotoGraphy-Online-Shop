@@ -62,6 +62,9 @@
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link zpIcon" href="/Html-Page/Login.html"><img src="/Images/user.svg" ></a></li>
 						<li><a class="nav-link zpIcon" href="cart.html"><img src="/Images/pngegg.png" style="width: 25px;"> <span id="cart-count" style="color: red; margin-left: 5px;">0</span></a></li>
+						<button type="button" class="btn btn-outline-light ms-5" data-bs-toggle="modal" data-bs-target="#searchModal" id="buttonSreach">
+							<img src="/Images/search-3-xxl.png" alt="Search" style="width: 15px;">
+						</button></a>
 					</ul>
 				</div>
 			</div>
@@ -242,7 +245,25 @@
 		<!-- End Team Section -->
 
 		
-
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+			<div class="modal-body">
+				<form id="searchForm" role="search" action="Search.html" method="get">
+					<div class="input-group">
+						<input type="search"  class="form-control" name="query" placeholder="Search..." required aria-label="Search" id="searchInput">
+						<button class="btn btn-outline-light" type="submit">Search</button>
+					</div>
+				</form>
+			</div>
+        </div>
+    </div>
+</div>
 		
 
 		
@@ -258,22 +279,26 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form SubscribeMove">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="/Images/envelope-outline.svg" alt="Image" class="img-fluid3"></span><span>Subscribe to Newsletter</span></h3>
-
-							<form action="#" class="row g-3">
+							<h3 class="d-flex align-items-center">
+								<span class="me-1"><img src="/Images/envelope-outline.svg" alt="Image" class="img-fluid3"></span>
+								<span>Subscribe to Newsletter</span>
+							</h3>
+				
+							<form id="subscriptionForm" class="row g-3">
 								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Enter your name">
+									<input type="text" id="name" class="form-control" placeholder="Enter your name">
+									<span class="text-danger" id="nameError" style="display:none;">Please enter your name</span>
 								</div>
 								<div class="col-auto">
-									<input type="email" class="form-control" placeholder="Enter your email">
+									<input type="email" id="email" class="form-control" placeholder="Enter your email">
+									<span class="text-danger" id="emailError" style="display:none;">Please enter a valid email</span>
 								</div>
 								<div class="col-auto">
-									<button class="btn btn-primary">
+									<button type="submit" class="btn btn-primary">
 										<span class="fa fa-paper-plane"></span>
 									</button>
 								</div>
 							</form>
-
 						</div>
 					</div>
 				</div>
@@ -358,6 +383,8 @@
 		<script src="/js/AnimationAbout.js"></script>
 		<script src="/js/AnimationSlideshowAboutPhotos.js"></script>
 		<script src="/js/store.js"></script>
+		<script src="/js/Search.js"></script>
+		<script src="/js/SubscribeToNewsletter.js"></script>
 	</body>
 
 </html>

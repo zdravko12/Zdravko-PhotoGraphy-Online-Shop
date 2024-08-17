@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let emptyCartMessage = document.getElementById('empty-cart-message');
         let disabledIcon = document.getElementById('disabled-icon');
         let checkoutLink = document.getElementById('checkout-link');
+        
 
         if (checkoutButton) {
             if (cartItems.length === 0) {
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 addToCartButton.innerHTML = "<span>Add to Cart</span>";
                 addToCartButton.classList.remove("added-to-cart");
+                  window.location.href = '/Html-Page/cart.html'; // Redirect to cart.html
             }, 2300);
         });
     } else {

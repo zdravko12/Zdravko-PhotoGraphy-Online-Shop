@@ -23,11 +23,21 @@ function updatePrices(price, hasDiscount) {
     }
 }
 
-function openModal(images, title, element) {
+function openModal(images, title, element , firstImageUrl) {
      var modal = document.getElementById("myModal");
     document.getElementById('modal-image').src = images[0];
     document.getElementById('modal-title').textContent = title;
     modal.style.display = "block";
+
+    // Store the first image URL in a hidden input for later use
+    let firstImageInput = document.getElementById('first-image-url');
+    if (!firstImageInput) {
+        firstImageInput = document.createElement('input');
+        firstImageInput.type = 'hidden';
+        firstImageInput.id = 'first-image-url';
+        document.body.appendChild(firstImageInput);
+    }
+    firstImageInput.value = firstImageUrl;
 
     var showDimensionsMaterial = element.getAttribute('data-dimensionsMaterial') === 'true';
     var defaultFormat = element.getAttribute('data-default-format');
@@ -158,80 +168,147 @@ function showSlides(n) {
     document.getElementById('modal-image').src = images[currentIndex];
   }
 
-  document.querySelectorAll('.product-item, .img-fluid1, .img-fluid').forEach(item => {
-    item.addEventListener('click', function(event) {
-        event.preventDefault();
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize button state and default values
+    updateButtonState();
+    setDefaultValues();
 
-        var hasDiscount = this.getAttribute('data-discount') === 'true';
-        window.selectedImageHasDiscount = hasDiscount;
+    // Attach event listeners for dropdowns
+    var dimensionsSelect = document.getElementById("dimensions");
+    var materialSelect = document.getElementById("material");
 
-        var showDimensionsMaterial = this.getAttribute('data-dimensionsMaterial') === 'true';
-        var price = showDimensionsMaterial ? parseFloat(document.getElementById("dimensions").value) : window.defaultPrice;
-        updatePrices(price, hasDiscount);
-
-        var dimensionsContainer = document.getElementById('dimensions-container');
-        var materialContainer = document.getElementById('material-container');
-
-        if (showDimensionsMaterial) {
-            dimensionsContainer.style.display = 'block';
-            materialContainer.style.display = 'block';
-
-            var materialSelect = document.getElementById('material');
-            materialSelect.innerHTML = '<option selected disabled>Select material type</option>' +
-                '<option value="canvas">Canvas</option>' +
-                '<option value="paper">Paper</option>';
-
-            var dimensionsSelect = document.getElementById('dimensions');
-            dimensionsSelect.innerHTML = '<option selected disabled>Select format</option>' +
-                '<option value="25">30x45cm</option>' +
-                '<option value="70">50x70cm</option>' +
-                '<option value="139">70x100cm</option>';
-
-            // Display both canvas and paper options in the material dropdown
-            var materialSelect = document.getElementById('material');
-            materialSelect.innerHTML = '<option selected disabled>Select material type</option>';
-            var canvasOption = document.createElement('option');
-            canvasOption.value = 'canvas';
-            canvasOption.text = 'Canvas';
-            materialSelect.appendChild(canvasOption);
-            var paperOption = document.createElement('option');
-            paperOption.value = 'paper';
-            paperOption.text = 'Paper';
-            materialSelect.appendChild(paperOption);
-        } else {
-            dimensionsContainer.style.display = 'none';
-            materialContainer.style.display = 'block';
-
-            var dimensionsSelect = document.getElementById('dimensions');
-            dimensionsSelect.innerHTML = '<option value="25">30x45cm - €25</option>';
-
-            var defaultMaterial = this.getAttribute('data-default-material');
-            var materialSelect = document.getElementById('material');
-            materialSelect.innerHTML = '';
-
-            // Split the default material value into an array of options
-            var materialOptions = defaultMaterial.split(' ');
-            materialOptions.forEach(option => {
-                var materialOption = document.createElement('option');
-                materialOption.value = option;
-                materialOption.text = option.charAt(0).toUpperCase() + option.slice(1);
-                materialSelect.appendChild(materialOption);
-            });
-        }
-    });
-});
-
-// Update price based on selected dimensions
-document.getElementById("dimensions").addEventListener("change", function() {
-    var price = parseFloat(this.value);
-    if (isNaN(price)) {
-        price = window.defaultPrice; // Default to 25 if the parsed value is NaN
+    if (dimensionsSelect && materialSelect) {
+        dimensionsSelect.addEventListener("change", validateSelections);
+        materialSelect.addEventListener("change", validateSelections);
     }
-    var hasDiscount = window.selectedImageHasDiscount;
-    updatePrices(price, hasDiscount);
 });
-  
-  
+
+// Function to set default values and price
+function setDefaultValues() {
+    var dimensionsSelect = document.getElementById("dimensions");
+    var defaultDimensionValue = "25"; // Default value
+    dimensionsSelect.value = defaultDimensionValue;
+
+    updatePriceBasedOnDimension(defaultDimensionValue);
+}
+
+// Function to validate if both selections are made
+function validateSelections() {
+    var dimensionsValue = document.getElementById("dimensions").value;
+    var materialValue = document.getElementById("material").value;
+    var addToCartButton = document.getElementById("addToCart");
+
+    // Enable the button only if both dimensions and material are selected
+    if (dimensionsValue && materialValue) {
+        addToCartButton.disabled = false;
+    } else {
+        addToCartButton.disabled = true;
+    }
+}
+
+// Function to update button state based on product selection
+function updateButtonState() {
+    document.querySelectorAll('.product-item, .img-fluid1, .img-fluid').forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var showDimensionsMaterial = this.getAttribute('data-dimensionsMaterial') === 'true';
+            var dimensionsContainer = document.getElementById('dimensions-container');
+            var materialContainer = document.getElementById('material-container');
+            var addToCartButton = document.getElementById("addToCart");
+
+            var hasDiscount = this.getAttribute('data-discount') === 'true';
+            window.selectedImageHasDiscount = hasDiscount;
+
+            if (showDimensionsMaterial) {
+                dimensionsContainer.style.display = 'block';
+                materialContainer.style.display = 'block';
+
+                // Clear previous selections and reinitialize the button state
+                document.getElementById("dimensions").value = "25"; // Set default value programmatically
+                document.getElementById("material").value = ""; // Reset material selection
+
+                // Ensure the button is disabled until selections are made
+                addToCartButton.disabled = true;
+
+                // Attach event listeners to validate selections
+                document.getElementById("dimensions").addEventListener("change", validateSelections);
+                document.getElementById("material").addEventListener("change", validateSelections);
+
+                // Update price based on the default dimension
+                updatePriceBasedOnDimension("25");
+
+
+                // Initialize select options
+                var dimensionsSelect = document.getElementById('dimensions');
+                dimensionsSelect.innerHTML = '<option value="25">30x45cm</option>' +
+                    '<option value="25">30x45cm</option>' +
+                    '<option value="70">50x70cm</option>' +
+                    '<option value="139">70x100cm</option>';
+      
+                var materialSelect = document.getElementById('material');
+                materialSelect.innerHTML = '<option value="" disabled selected>Select material type</option>' +
+                    '<option value="canvas">Canvas</option>' +
+                    '<option value="paper">Paper</option>';
+                
+            } else {
+                dimensionsContainer.style.display = 'none';
+                materialContainer.style.display = 'block';
+
+                // Enable the button as no dimensions/material are required
+                addToCartButton.disabled = false;
+
+                var dimensionsSelect = document.getElementById('dimensions');
+                dimensionsSelect.innerHTML = '<option value="25">30x45cm</option>';
+
+                var defaultMaterial = this.getAttribute('data-default-material');
+                var materialSelect = document.getElementById('material');
+                materialSelect.innerHTML = '';
+
+                // Split the default material value into an array of options
+                var materialOptions = defaultMaterial.split(' ');
+                materialOptions.forEach(option => {
+                    var materialOption = document.createElement('option');
+                    materialOption.value = option;
+                    materialOption.text = option.charAt(0).toUpperCase() + option.slice(1);
+                    materialSelect.appendChild(materialOption);
+                });
+
+                // Set the default material value
+                materialSelect.value = materialOptions[0];
+            }
+
+            // Update price based on default or selected dimension
+            var price = showDimensionsMaterial ? parseFloat(document.getElementById("dimensions").value) : 25; // Default price for non-dimensionsMaterial items
+            updatePrices(price, hasDiscount);
+        });
+    });
+}
+
+// Function to update price based on selected dimensions
+document.getElementById("dimensions").addEventListener("change", function() {
+    updatePriceBasedOnDimension(this.value);
+});
+
+function updatePriceBasedOnDimension(selectedDimension) {
+    var price;
+    switch (selectedDimension) {
+        case '25':
+            price = 25;
+            break;
+        case '70':
+            price = 70;
+            break;
+        case '139':
+            price = 139;
+            break;
+        default:
+            price = 25; // Default price
+    }
+    var hasDiscount = window.selectedImageHasDiscount || false;
+    updatePrices(price, hasDiscount);
+}
+
 // Object to track added products
 var addedProducts = {};
 
@@ -240,7 +317,7 @@ document.getElementById("addToCart").addEventListener("click", function() {
     var quantity = parseInt(document.getElementById("quantity").value);
     var price = parseFloat(document.getElementById("dimensions").value);
     if (isNaN(price)) {
-        price = window.defaultPrice || 25; // Defaults to 25 if the parsed value is NaN
+        price = 25; // Default to 25 if the parsed value is NaN
     }
     var material = document.getElementById("material").value;
 
@@ -282,12 +359,12 @@ document.getElementById("addToCart").addEventListener("click", function() {
     addToCartButton.classList.add("added-to-cart");
     addToCartButton.disabled = true; // Disable the button
 
-  /// Optionally reset the button's text and opacity after a few seconds
-  setTimeout(function() {
-    addToCartButton.innerHTML = "<span>Add to Cart</span>";
-    addToCartButton.classList.remove("added-to-cart");
-    addToCartButton.disabled = false; // Re-enable the button
-}, 2300);
+    // Optionally reset the button's text and opacity after a few seconds
+    setTimeout(function() {
+        addToCartButton.innerHTML = "<span>Add to Cart</span>";
+        addToCartButton.classList.remove("added-to-cart");
+        addToCartButton.disabled = false; // Re-enable the button
+    }, 2300);
 });
 (function() {
   const quantityContainer = document.querySelector(".quantity");

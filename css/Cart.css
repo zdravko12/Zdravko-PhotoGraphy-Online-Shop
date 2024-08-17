@@ -301,3 +301,13 @@ body.modal-open {
   }
 }
 
+#TextMoveContact {
+  display: inline-block;
+}
+
+.custom-hr {
+  width: 11ch; /* The width will match the number of characters in the word "Cart" */
+  border: none;
+  border-top: 1px solid black; /* Adjust the color and style as needed */
+  margin-left: calc(5% -  0.5ch); /* Center the hr based on its width */
+}

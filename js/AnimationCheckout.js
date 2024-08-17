@@ -121,15 +121,15 @@ window.addEventListener('scroll', function() {
 
 
 //  Text shop h1 element
-window.addEventListener('scroll', function() {
-    var scrollPosition = window.scrollY;
-    var header = document.querySelector('.BlogTextMove11');
-    if (scrollPosition > 100) { // Adjust as needed
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-  });
+// window.addEventListener('scroll', function() {
+//     var scrollPosition = window.scrollY;
+//     var header = document.querySelector('.BlogTextMove11');
+//     if (scrollPosition > 100) { // Adjust as needed
+//         header.classList.add('scrolled');
+//     } else {
+//         header.classList.remove('scrolled');
+//     }
+//   });
 
 
    // za text zoom out About bojata na tekstot da se smeni 

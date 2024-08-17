@@ -29,48 +29,48 @@
 	<body>
         
 		<!-- Start Header/Navigation -->
-		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="ZdravkOPhotoGraphy navigation bar">
-			
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="ZdravkOPhotoGraphy navigation bar">
+    <div class="container">
+        <a class="navbar-brand" href="Home.html"><img src="/Images/zpSocialLogoStripText.png" alt="" id="LogoZP" class="LogoAnimation LogoMoveUpDown"><span></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Html-Page/Home.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/Html-Page/Shop.html" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Shop
+                    </a>
+                    <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item bg-secondary" href="/Html-Page/ShopNatureLandscapes.html">Nature/Landscapes</a>
+                        <a class="dropdown-item bg-secondary" href="/Html-Page/ShopOhrid.html">Ohrid</a>
+                        <a class="dropdown-item bg-secondary" href="/Html-Page/ShopMacedonia.html">Macedonia</a>
+                    </div>
+                </li>
+                <li><a class="nav-link" href="about.html">About us</a></li>
+                <li><a class="nav-link" href="services.html">Services</a></li>
+                <li><a class="nav-link" href="blog.html">Blog</a></li>
+                <li><a class="nav-link" href="contact.html">Contact us</a></li>
+            </ul>
 
-			<div class="container">
+            
+
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                <li><a class="nav-link zpIcon" href="/Html-Page/Login.html"><img src="/Images/user.svg"></a></li>
+                <li><a class="nav-link zpIcon" href="cart.html"><img src="/Images/pngegg.png" style="width: 25px;"> <span id="cart-count" style="color: red; margin-left: 5px;">0</span></a></li>
+				<li><a class="nav-link " href="##"><!-- Search Button to Trigger Modal -->
+					<button type="button" class="btn btn-outline-light ms-5" data-bs-toggle="modal" data-bs-target="#searchModal" id="buttonSreach">
+						<img src="/Images/search-3-xxl.png" alt="Search" style="width: 15px;">
+					</button></a>
 				
-				<a class="navbar-brand" href="Home.html"><img src="/Images/zpSocialLogoStripText.png" alt="" id="LogoZP" class="LogoAnimation LogoMoveUpDown" ><span></span></a>
-
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarsFurni">
-					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item active">
-							<a class="nav-link" href="/Html-Page/Home.html">Home</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle  " href="/Html-Page/Shop.html" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							  Shop
-							</a>
-							<div class="dropdown-menu bg-secondary "  aria-labelledby="navbarDropdown">
-							  <a class="dropdown-item bg-secondary" href="/Html-Page/ShopNatureLandscapes.html">Nature/Landscapes</a>
-							  <a class="dropdown-item bg-secondary" href="/Html-Page/ShopOhrid.html">Ohrid</a>
-							  <!-- <div class="dropdown-divider"></div> -->
-							  <a class="dropdown-item bg-secondary" href="/Html-Page/ShopMacedonia.html">Macedonia</a>
-							</div>
-						  </li>
-						<li><a class="nav-link" href="about.html">About us</a></li>
-						<li><a class="nav-link" href="services.html">Services</a></li>
-						<li><a class="nav-link" href="blog.html">Blog</a></li>
-						<li><a class="nav-link" href="contact.html">Contact us</a></li>
-					</ul>
-
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link zpIcon" href="/Html-Page/Login.html"><img src="/Images/user.svg" ></a></li>
-						<li><a class="nav-link zpIcon" href="cart.html"><img src="/Images/pngegg.png" style="width: 25px;"> <span id="cart-count" style="color: red; margin-left: 5px;">0</span></a></li>
-					</ul>
-				</div>
-			</div>
-				
-		</nav>
-		<!-- End Header/Navigation -->
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- End Header/Navigation -->
 
 		<!-- Start Hero Section -->
 			<div class="hero">
@@ -231,7 +231,106 @@
 			</div>
 		</div>
 		<!-- End Why Choose Us Section -->
+		 <!-- Start Popular Product -->
+		<div class="popular-product allPopulat">
+			<div class="container">
+				<div class="row">
+					<h1 class="MostWanted">Most Wanted</h1>
+					<hr>
+                  
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 MostPhotoTop">
+						<div class="product-item-sm d-flex MostWAntedPhoto product-item">
+							<div class="thumbnail">
+								<a href="##"><img src="/Images/product-3New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="7" onclick="openModal(['/Images/FrameModalSlideShow5.png', '/Images/FrameModalSlideShow5.1.png'], 'Bogomila Falls', 0)"></a> 
+								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
+							</div>
+							<div class="pt-3">
+								<h3>Bogomila Falls  <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span> </h3>
+								<p class="textMostPopular">The The springs of waterfalls is unrivaled in scenery and breathtaking natural wonders </p>
+								<p class="readMore"><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
 
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 MostPhotoTop">
+						<div class="product-item-sm d-flex MostWAntedPhoto">
+							<div class="thumbnail">
+								<a href="##"><img src="/Images/product-2New.png" alt="Image" class="img-fluid2" data-discount="false" data-modal-index="8" onclick="openModal(['/Images/FrameModalSlideShow20.png', '/Images/FrameModalSlideShow20.1.png'], 'Sunset Wallpaper', 0)"></a>
+								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
+							</div>
+							<div class="pt-3">
+								<h3>Sunset Wallpaper </h3>
+								<p class="textMostPopular">Sunrise and Sunset Day in Vodno with a beautiful view </p>
+								<p class="readMore"><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 MostPhotoTop">
+						<div class="product-item-sm d-flex MostWAntedPhoto">
+							<div class="thumbnail">
+								<a href="##"><img src="/Images/product-1New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="8" onclick="openModal(['/Images/FrameModalSlideShow8.png', '/Images/FrameModalSlideShow8.1.png'], 'Butterfly ', 0)"></a>
+								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
+							</div>
+							<div class="pt-3">
+								<h3>Butterfly <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></h3>
+								<p class="textMostPopular">Butterfly with blur background and beautiful color shades </p>
+								<p class="readMore"><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<!-- part two -->
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 MostPhotoTop">
+						<div class="product-item-sm d-flex MostWAntedPhoto">
+							<div class="thumbnail">
+								<a href="##"><img src="/Images/product-5New.png" alt="Image" class="img-fluid2" data-discount="false" data-modal-index="9" onclick="openModal(['/Images/FrameModalSlideShow7.png', '/Images/FrameModalSlideShow7.1.png'], 'Morning sunrise in the park, Skopje',0)"></a>
+								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
+							</div>
+							<div class="pt-3">
+								<h3>Morning sunrise in the park, Skopje </h3>
+								<p class="textMostPopular">park with a beautiful background that has a reflection from the river </p>
+								<p class="readMore"><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 MostPhotoTop">
+						<div class="product-item-sm d-flex MostWAntedPhoto">
+							<div class="thumbnail">
+								<a href="##"><img src="/Images/product-6New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="10" onclick="openModal(['/Images/FrameModalSlideShow10.png', '/Images/FrameModalSlideShow10.1.png'], 'Deer Wall Poster',0)"></a>
+								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
+							</div>
+							<div class="pt-3">
+								<h3>Deer Wall Poster  <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></h3>
+								<p class="textMostPopular">Deer Beautiful wallpapers with good quality</p>
+								<p class="readMore"><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 MostPhotoTop">
+						<div class="product-item-sm d-flex MostWAntedPhoto">
+							<div class="thumbnail">
+								<a href="##"><img src="/Images/product-7New.png" alt="Image" class="img-fluid2" data-discount="false" data-modal-index="11" onclick="openModal(['/Images/FrameModalSlideShow12.png', '/Images/FrameModalSlideShow12.1.png'], 'Beautiful view with mountain ',0)"></a>
+								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
+							</div>
+							<div class="pt-3">
+								<h3 class="textMostPopular">Beautiful view with mountain </h3>
+								<p>Poster with mountain and sky location Macedonia, Skopje </p>
+								
+								<p class="readMore"><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+					
+					
+
+				</div>
+			</div>
+		</div>
+		<!-- End Popular Product -->
+        <hr>
 		<!-- Start We Help Section -->
 		<div class="we-help-section">
 			<div class="container">
@@ -260,105 +359,7 @@
 		</div>
 		<!-- End We Help Section -->
 
-		<!-- Start Popular Product -->
-		<div class="popular-product">
-			<div class="container">
-				<div class="row">
-					<h1>Most Wanted</h1>
-					<hr>
-                  
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex MostWAntedPhoto">
-							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-3New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="7" onclick="openModal(['/Images/FrameModalSlideShow5.png', '/Images/FrameModalSlideShow5.1.png'], 'Bogomila Falls', 0)"></a> 
-								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
-							</div>
-							<div class="pt-3">
-								<h3>Bogomila Falls  <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span> </h3>
-								<p>The The springs of waterfalls is unrivaled in scenery and breathtaking natural wonders </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex MostWAntedPhoto">
-							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-2New.png" alt="Image" class="img-fluid2" data-discount="false" data-modal-index="8" onclick="openModal(['/Images/FrameModalSlideShow20.png', '/Images/FrameModalSlideShow20.1.png'], 'Sunset Wallpaper', 0)"></a>
-								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
-							</div>
-							<div class="pt-3">
-								<h3>Sunset Wallpaper </h3>
-								<p>Sunrise and Sunset Day in Vodno with a beautiful view </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex MostWAntedPhoto">
-							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-1New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="8" onclick="openModal(['/Images/FrameModalSlideShow8.png', '/Images/FrameModalSlideShow8.1.png'], 'Butterfly ', 0)"></a>
-								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
-							</div>
-							<div class="pt-3">
-								<h3>Butterfly <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></h3>
-								<p>Butterfly with blur background and beautiful color shades </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<!-- part two -->
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex MostWAntedPhoto">
-							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-5New.png" alt="Image" class="img-fluid2" data-discount="false" data-modal-index="9" onclick="openModal(['/Images/FrameModalSlideShow7.png', '/Images/FrameModalSlideShow7.1.png'], 'Morning sunrise in the park, Skopje',0)"></a>
-								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
-							</div>
-							<div class="pt-3">
-								<h3>Morning sunrise in the park, Skopje </h3>
-								<p>park with a beautiful background that has a reflection from the river </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex MostWAntedPhoto">
-							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-6New.png" alt="Image" class="img-fluid2" data-discount="true" data-modal-index="10" onclick="openModal(['/Images/FrameModalSlideShow10.png', '/Images/FrameModalSlideShow10.1.png'], 'Deer Wall Poster',0)"></a>
-								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
-							</div>
-							<div class="pt-3">
-								<h3>Deer Wall Poster  <span style="color: rgb(255, 255, 255); background-color: red; padding: 1%;">(-25%)</span></h3>
-								<p>Deer Beautiful wallpapers with good quality</p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex MostWAntedPhoto">
-							<div class="thumbnail">
-								<a href="##"><img src="/Images/product-7New.png" alt="Image" class="img-fluid2" data-discount="false" data-modal-index="11" onclick="openModal(['/Images/FrameModalSlideShow12.png', '/Images/FrameModalSlideShow12.1.png'], 'Beautiful view with mountain ',0)"></a>
-								<h6 style="text-align: center; margin-left: 15%; font-weight: 700;">25 € – 139 € </h6>
-							</div>
-							<div class="pt-3">
-								<h3>Beautiful view with mountain </h3>
-								<p>Poster with mountain and sky location Macedonia, Skopje </p>
-								
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-					
-					
-
-				</div>
-			</div>
-		</div>
-		<!-- End Popular Product -->
+		
 
 		<!-- Start Testimonial Slider -->
 		<div class="testimonial-section">
@@ -585,19 +586,19 @@
 					<hr>
 					<div class="select">
 						<select name="format" id="dimensions" class="format">
-						   <option selected disabled>Choose a  format</option>
-						   <option value="25" selected>30x45cm</option>
-						<option value="70">50x70cm</option>
-						<option value="139">70x100cm</option>
+						  <option selected disabled value="">Choose a format</option>
+						  <option value="25" selected>30x45cm</option>
+						  <option value="70">50x70cm</option>
+						  <option value="139">70x100cm</option>
 						</select>
-					 </div>
-					 <div class="select">
+					  </div>
+					  <div class="select">
 						<select name="format" id="material" class="format">
-						   <option selected disabled>Choose a type of material</option>
-						   <option value="canvas">Canvas</option>
-						<option value="paper">Paper</option>
+						  <option selected disabled value="">Choose a type of material</option>
+						  <option value="canvas">Canvas</option>
+						  <option value="paper">Paper</option>
 						</select>
-					 </div>
+					  </div>
 					<hr>
 					<!-- Price display section -->
 					<h4 id="price">
@@ -607,7 +608,7 @@
 					<div class="button-container">
 						
 						<div class="quantity">
-							<button id="addToCart"><span>Add to Cart</span></button>
+							<button id="addToCart" class="added-to-cart" disabled><span>Add to Cart</span></button>
 							<div class="vertical-line-container">
 								<div class="vertical-line"></div>
 							</div>
@@ -633,6 +634,26 @@
 			</div>
 		</div>
 
+		<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+				<form id="searchForm" role="search" action="Search.html" method="get">
+					<div class="input-group">
+						<input type="search"  class="form-control" name="query" placeholder="Search..." required aria-label="Search" id="searchInput">
+						<button class="btn btn-outline-light" type="submit">Search</button>
+					</div>
+				</form>
+			</div>
+        </div>
+    </div>
+</div>
+
 
 		
 
@@ -651,25 +672,30 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form SubscribeMove">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="/Images/envelope-outline.svg" alt="Image" class="img-fluid3"></span><span>Subscribe to Newsletter</span></h3>
-
-							<form action="#" class="row g-3">
+							<h3 class="d-flex align-items-center">
+								<span class="me-1"><img src="/Images/envelope-outline.svg" alt="Image" class="img-fluid3"></span>
+								<span>Subscribe to Newsletter</span>
+							</h3>
+				
+							<form id="subscriptionForm" class="row g-3">
 								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Enter your name">
+									<input type="text" id="name" class="form-control" placeholder="Enter your name">
+									<span class="text-danger" id="nameError" style="display:none;">Please enter your name</span>
 								</div>
 								<div class="col-auto">
-									<input type="email" class="form-control" placeholder="Enter your email">
+									<input type="email" id="email" class="form-control" placeholder="Enter your email">
+									<span class="text-danger" id="emailError" style="display:none;">Please enter a valid email</span>
 								</div>
 								<div class="col-auto">
-									<button class="btn btn-primary">
+									<button type="submit" class="btn btn-primary">
 										<span class="fa fa-paper-plane"></span>
 									</button>
 								</div>
 							</form>
-
 						</div>
 					</div>
 				</div>
+				
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
@@ -755,6 +781,8 @@
 		<script src="/js/ModalHome.js"></script>
 		<script src="/js/MultiModalShop.js"></script>
 		<script src="/js/store.js"></script>
+		<script src="/js/Search.js"></script>
+		<script src="/js/SubscribeToNewsletter.js"></script>
 	</body>
 
 </html>

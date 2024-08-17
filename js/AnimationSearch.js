@@ -1,22 +1,103 @@
-var prevImages, nextImages;
- 
- // Get the modal
-var modal = document.getElementById("myModal");
-var prevImages, nextImages, prevTitle, nextTitle;
+// za logo od gore pa nadole 
+let logo = document.getElementById('LogoZP');
+let lastScrollTop = 0;
 
-function openModal(images, title) {
-    // Get the modal and update content
-    var modal = document.getElementById("myModal");
-    document.getElementById('modal-image').src = images[0];
-    document.getElementById('modal-title').textContent = title;
-    modal.style.display = "block";
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        logo.classList.add('scrolling-up');
+    } else {
+        // Scrolling up
+        logo.classList.remove('scrolling-up');
+    }
 
-    // Store images and title for later use
-    prevImages = images;
-    nextImages = images;
-    prevTitle = title;
-    nextTitle = title;
-}
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+
+// Logo footer move up down 
+$(document).ready(function() {
+    $(window).scroll(function() {
+      $('#footer-logo1').each(function() {
+        var position = $(this).offset().top;
+        var scrollPosition = $(window).scrollTop();
+        var windowHeight = $(window).height();
+  
+        if (position < scrollPosition + windowHeight - 120) {
+          $(this).addClass('LogoMoveFrame');
+        }else{
+          $(this).removeClass('LogoMoveFrame');
+        }
+      });
+    });
+  });
+
+
+  // SlikaFrameView
+$(document).ready(function() {
+    $(window).scroll(function() {
+      $('.ChangePhotoMove').each(function() {
+        var position = $(this).offset().top;
+        var scrollPosition = $(window).scrollTop();
+        var windowHeight = $(window).height();
+  
+        if (position < scrollPosition + windowHeight - 150) {
+          $(this).addClass('PhotoFrameViewMove');
+        }else{
+          $(this).removeClass('PhotoFrameViewMove');
+        }
+      });
+    });
+  });
+  
+  
+  // ImageSubscribe to Newsletter
+  $(document).ready(function() {
+    $(window).scroll(function() {
+      $('.SubscribeMove').each(function() {
+        var position = $(this).offset().top;
+        var scrollPosition = $(window).scrollTop();
+        var windowHeight = $(window).height();
+  
+        if (position < scrollPosition + windowHeight - 80) {
+          $(this).addClass('InputMove');
+        }else{
+          $(this).removeClass('InputMove');
+        }
+      });
+    });
+  });
+
+
+  
+  
+    
+
+
+
+  var prevImages, nextImages;
+  var currentFirstImage = "";
+  var currentIndex = 0; // Initialize currentIndex outside the function
+  
+  // First Modal Logic
+  function openModal(images, title, index) {
+      currentFirstImage = images[0];
+  
+      var modal = document.getElementById("myModal");
+      document.getElementById('modal-image').src = images[0];
+      document.getElementById('modal-title').textContent = title;
+      modal.style.display = "block";
+  
+      // Store images and title for later use
+      prevImages = images;
+      nextImages = images;
+      prevTitle = title;
+      nextTitle = title;
+      currentIndex = index;
+  }
+  
 
 // Get the button that opens the modal
 var btns = document.querySelectorAll(".product-item");
@@ -36,13 +117,11 @@ btns.forEach(function(btn) {
 
 // When the user clicks anywhere outside of the modal, close it
 // Function to close the modal and reset its content
-function closeModal() {
-  
-  var modal = document.getElementById("myModal");
-  $('#modal-image').attr('src', ''); // Clear image
-  $('#modal-title').text(''); // Clear title
-  modal.style.display = "none"; // Hide modal
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
 }
+
 
 // JavaScript for slideshow functionality
 var slideIndex = 1;
@@ -78,25 +157,78 @@ function plusSlides(n, images, title) {
     document.getElementById('modal-image').src = images[currentIndex];
    
 }
+// Function to handle the next/previous navigation for the second modal
+function plusSlidesSecond(n) {
+    // Update the current index
+    currentIndex += n;
 
+    // If the index goes out of bounds, wrap it around
+    if (currentIndex < 0) {
+        currentIndex = prevImages.length - 1; // Go to the last image
+    } else if (currentIndex >= prevImages.length) {
+        currentIndex = 0; // Go to the first image
+    }
 
-document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(item => {
-  item.addEventListener('click', function(event) {
-      event.preventDefault();
-      var hasDiscount = this.getAttribute('data-discount') === 'true';
-      var price = 25;  // Assuming the original price is 25 for the sake of this example
+    // Update the image in the second modal
+    document.getElementById('second-modal-image').src = prevImages[currentIndex];
+}
 
-      if (hasDiscount) {
-          var discountedPrice = (price * 0.75).toFixed(2);
-          document.getElementById("original-price").innerText = "€" + price;
-          document.getElementById("discounted-price").innerText = "€" + discountedPrice;
-          document.getElementById("discounted-price").style.display = 'inline';
-      } else {
-          document.getElementById("original-price").innerText = "€" + price;
-          document.getElementById("discounted-price").style.display = 'none';
-      }
-  });
-});
+ // Set the default price
+ var defaultPrice = 25;
+ var priceElement = document.getElementById("original-price");
+ priceElement.innerText = "€" + defaultPrice;
+ 
+
+ // Handle click events for product items
+ document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(item => {
+   item.addEventListener('click', function(event) {
+     event.preventDefault();
+     var hasDiscount = this.getAttribute('data-discount') === 'true';
+
+     var price = defaultPrice;
+
+     if (hasDiscount) {
+       var discountedPrice = (price * 0.75).toFixed(2);
+       document.getElementById("original-price").innerText = "€" + price;
+       document.getElementById("discounted-price").innerText = "€" + discountedPrice;
+       document.getElementById("discounted-price").style.display = 'inline';
+     } else {
+       document.getElementById("original-price").innerText = "€" + price;
+       document.getElementById("discounted-price").style.display = 'none';
+     }
+   });
+ });
+
+ // Handle dimension changes
+ document.getElementById('dimensions').addEventListener('change', function() {
+   var selectedDimension = this.value;
+   var price = defaultPrice;
+
+   switch (selectedDimension) {
+     case '25':
+       price = 25;
+       break;
+     case '70':
+       price = 70;
+       break;
+     case '139':
+       price = 139;
+       break;
+     default:
+       price = defaultPrice;
+   }
+
+   document.getElementById("original-price").innerText = "€" + price;
+
+   var hasDiscount = document.querySelector('.product-item[data-discount="true"]');
+   if (hasDiscount) {
+     var discountedPrice = (price * 0.75).toFixed(2);
+     document.getElementById("discounted-price").innerText = "€" + discountedPrice;
+     document.getElementById("discounted-price").style.display = 'inline';
+   } else {
+     document.getElementById("discounted-price").style.display = 'none';
+   }
+ });
 
 // Global variable to track discount status
 window.selectedImageHasDiscount = false;
@@ -133,25 +265,6 @@ document.querySelectorAll('.product-item, .img-fluid1, .img-fluid2').forEach(ite
     });
 });
 
- // Handle dimension changes
- document.getElementById('dimensions').addEventListener('change', function() {
-  var selectedDimension = this.value;
-  var price = defaultPrice;
-
-  switch (selectedDimension) {
-    case '25':
-      price = 25;
-      break;
-    case '70':
-      price = 70;
-      break;
-    case '139':
-      price = 139;
-      break;
-    default:
-      price = defaultPrice;
-  }
-});
 // Update price based on selected dimensions
 // Update price based on selected dimensions
 document.getElementById("dimensions").addEventListener("change", function() {
@@ -188,6 +301,7 @@ addToCartButton.addEventListener('click', function(event) {
 
 // Initial check in case there are pre-selected options (optional)
 checkSelections();
+
 // Object to track added products
 var addedProducts = {};
 
@@ -205,6 +319,7 @@ document.getElementById("addToCart").addEventListener("click", function() {
         alert("Please select both dimension and material.");
         return;
     }
+    
 
     var hasDiscount = window.selectedImageHasDiscount || false;
     var discountedPrice = hasDiscount ? price * 0.75 : price;
@@ -296,6 +411,14 @@ document.getElementById("addToCart").addEventListener("click", function() {
     console.log("Quantity changed:", value);
   }
 })();
+
+
+
+
+
+
+
+
 
 
 

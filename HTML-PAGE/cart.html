@@ -44,6 +44,7 @@
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
+				
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
@@ -70,33 +71,18 @@
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 nav ">
 						<li><a class="nav-link zpIcon" href="/Html-Page/Login.html"><img src="/Images/user.svg" ></a></li>
 						<li><a class="nav-link zpIcon active" href="cart.html"><img src="/Images/pngegg.png" style="width: 25px;"> <span id="cart-count" style="color: red; margin-left: 5px;">0</span></a></li>
+						<button type="button" class="btn btn-outline-light ms-5" data-bs-toggle="modal" data-bs-target="#searchModal" id="buttonSreach">
+							<img src="/Images/search-3-xxl.png" alt="Search" style="width: 15px;">
+						</button></a>
 					</ul>
 				</div>
 			</div>
 				
 		</nav>
 		<!-- End Header/Navigation -->
+		
 
-		<!-- Start Hero Section -->
-<div class="hero">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-5">
-                <div class="intro-excerpt">
-                    <h1 class="AboutTextMove BlogTextMove11" id="TextMoveContact">Cart</h1>
-                    <p class="mb-4 TextNewAnimation TextMoveHome">Great choice! "Sign In" is concise and universally understood, making it easy for users to navigate to the login section of your shop page.</p>
-                    <p><a href="/Html-Page/Shop.html" class="btn btn-secondary me-2" id="ButtonColor">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="hero-img-wrap" id="slideshowContact">
-                    <img src="/Images/FrameZp9.jpg" class="img-fluidZP">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Hero Section -->
+	
 
 		
 
@@ -105,7 +91,10 @@
     <div class="container">
         <div class="row mb-5">
             <form class="col-md-12" method="post">
+				<h1 class="AboutTextMove " id="TextMoveContact" style="color: rgb(0, 0, 0); margin-top: -50px;">Shopping Cart<hr class="custom-hr"></h1>
                 <div class="site-blocks-table">
+					
+					
                     <table class="table" id="cartTable">
                         <thead>
                             <tr>
@@ -210,6 +199,29 @@
     </div>
 </div>
 
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+			<div class="modal-body">
+				<form id="searchForm" role="search" action="Search.html" method="get">
+					<div class="input-group">
+						<input type="search"  class="form-control" name="query" placeholder="Search..." required aria-label="Search" id="searchInput">
+						<button class="btn btn-outline-light" type="submit">Search</button>
+					</div>
+				</form>
+			</div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 		<!-- Start Footer Section -->
@@ -223,22 +235,26 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form SubscribeMove">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="/Images/envelope-outline.svg" alt="Image" class="img-fluid3"></span><span>Subscribe to Newsletter</span></h3>
-
-							<form action="#" class="row g-3">
+							<h3 class="d-flex align-items-center">
+								<span class="me-1"><img src="/Images/envelope-outline.svg" alt="Image" class="img-fluid3"></span>
+								<span>Subscribe to Newsletter</span>
+							</h3>
+				
+							<form id="subscriptionForm" class="row g-3">
 								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Enter your name">
+									<input type="text" id="name" class="form-control" placeholder="Enter your name">
+									<span class="text-danger" id="nameError" style="display:none;">Please enter your name</span>
 								</div>
 								<div class="col-auto">
-									<input type="email" class="form-control" placeholder="Enter your email">
+									<input type="email" id="email" class="form-control" placeholder="Enter your email">
+									<span class="text-danger" id="emailError" style="display:none;">Please enter a valid email</span>
 								</div>
 								<div class="col-auto">
-									<button class="btn btn-primary">
+									<button type="submit" class="btn btn-primary">
 										<span class="fa fa-paper-plane"></span>
 									</button>
 								</div>
 							</form>
-
 						</div>
 					</div>
 				</div>
@@ -324,6 +340,7 @@
         <script src="/js/AnimationContact.js"></script>
 		<script src="/js/store.js"></script>
 		<script src="/js/ModalStore.js"></script>
+		<script src="/js/SubscribeToNewsletter.js"></script>
 		
 	</body>
 

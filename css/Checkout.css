@@ -138,3 +138,10 @@ td, th {
        td{
         font-weight: 600;
        }
+
+
+       .footer-section {
+        padding: 80px 0!important; 
+        background: #ffffff!important;
+        margin-top: 0%!important;
+      }
