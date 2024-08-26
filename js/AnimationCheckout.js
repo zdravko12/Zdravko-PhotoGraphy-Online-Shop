@@ -133,18 +133,18 @@ window.addEventListener('scroll', function() {
 
 
    // za text zoom out About bojata na tekstot da se smeni 
-window.addEventListener('scroll', function() {
-    var scrollPosition = window.scrollY;
-    var highlightedElements = document.querySelectorAll('.TextNewAnimation');
+// window.addEventListener('scroll', function() {
+//     var scrollPosition = window.scrollY;
+//     var highlightedElements = document.querySelectorAll('.TextNewAnimation');
     
-    highlightedElements.forEach(function(element) {
-      if (scrollPosition > 105) {
-        element.classList.add('highlight');
-      } else {
-        element.classList.remove('highlight');
-      }
-    });
-  });
+//     highlightedElements.forEach(function(element) {
+//       if (scrollPosition > 105) {
+//         element.classList.add('highlight');
+//       } else {
+//         element.classList.remove('highlight');
+//       }
+//     });
+//   });
 
 
    // SlikaFrameView

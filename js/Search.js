@@ -95,6 +95,7 @@ function loadSearchResults(query) {
         { url: 'Blog.html', category: 'blog' },
         { url: 'Home.html', category: 'home' },
         { url: 'Shop.html', category: 'shop' },
+        { url: 'ShopAnimals.html', category: 'animals' },
     ];
 
     // Create an array of promises for fetching page results

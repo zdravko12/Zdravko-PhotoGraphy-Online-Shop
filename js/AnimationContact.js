@@ -46,47 +46,47 @@ window.addEventListener('scroll', function() {
 
 
 // za boja na button home shop now 
-window.addEventListener('scroll', function() {
-    var button = document.getElementById('ButtonColor');
-    var scrollPosition = window.scrollY;
+// window.addEventListener('scroll', function() {
+//     var button = document.getElementById('ButtonColor');
+//     var scrollPosition = window.scrollY;
   
-    // Add a condition to change the button color when scrolling down
-    if (scrollPosition > 0) { 
-      button.style.backgroundColor = '#c7dc0d'; // Dark yellow
-      button.style.color = '#000'; // White 
-    } else {
-      // Reset to initial color if scrolling back to the top
-      button.style.backgroundColor = '#dcba0d'; // Light gray
-      button.style.color = '#000'; // Black
-    }
-  });
+//     // Add a condition to change the button color when scrolling down
+//     if (scrollPosition > 0) { 
+//       button.style.backgroundColor = '#c7dc0d'; // Dark yellow
+//       button.style.color = '#000'; // White 
+//     } else {
+//       // Reset to initial color if scrolling back to the top
+//       button.style.backgroundColor = '#dcba0d'; // Light gray
+//       button.style.color = '#000'; // Black
+//     }
+//   });
 
 
   //  Text shop h1 element
-window.addEventListener('scroll', function() {
-    var scrollPosition = window.scrollY;
-    var header = document.querySelector('.BlogTextMove11');
-    if (scrollPosition > 100) { // Adjust as needed
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-  });
+// window.addEventListener('scroll', function() {
+//     var scrollPosition = window.scrollY;
+//     var header = document.querySelector('.BlogTextMove11');
+//     if (scrollPosition > 100) { // Adjust as needed
+//         header.classList.add('scrolled');
+//     } else {
+//         header.classList.remove('scrolled');
+//     }
+//   });
 
 
    // za text zoom out About bojata na tekstot da se smeni 
-window.addEventListener('scroll', function() {
-    var scrollPosition = window.scrollY;
-    var highlightedElements = document.querySelectorAll('.TextNewAnimation');
+// window.addEventListener('scroll', function() {
+//     var scrollPosition = window.scrollY;
+//     var highlightedElements = document.querySelectorAll('.TextNewAnimation');
     
-    highlightedElements.forEach(function(element) {
-      if (scrollPosition > 105) {
-        element.classList.add('highlight');
-      } else {
-        element.classList.remove('highlight');
-      }
-    });
-  });
+//     highlightedElements.forEach(function(element) {
+//       if (scrollPosition > 105) {
+//         element.classList.add('highlight');
+//       } else {
+//         element.classList.remove('highlight');
+//       }
+//     });
+//   });
 
 
    // SlikaFrameView

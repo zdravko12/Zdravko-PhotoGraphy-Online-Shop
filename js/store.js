@@ -215,16 +215,17 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');
 
-    // Function to display cart items in checkout.html
     function displayCheckoutItems() {
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         let checkoutTableBody = document.querySelector('.checkout-items');
         let emptyCheckoutMessage = document.getElementById('empty-checkout-message');
+        let couponInput = document.getElementById('c_code');
+        let applyCouponButton = document.getElementById('button-addon2');
+        
         if (!checkoutTableBody) return;
 
         checkoutTableBody.innerHTML = ''; // Clear existing items
 
-        // Check if cart is empty
         if (cartItems.length === 0) {
             emptyCheckoutMessage.style.display = 'block';
         } else {
@@ -232,29 +233,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let subtotal = 0;
 
-            // Loop through cartItems and create rows for each item
             cartItems.forEach(function(item, index) {
-                // Ensure item.total is a number before using .toFixed()
-                let total = typeof item.total === 'number' ? item.total.toFixed(2) : '0.00';
+                let itemTotal = (item.price * item.quantity).toFixed(2);
+                subtotal += parseFloat(itemTotal);
 
                 let row = `
-                  <tbody class="checkout-items">
-        <!-- Checkout items will be dynamically inserted here -->
-        <tr data-index="${index}">
-            <td >${item.title}</td>
-            <td class="product-image"><img class="cart-product-image" src="${item.image}" alt="Product Image"></td>
-            <td>${item.material}</td>
-            <td><strong class="mx-2">x</strong>${item.quantity}</td>
-            <td>${item.dimensions}</td>
-            <td>€${(item.price * item.quantity).toFixed(2)}</td>
-        </tr>
-    </tbody>
+                <tr data-index="${index}">
+                    <td>${item.title}</td>
+                    <td class="product-image"><img class="cart-product-image" src="${item.image}" alt="Product Image"></td>
+                    <td>${item.material}</td>
+                    <td><strong class="mx-2">x</strong>${item.quantity}</td>
+                    <td>${item.dimensions}</td>
+                    <td class="item-price">€${itemTotal}</td>
+                </tr>
                 `;
                 checkoutTableBody.innerHTML += row;
-                subtotal += parseFloat(item.total);
             });
 
-            // Append subtotal and total rows
             let formattedSubtotal = subtotal.toFixed(2);
             let subtotalRow = `
             <tr>
@@ -263,13 +258,30 @@ document.addEventListener('DOMContentLoaded', function() {
             </tr>
             <tr>
                 <td class="text-black font-weight-bold TextColor" colspan="5"><strong>Order Total</strong></td>
-                <td class="text-black font-weight-bold TextColor">€${formattedSubtotal}</td>
+                <td class="text-black font-weight-bold TextColor" id="order-total">€${formattedSubtotal}</td>
             </tr>
             `;
             checkoutTableBody.innerHTML += subtotalRow;
+
+            // Apply coupon functionality
+            applyCouponButton.addEventListener('click', function() {
+                let couponCode = couponInput.value.trim();
+                console.log('Coupon code entered:', couponCode); // Debugging message
+
+                if (couponCode === '1234567') { // Check for a valid coupon code
+                    let discount = 0.10;
+                    let discountAmount = subtotal * discount;
+                    let discountedTotal = subtotal - discountAmount;
+
+                    // Update order total and show alert
+                    document.getElementById('order-total').textContent = `€${discountedTotal.toFixed(2)}`;
+                    alert(`Coupon applied! 10% You saved €${discountAmount.toFixed(2)}.`);
+                } else {
+                    alert('Invalid coupon code');
+                }
+            });
         }
     }
 
-    // Initial display of checkout items
     displayCheckoutItems();
 });

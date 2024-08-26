@@ -249,5 +249,13 @@
    }
 
 
-   
-   
+   .text-danger{
+    color: red!important ;
+   }
+   .sofa-img img {
+    max-width: 414px!important;
+  }
+
+  .img-fluidZPFoter {
+    margin-top: 32px !important;
+  }
