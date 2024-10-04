@@ -1,12 +1,12 @@
-window.addEventListener('scroll', function() {
-    var scrollPosition = window.scrollY;
-    var header = document.querySelector('.text1Home');
-    if (scrollPosition > 100) { // Adjust as needed
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+// window.addEventListener('scroll', function() {
+//     var scrollPosition = window.scrollY;
+//     var header2 = document.querySelector('.text1Home');
+//     if (scrollPosition > 100) { // Adjust as needed
+//         header2.classList.add('scrolled');
+//     } else {
+//         header2.classList.remove('scrolled');
+//     }
+// });
 // za text zoom out Home
 window.addEventListener('scroll', function() {
     var scrollPosition = window.scrollY;
@@ -239,17 +239,17 @@ window.addEventListener('scroll', addActiveClass);
 
 // slikata desno kon levo
 
-window.addEventListener('scroll', function() {
-  var image = document.getElementById('image');
-  var imagePosition = image.getBoundingClientRect().top;
-  var screenPosition = window.innerHeight / 1.5; /* Adjust scroll position as needed */
+// window.addEventListener('scroll', function() {
+//   var imageMove = document.getElementById('image');
+//   var imagePosition = imageMove.getBoundingClientRect().top;
+//   var screenPosition = window.innerHeight / 1.5; /* Adjust scroll position as needed */
 
-  if (imagePosition < screenPosition) {
-    image.classList.remove('move');
-  } else {
-    image.classList.add('move');
-  }
-});
+//   if (imagePosition < screenPosition) {
+//     imageMove.classList.remove('move');
+//   } else {
+//     imageMove.classList.add('move');
+//   }
+// });
 
 
 // slika od 3 prvata grid move1
@@ -319,11 +319,11 @@ window.addEventListener('scroll', function() {
 
 // Function to handle scroll event
 function handleScroll() {
-  var element = document.getElementById('scrolling-textMove1');
-  if (isInViewport(element)) {
-      element.classList.add('show');
+  var element1 = document.getElementById('scrolling-textMove1');
+  if (isInViewport(element1)) {
+      element1.classList.add('show');
   } else {
-      element.classList.remove('show');
+      element1.classList.remove('show');
   }
 }
 
