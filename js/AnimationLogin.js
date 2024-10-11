@@ -311,3 +311,35 @@ document.addEventListener("DOMContentLoaded", function() {
   // Initially fade in images in view on page load
   fadeInImage();
 });
+
+
+
+document.getElementById('togglePassword').addEventListener('click', function () {
+  const passwordInput = document.getElementById('signUpPassword');
+  const toggleIcon = this.querySelector('i');
+  
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleIcon.classList.remove('bx-hide');
+    toggleIcon.classList.add('bx-show');
+  } else {
+    passwordInput.type = 'password';
+    toggleIcon.classList.remove('bx-show');
+    toggleIcon.classList.add('bx-hide');
+  }
+});
+
+document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+  const confirmPasswordInput = document.getElementById('signUpConfirmPassword');
+  const toggleIcon = this.querySelector('i');
+  
+  if (confirmPasswordInput.type === 'password') {
+    confirmPasswordInput.type = 'text';
+    toggleIcon.classList.remove('bx-hide');
+    toggleIcon.classList.add('bx-show');
+  } else {
+    confirmPasswordInput.type = 'password';
+    toggleIcon.classList.remove('bx-show');
+    toggleIcon.classList.add('bx-hide');
+  }
+});

@@ -10,7 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    $to = "ZdravkoPhoto@yahoo.com";  // Replace with your email address
+    // Change to your email address
+    $to = "zdravkoena@yahoo.com";  
     $subject = "New Contact Form Submission";
 
     $body = "You have received a new message from the contact form on your website.\n\n" .

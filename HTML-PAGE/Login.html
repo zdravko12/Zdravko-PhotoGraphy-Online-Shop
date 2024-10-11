@@ -164,21 +164,22 @@
           <small class="input__error_message"></small>
         </div>
         <div class="input__group">
-          <label class="field">
-            <input type="password" name="password" placeholder="Password123$#%&..." id="signUpPassword">
-          </label>
-          <span class="input__icon"><i class="bx bx-lock"></i></span>
-          <span class="showHide__Icon"><i class="bx bx-hide"></i></span>
-          <small class="input__error_message"></small>
-        </div>
-        <div class="input__group confirm__group">
-          <label class="field">
-            <input type="password" name="confirm_password" placeholder="Confirm Password" id="signUpConfirmPassword">
-          </label>
-          <span class="input__icon"><i class="bx bx-lock"></i></span>
-          <span class="showHide__Icon"><i class="bx bx-hide"></i></span>
-          <small class="input__error_message"></small>
-        </div>
+			<label class="field">
+			  <input type="password" name="password" placeholder="Password123$#%&..." id="signUpPassword">
+			</label>
+			<span class="input__icon"><i class="bx bx-lock"></i></span>
+			<span class="showHide__Icon" id="togglePassword"><i class="bx bx-hide"></i></span>
+			<small class="input__error_message"></small>
+		  </div>
+		  
+		  <div class="input__group confirm__group">
+			<label class="field">
+			  <input type="password" name="confirm_password" placeholder="Confirm Password" id="signUpConfirmPassword">
+			</label>
+			<span class="input__icon"><i class="bx bx-lock"></i></span>
+			<span class="showHide__Icon" id="toggleConfirmPassword"><i class="bx bx-hide"></i></span>
+			<small class="input__error_message"></small>
+		  </div>
         <!-- Sign Up Button -->
         <button type="submit" class="submit-button" id="signUpSubmitBtn">Sign Up</button>
         <!-- Alternate Login -->

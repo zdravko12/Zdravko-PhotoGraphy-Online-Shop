@@ -1,0 +1,12 @@
+.photoXZoom {
+    position: relative; /* Required for z-index to work */
+   
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+  
+  .photoXZoom:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+    opacity: 0.9; /* Slightly reduced opacity on hover */
+    z-index: 10; /* Higher z-index for the zoomed image */
+  }
