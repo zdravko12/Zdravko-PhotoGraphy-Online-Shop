@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="ZdravkOPhotoGraphy">
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="">
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -99,17 +99,19 @@
 		<!-- End Hero Section -->
 
 		
-		<!-- Start Contact Form -->
+	<!-- Start Contact Form -->
 <div class="untree_co-section fade-image">
 	<div class="container">
 	  <div class="block">
 		<div class="row justify-content-center">
 		  <div class="col-md-8 col-lg-8 pb-4">
-			<h1 class="AboutTextMove " id="TextMoveContact" style="color: rgb(0, 0, 0); margin-top: -50px;">Contact Us<hr class="custom-hr"></h1>
+			<h1 class="AboutTextMove" id="TextMoveContact" style="color: rgb(0, 0, 0); margin-top: -50px;">
+			  Contact Us<hr class="custom-hr">
+			</h1>
 			<div class="row mb-5">
 			  <!-- Your contact information here -->
 			</div>
-			<form id="contactForm" action="js/send_email.php" method="post">
+			<form id="contact" action="/Html-Page/mail.php" method="post" onsubmit="return validateForm()">
 			  <div class="row">
 				<div class="col-6">
 				  <div class="form-group">
@@ -131,12 +133,17 @@
 				<input type="email" class="form-control" id="email" name="email">
 				<span class="error-message" style="color: red; display: none;">Email is required</span>
 			  </div>
+			  <div class="form-group">
+				<label class="text-black" for="subject">Write the subject</label>
+				<input type="text" class="form-control" id="subject" name="subject">
+				<span class="error-message" style="color: red; display: none;">Subject is required</span>
+			  </div>
 			  <div class="form-group mb-5">
 				<label class="text-black" for="message">Message</label>
 				<textarea name="message" class="form-control" id="message" cols="30" rows="5"></textarea>
 				<span class="error-message" style="color: red; display: none;">Message is required</span>
 			  </div>
-			  <button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
+			  <button type="submit" name="send" id="contact-submit" class="btn btn-primary-hover-outline">Send Message</button>
 			</form>
 		  </div>
 		</div>
