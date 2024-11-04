@@ -537,3 +537,26 @@ form.sign-up__form{
 .img-fluidZPFoter {
   margin-top: 94px;
 }
+
+/* za  foter left right top */
+
+/* @media (max-width: 767px) {
+  .footer-section .sofa-img img {
+    max-width: 205px !important;
+  }
+
+  .footer-section .sofa-img {
+    position: absolute;
+    top: -243px !important;
+    z-index: 1!important;
+    right: 100px!important;
+  }
+
+  .img-fluidZPFoter {
+    margin-top: 200px !important;
+  }
+} */
+
+
+
+
