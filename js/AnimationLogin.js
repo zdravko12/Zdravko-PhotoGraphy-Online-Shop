@@ -94,6 +94,8 @@ function chnageFormMode(e) {
   });
 })();
 
+
+
 // Login Form Validation Function
 function loginFormValidation() {
   // Loop On All The Inputs
@@ -103,13 +105,57 @@ function loginFormValidation() {
     // Input Value Without Spaces
     const inputValue = input.value.trim();
     // Input Regex Validation Response [ True || False ] :)
+    const patterns = {
+      username: /^[a-zA-Z0-9]{5,}$/, // Example regex
+      password: /^[a-zA-Z0-9!@#$%^&*]{8,}$/, // Example regex
+      email: /^[^@\s]+@[^@\s]+\.[^@\s]+$/, // Example for email validation
+      // Add more as needed
+    };
+    console.log(inputAttribueValueName); // Check if it matches a key in patterns
+    if (!patterns[inputAttribueValueName]) {
+      console.error(`No pattern defined for: ${inputAttribueValueName}`);
+      return;
+    }
+    
     const inputRegex = patterns[inputAttribueValueName].test(inputValue);
+
+    function loginFormValidation() {
+      // Loop On All The Inputs
+      allLoginFormFields.forEach(input => {
+        // Input Target Field Name Value
+        const inputAttribueValueName = input.attributes.name.value;
+        // Input Value Without Spaces
+        const inputValue = input.value.trim();
+        
+        // Check if the pattern for the input exists
+        if (!patterns[inputAttribueValueName]) {
+          console.error(`No pattern defined for: ${inputAttribueValueName}`);
+          return; // Exit early if no pattern is found
+        }
+    
+        // Input Regex Validation Response [ True || False ]
+        const inputRegex = patterns[inputAttribueValueName].test(inputValue);
+    
+        // Check If The Input Value Is Empty
+        if (inputValue === '') {
+          // Call Function Set Error For
+          setErrorFor(input, `${inputAttribueValueName} is required. Please enter your response.`);
+        } else if (inputRegex === false) { // Check if input value does not match the pattern
+          // Call Function Set Error For
+          setErrorFor(input, `${inputAttribueValueName} is invalid.`);
+        } else { // If the input is valid
+          // Call Function Set Success For
+          setSuccessFor(input);
+        }
+      });
+    }
 
     // Check If The Input Value Is Empty
     if(inputValue === ''){
       // Call Function Set Error For
       setErrorFor(input, `${inputAttribueValueName} is required. Please enter your response.`);
-    }else if(inputRegex === false){ // Else If: If The InputRegext Response Is False
+    }
+    else if(inputRegex === false){ // Else If: If The InputRegext Response Is False
       // Call Function Set Error For
       setErrorFor(input, `${inputAttribueValueName} Is Invalid .`);
     }else{ // Else
@@ -118,6 +164,12 @@ function loginFormValidation() {
     };
   });
 };
+
+
+
+
+
+
 
 // Sign-Up Form Validation Function
 function signUpFormValidation() {
@@ -229,6 +281,8 @@ function setSuccessFor(input) {
       signUpFormSubmitBtn.addEventListener('click', redirectToSignIn);
     }
   }
+
+  
   
   // Function to redirect to sign-in
   function redirectToSignIn() {
@@ -343,3 +397,216 @@ document.getElementById('toggleConfirmPassword').addEventListener('click', funct
     toggleIcon.classList.add('bx-hide');
   }
 });
+
+
+// reset password
+
+// Function to redirect to the login page
+function goBackToSignIn() {
+  window.location.href = '/Html-Page/Login.html'; // Redirect to the login page
+}
+
+
+// reset password
+// Function to toggle the display of the reset password form
+// Function to toggle the display of the login form elements and show the reset password input
+function toggleResetPassword() {
+  // Elements to hide
+  const usernameInputGroup = document.getElementById('loginUsername').closest('.input__group');
+  const passwordInputGroup = document.getElementById('loginPassword').closest('.input__group');
+  const signInButton = document.getElementById('loginSubmitBtn');
+  const rememberPassword =   document.getElementById('rememberMe');
+  const checkMark =  document.getElementById('checkboxInput');
+  const forgotPass = document.getElementById('forgotpass');
+  const titleform = document.getElementById('titleForm');
+  const googleFacebook1 = document.getElementById('googleFacebook');
+  // Element to show
+  const resetForm = document.getElementById('resetPasswordForm');
+
+  // Hide the username and password input groups, and the sign-in button
+  usernameInputGroup.style.display = 'none';
+  passwordInputGroup.style.display = 'none';
+  signInButton.style.display = 'none';
+  rememberPassword.style.display = 'none';
+  checkMark.style.display = 'none';
+  forgotPass.style.display = 'none';
+  titleform.style.display = 'none';
+  googleFacebook1.style.display = 'none'; 
+
+  // Show the reset password form
+  resetForm.style.display = 'block';
+}
+
+// Function to validate if the input is a properly formatted email address
+function validateEmail() {
+  const emailInput = document.getElementById('resetEmail');
+  const emailError1 = document.getElementById('emailError');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex for validating email format
+
+  // Check if the input matches the email format
+  if (!emailRegex.test(emailInput.value)) {
+    emailError1.style.display = 'block'; // Show the warning message
+  } else {
+    emailError1.style.display = 'none'; // Hide the warning message
+  }
+}
+
+// Function to handle reset password submission
+function submitResetPassword() {
+  const emailInput = document.getElementById('resetEmail');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex for validating email format
+
+  // Check if the input is a valid email
+  if (!emailRegex.test(emailInput.value)) {
+    alert('Please enter a valid email address, such as example@yahoo.com.');
+    return; // Prevent form submission if the email is invalid
+  }
+
+  // Additional logic to handle the password reset submission
+  alert('Password reset instructions have been sent to your email.');
+}
+// reset password
+
+
+
+
+// Registration Function
+document.getElementById('signUpSubmitBtn').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  const username = document.getElementById('signUpUsername').value.trim();
+  const email = document.getElementById('signUpEmail').value.trim();
+  const password = document.getElementById('signUpPassword').value;
+  const confirmPassword = document.getElementById('signUpConfirmPassword').value;
+
+  // Get error message elements
+  const signUpUsernameError = document.getElementById('signUpUsernameError');
+  const signUpEmailError = document.getElementById('signUpEmailError');
+  const signUpPasswordError = document.getElementById('signUpPasswordError');
+  const signUpConfirmPasswordError = document.getElementById('signUpConfirmPasswordError');
+
+  // Clear previous error messages
+  signUpUsernameError.textContent = '';
+  signUpEmailError.textContent = '';
+  signUpPasswordError.textContent = '';
+  signUpConfirmPasswordError.textContent = '';
+
+  let isValid = true;
+
+  // Validation
+  if (username === '') {
+    signUpUsernameError.textContent = 'Username is required.';
+    isValid = false;
+  }
+  if (email === '') {
+    signUpEmailError.textContent = 'Email is required.';
+    isValid = false;
+  }
+  if (password === '') {
+    signUpPasswordError.textContent = 'Password is required.';
+    isValid = false;
+  }
+  if (confirmPassword === '') {
+    signUpConfirmPasswordError.textContent = 'Confirm password is required.';
+    isValid = false;
+  }
+  if (password !== confirmPassword) {
+    signUpConfirmPasswordError.textContent = 'Passwords do not match.';
+    isValid = false;
+  }
+
+  if (!isValid) return;
+
+  // Save to localStorage (example)
+  localStorage.setItem('username', username);
+  localStorage.setItem('email', email);
+  localStorage.setItem('password', password);
+  
+  alert('Registration successful! You can now log in.');
+  document.getElementById('signUpForm').reset();
+});
+
+// Login Function
+document.getElementById('loginSubmitBtn').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  const loginUsername = document.getElementById('loginUsername').value.trim();
+  const loginPassword = document.getElementById('loginPassword').value;
+
+  const storedUsername = localStorage.getItem('username');
+  const storedPassword = localStorage.getItem('password');
+
+  // Get error message elements
+  const loginUsernameError = document.getElementById('loginUsernameError');
+  const loginPasswordError = document.getElementById('loginPasswordError');
+
+  // Clear previous error messages
+  loginUsernameError.textContent = '';
+  loginPasswordError.textContent = '';
+
+  // Validation
+  let isValid = true;
+
+  if (loginUsername === '') {
+    loginUsernameError.textContent = 'Username is required.';
+    isValid = false;
+  }
+  if (loginPassword === '') {
+    loginPasswordError.textContent = 'Password is required.';
+    isValid = false;
+  }
+
+  if (!isValid) return;
+
+  if (loginUsername === storedUsername && loginPassword === storedPassword) {
+    alert('Login successful!');
+    // Redirect to another page or perform any other actions
+  } else {
+    loginPasswordError.textContent = 'Invalid username or password.';
+  }
+});
+
+// Login Function
+document.getElementById('loginSubmitBtn').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  // Get input values
+  const loginUsername = document.getElementById('loginUsername').value.trim();
+  const loginPassword = document.getElementById('loginPassword').value;
+
+  // Get error message elements by their IDs
+  const loginUsernameError = document.getElementById('loginUsernameError');
+  const loginPasswordError = document.getElementById('loginPasswordError');
+
+  // Clear previous error messages
+  loginUsernameError.textContent = '';
+  loginPasswordError.textContent = '';
+
+  // Validation
+  let isValid = true;
+
+  if (loginUsername === '') {
+    loginUsernameError.textContent = 'Username is required.';
+    isValid = false;
+  }
+
+  if (loginPassword === '') {
+    loginPasswordError.textContent = 'Password is required.';
+    isValid = false;
+  }
+
+  if (!isValid) return;
+
+  // Retrieve stored credentials from localStorage
+  const storedUsername = localStorage.getItem('username');
+  const storedPassword = localStorage.getItem('password');
+
+  if (loginUsername === storedUsername && loginPassword === storedPassword) {
+    alert('Login successful!');
+    // Redirect to another page or perform any other actions
+  } else {
+    loginPasswordError.textContent = 'Invalid username or password.';
+  }
+});
+
+

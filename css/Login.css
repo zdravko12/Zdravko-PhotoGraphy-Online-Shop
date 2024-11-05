@@ -24,10 +24,10 @@
 /* End Css Reset */
 
 /* Wrapper Area */
-.wrapper__area{
+.wrapper__area {
   position: relative;
   width: 800px;
-  height: 650px;
+  height: 682px;
   background-color: var(--white-color);
   box-shadow: 0 0 50px var(--wrapper-shadow-color);
   border: 5px solid var(--wrapper-shadow-color);
@@ -37,6 +37,7 @@
   overflow: hidden;
   transform: scale(0.9);
   margin: auto;
+    margin-top: auto;
   margin-top: 5%;
   box-shadow: 2px 1px 12px 9px rgba(0,0,0,0.17);
   -webkit-box-shadow: 2px 1px 12px 9px rgba(0,0,0,0.17);
@@ -168,7 +169,7 @@ form .input__group .input__error_message{
   display: block;
   color:  var(--error-color);
   margin: 0 10px;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
   transition: 0.3s ease-in-out;
   text-transform: capitalize;
@@ -540,22 +541,86 @@ form.sign-up__form{
 
 /* za  foter left right top */
 
-/* @media (max-width: 767px) {
+@media (max-width: 767px) {
   .footer-section .sofa-img img {
     max-width: 205px !important;
   }
 
   .footer-section .sofa-img {
     position: absolute;
-    top: -243px !important;
+    top: -223px !important;
     z-index: 1!important;
     right: 100px!important;
+    display: none;
   }
 
   .img-fluidZPFoter {
     margin-top: 200px !important;
   }
-} */
+}
+
+
+/* reset password */
+/* Basic styles for the reset password form */
+.reset_password_form {
+  display: none; /* Hidden by default */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Input field styling */
+.reset_password_form .input__group {
+  margin-bottom: 15px;
+}
+
+
+.reset_password_form .input__group .field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.reset_password_form .input__group small {
+  color: red;
+  font-size: 12px;
+}
+
+/* Reset button styling */
+#resetPasswordBtn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#resetPasswordBtn:hover {
+  background-color: #45a049;
+}
+
+/* Styling for the input error message */
+.input__error_message {
+  color: red;
+  font-size: 12px;
+  display: none; /* Hidden by default */
+  margin-top: 5px;
+}
+
+
+#togglePassword{
+  display: block!important;
+}
 
 
 

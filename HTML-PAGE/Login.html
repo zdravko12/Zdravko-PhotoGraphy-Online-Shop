@@ -97,79 +97,98 @@
 
 
 <!-- Wrapper Area -->
- <div class="ScrollForm">
-<div class="wrapper__area  fade-image" id="wrapper_Area">
-    <!-- Forms Area -->
-    <div class="forms__area" >
-      <!-- Login Form -->
-      <form class="login__form" id="loginForm">
-        <!-- Form Title -->
-        <h1 class="form__title">Sign In!</h1>
-        <!-- inputs Groups -->
-        <div class="input__group">
-          <label class="field">
-            <input type="text" name="username" placeholder="Username" id="loginUsername">
-          </label>
-          <span class="input__icon"><i class="bx bx-user"></i></span>
-          <small class="input__error_message"></small>
-        </div>
-        <div class="input__group">
-          <label class="field">
-            <input type="password" name="password" placeholder="Password" id="loginPassword">
-          </label>
-          <span class="input__icon"><i class="bx bx-lock"></i></span>
-          <span class="showHide__Icon"><i class="bx bx-hide"></i></span>
-          <small class="input__error_message"></small>
-        </div>
-        <div class="form__actions">
-          <label for="checkboxInput" class="remeber_me">
-            <input type="checkbox" id="checkboxInput">
-            <span class="checkmark"></span>
-            <span>Remeber Me</span>
-          </label>
-          <div class="forgot_password">Forgot Password?</div>
-        </div>
-        <!-- Login Button -->
-        <button type="submit" class="submit-button" id="loginSubmitBtn">Sign in</button>
-        <!-- Alternate Login -->
-        <div class="alternate-login">
-          <div class="link">
-            <i class='bx bxl-google'></i>
-            <span>Google</span>
-          </div>
-          <div class="link">
-            <i class='bx bxl-facebook-circle'></i>
-            <span>Facebook</span>
-          </div>
-        </div>
-      </form> <!-- End Login Form -->
+<div class="ScrollForm">
+	<div class="wrapper__area fade-image" id="wrapper_Area">
+	  <!-- Forms Area -->
+	  <div class="forms__area">
+		<!-- Login Form -->
+		<form class="login__form" id="loginForm">
+		  <!-- Form Title -->
+		  <h1 class="form__title" id="titleForm">Sign In!</h1>
+		  <!-- Inputs Groups -->
+		  <div class="input__group">
+			<label class="field">
+			  <input type="text" name="username" placeholder="Username" id="loginUsername">
+			</label>
+			<span class="input__icon"><i class="bx bx-user"></i></span>
+			<small class="input__error_message" id="loginUsernameError"></small> <!-- Add ID -->
+		  </div>
+		  
+		  <div class="input__group">
+			<label class="field">
+			  <input type="password" name="password" placeholder="Password" id="loginPassword">
+			</label>
+			<span class="input__icon"><i class="bx bx-lock"></i></span>
+			<span class="showHide__Icon"><i class="bx bx-hide"></i></span>
+			<small class="input__error_message" id="loginPasswordError"></small> <!-- Add ID -->
+		  </div>
+		  <div class="form__actions">
+			<label for="checkboxInput" class="remember_me">
+			  <input type="checkbox" id="checkboxInput">
+			  <span class="checkmark" id="rememberMeBackSecond"></span>
+			  <span id="rememberMe">Remember Me</span>
+			</label>
+			<div class="forgot_password" id="forgotpass" onclick="toggleResetPassword()">Forgot Password?</div>
+		  </div>
+	<!-- Hidden Reset Password Form -->
+	<div class="reset_password_form" id="resetPasswordForm" style="display: none;">
+		<div class="input__group">
+			<p style="font-weight: 900; font-size: 130%;">Lost your password?</p>
+			<h6>Please enter your username or email address. You will receive a link to create a new password via email.<br><br>Username or email</h6>
+			<label class="field">
+				<input type="email" name="resetEmail" placeholder="Enter your email" id="resetEmail" oninput="validateEmail()">
+			</label>
+			<small class="input__error_message" id="emailError">
+				Please include an '@' in the email address. Example: zdravkoena@yahoo.com
+			</small>
+		</div>
+		<button type="button" class="btn btn-primary btn-sm"  onclick="goBackToSignIn()">BACK</button>
+		<button type="button" class="submit-button" id="resetPasswordBtn" onclick="submitResetPassword()">Reset Password</button>
+	</div>
+		  <!-- Login Button -->
+		  <button type="submit" class="submit-button" id="loginSubmitBtn">Sign In</button>
+		  
+		  <!-- Alternate Login -->
+		  <div class="alternate-login" id="googleFacebook">
+			<div class="link" id="googleFb">
+			  <i class='bx bxl-google'></i>
+			  <span>Google</span>
+			</div>
+			<div class="link">
+			  <i class='bx bxl-facebook-circle'></i>
+			  <span>Facebook</span>
+			</div>
+		  </div>
+		</form> <!-- End Login Form -->
   
       <!-- Sign Up Form -->
       <form class="sign-up__form" id="signUpForm">
         <!-- Form Title -->
         <h1 class="form__title">Sign Up!</h1>
         <!-- inputs Groups -->
-        <div class="input__group">
-          <label class="field">
-            <input type="text" name="username" placeholder="Username123..." id="signUpUsername">
-          </label>
-          <span class="input__icon"><i class="bx bx-user"></i></span>
-          <small class="input__error_message"></small>
-        </div>
-        <div class="input__group">
-          <label class="field">
-            <input type="text" name="email" placeholder="Email@example.com" id="signUpEmail">
-          </label>
-          <span class="input__icon"><i class="bx bx-at"></i></span>
-          <small class="input__error_message"></small>
-        </div>
-        <div class="input__group">
+		<div class="input__group">
+			<label class="field">
+			  <input type="text" name="username" placeholder="Username123..." id="signUpUsername">
+			</label>
+			<span class="input__icon"><i class="bx bx-user"></i></span>
+			<small class="input__error_message" id="signUpUsernameError"></small> <!-- Add ID -->
+		  </div>
+		  
+		  <div class="input__group">
+			<label class="field">
+			  <input type="text" name="email" placeholder="Email@example.com" id="signUpEmail">
+			</label>
+			<span class="input__icon"><i class="bx bx-at"></i></span>
+			<small class="input__error_message" id="signUpEmailError"></small> <!-- Add ID -->
+		  </div>
+		  
+		  <div class="input__group">
 			<label class="field">
 			  <input type="password" name="password" placeholder="Password123$#%&..." id="signUpPassword">
 			</label>
 			<span class="input__icon"><i class="bx bx-lock"></i></span>
 			<span class="showHide__Icon" id="togglePassword"><i class="bx bx-hide"></i></span>
-			<small class="input__error_message"></small>
+			<small class="input__error_message" id="signUpPasswordError"></small> <!-- Add ID -->
 		  </div>
 		  
 		  <div class="input__group confirm__group">
@@ -178,7 +197,7 @@
 			</label>
 			<span class="input__icon"><i class="bx bx-lock"></i></span>
 			<span class="showHide__Icon" id="toggleConfirmPassword"><i class="bx bx-hide"></i></span>
-			<small class="input__error_message"></small>
+			<small class="input__error_message" id="signUpConfirmPasswordError"></small> <!-- Add ID -->
 		  </div>
         <!-- Sign Up Button -->
         <button type="submit" class="submit-button" id="signUpSubmitBtn">Sign Up</button>
@@ -266,8 +285,8 @@
 									<span class="text-danger" id="nameError" style="display:none;">Please enter your name</span>
 								</div>
 								<div class="col-auto">
-									<input type="email" id="email" class="form-control" placeholder="Enter your email">
-									<span class="text-danger" id="emailError" style="display:none;">Please enter a valid email</span>
+									<input type="email" id="emailNew" class="form-control" placeholder="Enter your email">
+									<span class="text-danger" id="emailErrorNew" style="display:none;">Please enter a valid email</span>
 								</div>
 								<div class="col-auto">
 									<button type="submit" class="btn btn-primary">
@@ -294,10 +313,10 @@
 						<div class="row links-wrap">
 							<div class="col-6 col-sm-6 col-md-3">
 								<ul class="list-unstyled">
-									<li><a href="#">About us</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact us</a></li>
+									<li><a href="/Html-Page/About.html">About us</a></li>
+									<li><a href="/Html-Page/services.html">Services</a></li>
+									<li><a href="/Html-Page/Blog.html">Blog</a></li>
+									<li><a href="/Html-Page/Contact.html">Contact us</a></li>
 								</ul>
 							</div>
 
@@ -320,9 +339,9 @@
 
 							<div class="col-6 col-sm-6 col-md-3">
 								<ul class="list-unstyled">
-									<li><a href="#">My account</a></li>
-									<li><a href="#"> Shop</a></li>
-									<li><a href="#"> Order</a></li>
+									<li><a href="/Html-Page/Login.html">My account</a></li>
+									<li><a href="/Html-Page/Shop.html"> Shop</a></li>
+									<li><a href="/Html-Page/cart.html"> Order</a></li>
 								</ul>
 							</div>
 						</div>
@@ -359,7 +378,7 @@
         <script src="/js/AnimationContact.js"></script>
 		<script src="/js/AnimationLoginSlideshowPhotos.js"></script>
 		<script src="/js/store.js"></script>
-		<script src="/js/SubscribeToNewsletter.js"></script>
+		<script src="/js/SubcribeToNewsletterLogin.js"></script>
 	      
 		
 	</body>
