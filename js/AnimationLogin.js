@@ -401,10 +401,7 @@ document.getElementById('toggleConfirmPassword').addEventListener('click', funct
 
 // reset password
 
-// Function to redirect to the login page
-function goBackToSignIn() {
-  window.location.href = '/Html-Page/Login.html'; // Redirect to the login page
-}
+
 
 
 // reset password
@@ -469,15 +466,15 @@ function submitResetPassword() {
 
 
 
-
-// Registration Function
-document.getElementById('signUpSubmitBtn').addEventListener('click', function(event) {
+// database and javascript register form 
+document.getElementById('signUpSubmitBtn').addEventListener('click', function (event) {
   event.preventDefault();
 
   const username = document.getElementById('signUpUsername').value.trim();
   const email = document.getElementById('signUpEmail').value.trim();
   const password = document.getElementById('signUpPassword').value;
   const confirmPassword = document.getElementById('signUpConfirmPassword').value;
+  
 
   // Get error message elements
   const signUpUsernameError = document.getElementById('signUpUsernameError');
@@ -490,51 +487,123 @@ document.getElementById('signUpSubmitBtn').addEventListener('click', function(ev
   signUpEmailError.textContent = '';
   signUpPasswordError.textContent = '';
   signUpConfirmPasswordError.textContent = '';
+  
 
   let isValid = true;
 
+  // Email Regex
+  const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  // Password Regex: At least one special character, one number, and one letter
+  const passwordRegex = /^(?=.*[!@#$%^&*])(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
+
+  // Username Regex: Plain text (letters and numbers only), must include at least one number
+const usernameReg = /^(?=.*\d)[a-zA-Z\d]+$/;
+  
   // Validation
   if (username === '') {
-    signUpUsernameError.textContent = 'Username is required.';
+      signUpUsernameError.textContent = 'Username required.';
+      isValid = false;
+  }else if (!usernameReg.test(username)) {
+    signUpUsernameError.textContent = 'Username must contain letters and at least one number.';
     isValid = false;
-  }
+}
+
   if (email === '') {
-    signUpEmailError.textContent = 'Email is required.';
-    isValid = false;
+      signUpEmailError.textContent = 'Email required.';
+      isValid = false;
+  } else if (!emailReg.test(email)) {
+      signUpEmailError.textContent = 'Invalid email format.';
+      isValid = false;
   }
   if (password === '') {
-    signUpPasswordError.textContent = 'Password is required.';
+    signUpPasswordError.textContent = 'Password required.';
     isValid = false;
-  }
-  if (confirmPassword === '') {
-    signUpConfirmPasswordError.textContent = 'Confirm password is required.';
+} else if (password.length < 8) {
+    signUpPasswordError.textContent = 'Password must be at least 8 characters long.';
     isValid = false;
-  }
-  if (password !== confirmPassword) {
+} else if (!passwordRegex.test(password)) {
+    signUpPasswordError.textContent = 'Password must include at least one letter, one number, and one special character (!@#$%^&*).';
+    isValid = false;
+}
+
+if (confirmPassword === '') {
+    signUpConfirmPasswordError.textContent = 'Password confirmation required.';
+    isValid = false;
+}
+if (password !== confirmPassword) {
     signUpConfirmPasswordError.textContent = 'Passwords do not match.';
     isValid = false;
+}
+
+if (!isValid) return;
+
+  // Retrieve or initialize the array of users from localStorage
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+
+  // Check if username or email already exists
+  const existingUser = users.find(user => user.username === username || user.email === email);
+  if (existingUser) {
+    signUpUsernameError.textContent = 'Username or email already exists.';
+    return;
   }
 
-  if (!isValid) return;
+  // Add a new user to the users array and save to localStorage
+  users.push({ username, email, password });
+  localStorage.setItem('users', JSON.stringify(users));
 
-  // Save to localStorage (example)
-  localStorage.setItem('username', username);
-  localStorage.setItem('email', email);
-  localStorage.setItem('password', password);
-  
-  alert('Registration successful! You can now log in.');
+  // Reset the form before updating the content
   document.getElementById('signUpForm').reset();
+
+  // Data to be sent
+  const data = {
+    username: username,
+    email: email,
+    password: password, // Ensure this key matches the expected key in the PHP script
+};
+
+  console.log(data);  // Debug: Ensure data is being sent correctly
+
+  // Submit to the server
+  fetch('http://localhost/Html-Page/php/database.php', { // database
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+    if (data.status === 'success') {
+      alert(data.message);
+        document.getElementById('formContainer').innerHTML = `
+            <div class="registration-success">
+                <h2>Registration successful!</h2>
+                <p>You can now log in.</p>
+                <button onclick="window.location.href='/Html-Page/Login.html'" class="login-button btn-outline-success">Go to login</button>
+            </div>
+        `;
+    } else {
+        alert(`Error: ${data.message}`);
+    }
+})
+.catch(error => {
+  console.error('Error during registration:', error);
+  alert('An error occurred. Please try again.');
+});
 });
 
-// Login Function
+// database and javascript register form 
+
+
+
+
+
 document.getElementById('loginSubmitBtn').addEventListener('click', function(event) {
   event.preventDefault();
 
   const loginUsername = document.getElementById('loginUsername').value.trim();
   const loginPassword = document.getElementById('loginPassword').value;
-
-  const storedUsername = localStorage.getItem('username');
-  const storedPassword = localStorage.getItem('password');
 
   // Get error message elements
   const loginUsernameError = document.getElementById('loginUsernameError');
@@ -558,55 +627,62 @@ document.getElementById('loginSubmitBtn').addEventListener('click', function(eve
 
   if (!isValid) return;
 
-  if (loginUsername === storedUsername && loginPassword === storedPassword) {
+  // Retrieve users array from localStorage
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+  const user = users.find(user => user.username === loginUsername && user.password === loginPassword);
+
+  if (user) {
     alert('Login successful!');
+
+    // If Remember Me is checked, save credentials to localStorage
+    const rememberMe = document.getElementById('checkboxInput').checked;
+    if (rememberMe) {
+      localStorage.setItem('rememberedUsername', loginUsername);
+      localStorage.setItem('rememberedPassword', loginPassword);
+    } else {
+      localStorage.removeItem('rememberedUsername');
+      localStorage.removeItem('rememberedPassword');
+    }
     // Redirect to another page or perform any other actions
   } else {
     loginPasswordError.textContent = 'Invalid username or password.';
   }
 });
 
-// Login Function
-document.getElementById('loginSubmitBtn').addEventListener('click', function(event) {
-  event.preventDefault();
+// Load remembered username and password on page load
+window.addEventListener('load', function() {
+  const rememberedUsername = localStorage.getItem('rememberedUsername');
+  const rememberedPassword = localStorage.getItem('rememberedPassword');
 
-  // Get input values
-  const loginUsername = document.getElementById('loginUsername').value.trim();
-  const loginPassword = document.getElementById('loginPassword').value;
-
-  // Get error message elements by their IDs
-  const loginUsernameError = document.getElementById('loginUsernameError');
-  const loginPasswordError = document.getElementById('loginPasswordError');
-
-  // Clear previous error messages
-  loginUsernameError.textContent = '';
-  loginPasswordError.textContent = '';
-
-  // Validation
-  let isValid = true;
-
-  if (loginUsername === '') {
-    loginUsernameError.textContent = 'Username is required.';
-    isValid = false;
-  }
-
-  if (loginPassword === '') {
-    loginPasswordError.textContent = 'Password is required.';
-    isValid = false;
-  }
-
-  if (!isValid) return;
-
-  // Retrieve stored credentials from localStorage
-  const storedUsername = localStorage.getItem('username');
-  const storedPassword = localStorage.getItem('password');
-
-  if (loginUsername === storedUsername && loginPassword === storedPassword) {
-    alert('Login successful!');
-    // Redirect to another page or perform any other actions
-  } else {
-    loginPasswordError.textContent = 'Invalid username or password.';
+  if (rememberedUsername && rememberedPassword) {
+    document.getElementById('loginUsername').value = rememberedUsername;
+    document.getElementById('loginPassword').value = rememberedPassword;
+    document.getElementById('checkboxInput').checked = true;
   }
 });
+
+
+
+// Function to redirect to the login page za back reset password  opcijata  za da se vratis na login 
+function goBackToSignIn() {
+  window.location.href = '/Html-Page/Login.html'; // Redirect to the login page
+}
+// Function to redirect to the login page za back reset password  opcijata  za da se vratis na login 
+
+
+// password hide show toggle !!!
+
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+
+
 
 

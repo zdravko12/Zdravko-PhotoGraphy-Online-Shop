@@ -311,3 +311,23 @@ body.modal-open {
   border-top: 1px solid black; /* Adjust the color and style as needed */
   margin-left: calc(5% -  0.5ch); /* Center the hr based on its width */
 }
+
+
+
+.modal-content {
+  position: relative!important;
+  max-width: 135%!important;
+  background-color: transparent!important;
+  border: none!important; 
+}
+
+
+/* ova popravka za sreach modal */
+.modal-content {
+ 
+  margin: 5% auto!important; 
+  padding: 20px!important;
+  border: 1px solid #888!important;
+  width: 80%!important;
+  display: block!important;
+}

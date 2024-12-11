@@ -620,3 +620,49 @@ form.sign-up__form{
 
 
 
+/* register login color and center  */
+
+.registration-success {
+  text-align: center;
+  margin-top: 220px;
+}
+
+.registration-success h2 {
+  color: green; /* Sets h2 text color to green */
+  font-weight: bold;
+}
+
+.registration-success p {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.registration-success .login-button {
+  margin-top: 25px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+
+#signUpEmail {
+  position: relative!important; 
+  width: 100%!important;
+  height: auto!important;
+  display: inline-block!important;
+  transition: 0.3s ease-in-out!important;
+  overflow: hidden!important;
+}
+
+
+#signUpEmail[type="email"] {
+  position: relative!important;
+  outline: none!important;
+  width: 100%!important;
+  border: none!important;
+    border-bottom-width: medium!important;
+    border-bottom-style: none!important;
+    border-bottom-color: currentcolor!important;
+  padding: 15px 40px 15px 40px!important;
+  background: transparent!important;
+  border-bottom: 2px solid var(--input-border-color)!important;
+}
