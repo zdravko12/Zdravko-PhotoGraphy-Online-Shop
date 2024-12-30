@@ -248,3 +248,5 @@ $(document).ready(function() {
     // Initially fade in images in view on page load
     fadeInImage();
   });
+
+

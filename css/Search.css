@@ -272,3 +272,15 @@
       margin-left: -15%!important;
     }
   }
+
+
+  /* Set the default styles for the dropdown menu */
+.dropdown-menu {
+   background-color: rgb(143, 155, 155)!important;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.64) inset!important; 
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.64) inset!important;
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.64) inset!important;
+  
+}
+
+

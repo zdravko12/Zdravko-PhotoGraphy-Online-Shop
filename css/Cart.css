@@ -150,18 +150,17 @@
   top: 0;
   width: 100%; 
   height: 100%; 
-  overflow:auto!important;  
-  background-color: rgba(0,0,0,0.8);
+  overflow: auto!important;  
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .modal-content {
   background-color: #e9e9e900;
-    margin: 5% auto; 
-    padding: 0px;
-    border: none;
-    width: 80%; 
-     display: block;
-     
+  margin: 5% auto; 
+  padding: 0px;
+  border: none;
+  width: 80%; 
+  display: block;
 }
 
 .close {
@@ -188,23 +187,24 @@
   cursor: pointer;
 }
 
-/* Style for the prev and next buttons */
+/* Styles for the prev and next buttons */
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 80%;
+  top: 50%;
+  transform: translateY(-50%);
   width: auto;
   padding: 6px;
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 38px;
-  margin: 5%;
-  margin-top: -150px;
+  margin: 10px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+  margin-left: 27%;
+  margin-right: 27%;
   background-color: rgba(255, 255, 255, 0.5);
-  user-select: none;
 }
 
 .prev {
@@ -214,11 +214,11 @@
 
 .next {
   right: 0;
-  border-radius: 0 1px 1px 0;
+  border-radius: 0 3px 3px 0;
 }
 
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Product name styling */
@@ -230,76 +230,62 @@
   color: #a8a3a3;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .prev, .next {
+    font-size: 30px;
+    padding: 4px;
+  }
+
+  .prev {
+    left: -85px; /* Adjust closer for smaller images */
+  }
+
+  .next {
+    right: -80px; /* Adjust closer for smaller images */
+  }
+}
+
+@media (max-width: 768px) {
+  .prev, .next {
+    font-size: 24px;
+    padding: 3px;
+    margin-top: auto;
+  }
+
+  .prev {
+    left: -45px; /* Further adjustment for mobile */
+  }
+
+  .next {
+    right: -45px; /* Further adjustment for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .prev, .next {
+    font-size: 25px;
+    padding: 5px;
+    margin-top: -30px;
+
+  
+  }
+
+  .prev {
+    left: -35px; /* Align closer for very small screens */
+  }
+
+  .next {
+    right: -35px; /* Align closer for very small screens */
+  }
+}
+
 /* Disable horizontal scroll when modal is open */
 body.modal-open {
   overflow-x: hidden !important;
 }
 
-/* Media Query for Desktop Devices (1512 x 639) */
-@media only screen and (min-width: 1200px) {
-  .prev, .next {
-      margin-top: -35%;
-      
-  
-  }
-}
 
-@media only screen and (min-width: 560px) {
-  .prev {
-      margin-top: 1%!important;
-      margin-left: -2%;
-
-      
-  
-  }
-}
-@media only screen and (min-width: 560px) {
-  .next {
-      margin-top: 1%!important;
-      margin-right: -2%;
-      
-      
-  
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .prev {
-      margin-top: 1%!important;
-      margin-left: 7%;
-
-      
-  
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .next {
-      margin-top: 1%!important;
-      margin-right: 7%;
-      
-      
-  
-  }
-}
-
-@media only screen and (min-width: 644px) {
-  .prev, .next {
-      margin-top: -35%;
-  
-  }
-}
-@media only screen and (min-width: 300px) {
-  .prev, .next {
-      margin-top: -45%!important; 
-  
-  }
-}
-@media only screen and (min-width: 300px) {
-  .prev, .next {
-      margin-top: -20%!important; 
-  
-  }
-}
 
 #TextMoveContact {
   display: inline-block;
@@ -331,3 +317,21 @@ body.modal-open {
   width: 80%!important;
   display: block!important;
 }
+
+
+
+/* za slikata second  */
+.modal-content1 {
+  margin: 5% auto !important;
+  padding: 20px !important;
+  border: none;
+  width: 80% !important;
+  display: block !important;
+}
+
+
+
+
+
+
+

@@ -101,7 +101,7 @@
 		        <div class="col-md-12">
 					<h1  style="color: rgb(0, 0, 0); margin-top: -50px;">Checkout<hr class="custom-hr"></h1>
 		          <div class="border p-4 rounded" role="alert">
-		            Returning customer? <a href="#">Click here</a> to login
+		            Returning customer? <a href="/Html-Page/Login.html">Click here</a> to login
 		          </div>
 		        </div>
 		      </div>
@@ -113,14 +113,14 @@
 						<label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
 						<select id="c_country" class="form-control">
 						  <option value="0">Select a country</option>    
-						  <option value="bangladesh">Bangladesh</option>    
-						  <option value="algeria">Algeria</option>    
-						  <option value="afghanistan">Afghanistan</option>    
-						  <option value="ghana">Ghana</option>    
+						  <option value="macedonia">Macedonia</option>    
+						  <option value="Serbia">Serbia</option>    
+						  <option value="Bulgaria">Bulgaria</option>    
+						  <option value="Hrvatska">Hrvatska</option>    
 						  <option value="albania">Albania</option>    
-						  <option value="bahrain">Bahrain</option>    
-						  <option value="colombia">Colombia</option>    
-						  <option value="dominican_republic">Dominican Republic</option>    
+						  <option value="bosna i hercegovina">Bosna i Hercegovina</option>    
+						  <option value="crna gora">Crna Gora</option>    
+						  <!-- <option value="dominican_republic">Dominican Republic</option>     -->
 						</select>
 						<span id="c_country_warning" class="text-danger" style="display:none;">Please select a valid country.</span>
 					  </div>
@@ -153,9 +153,9 @@
 						</div>
 					  </div>
 					  
-					  <div class="form-group mt-3">
+					  <!-- <div class="form-group mt-3">
 						<input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
-					  </div>
+					  </div> -->
 					  
 					  <div class="form-group row">
 						<div class="col-md-6">
@@ -163,9 +163,10 @@
 						  <input type="text" class="form-control" id="c_state_country" name="c_state_country">
 						  <div id="c_state_country_warning" class="text-danger" style="display: none;">State / Country is required</div>
 						</div>
+
 						<div class="col-md-6">
 						  <label for="c_postal_zip" class="text-black">Postal / Zip <span class="text-danger">*</span></label>
-						  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+						  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip" onsubmit="validatePostalCode(event)">
 						  <div id="c_postal_zip_warning" class="text-danger" style="display: none;">Postal / Zip is required</div>
 						</div>
 					  </div>
@@ -184,7 +185,7 @@
 					  </div>
 					  
 
-		            <div class="form-group">
+		            <!-- <div class="form-group">
 		              <label for="c_create_account" class="text-black" data-bs-toggle="collapse" href="#create_an_account" role="button" aria-expanded="false" aria-controls="create_an_account"><input type="checkbox" value="1" id="c_create_account"> Create an account?</label>
 		              <div class="collapse" id="create_an_account">
 		                <div class="py-2 mb-4">
@@ -195,7 +196,7 @@
 		                  </div>
 		                </div>
 		              </div>
-		            </div>
+		            </div> -->
 
 
 		            <!-- <div class="form-group">
@@ -287,29 +288,30 @@
 
 		            <div class="form-group">
 		              <label for="c_order_notes" class="text-black">Order Notes</label>
-		              <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Write your notes here..."></textarea>
+		              <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Write your notes here if you want..."></textarea>
 		            </div>
 
 		          </div>
 		        </div>
 		        <div class="col-md-6">
 
-		          <div class="row mb-5">
-		            <div class="col-md-12">
-		              <h2 class="h3 mb-3 text-black">Coupon Code</h2>
-		              <div class="p-3 p-lg-5 border bg-white">
-
-		                <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
-		                <div class="input-group w-75 couponcode-wrap">
-		                  <input type="text" class="form-control me-2" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
-		                  <div class="input-group-append">
-		                    <button class="btn btn-black btn-sm" type="button" id="button-addon2">Apply</button>
-		                  </div>
-		                </div>
-
-		              </div>
-		            </div>
-		          </div>
+					<div class="row mb-5">
+						<div class="col-md-12">
+						  <h2 class="h3 mb-3 text-black">Coupon Code</h2>
+						  <div class="p-3 p-lg-5 border bg-white">
+							<label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
+							<div class="input-group w-75 couponcode-wrap">
+							  <input type="text" class="form-control me-2" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
+							  <div class="input-group-append">
+								<button class="btn btn-black btn-sm" type="button" id="button-addon2" style="cursor: not-allowed;" disabled>
+								  Apply
+								  <span id="disabled-icon" class="disabled-icon no-drop" style="display: inline;">🚫</span>
+								</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
 				  
 				  <div class="untree_co-section before-footer-section">
 					<div style="overflow-y: auto;">
@@ -337,27 +339,79 @@
 									</table>
 									
 							<div id="empty-checkout-message" style="display: none;">There are no products in the cart</div>
-							<div class="border p-3 mb-3">
-							  <h3 class="h6 mb-0">
-								<a class="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a>
-							  </h3>
-							  <div class="collapse" id="collapsebank">
-								<div class="py-2">
-								  <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+							
+							<!-- <div class="border p-3 mb-3">
+								<h3 class="h6 mb-0">
+								  <label>
+									<input type="radio" name="paymentMethod" value="bankTransfer" class="me-2" onchange="hideWarning()" />
+									<a class="d-inline-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">
+									  Direct Bank Transfer ⬎
+									</a>
+								  </label>
+								</h3>
+								<div class="collapse" id="collapsebank">
+								  <div class="py-2">
+									<p class="mb-0">Make your payment directly to our bank account. Please use your order ID as the payment reference. Your order will not be shipped until the funds have cleared our account.</p>
+								  </div>
+								</div>
+							  </div> -->
+							  
+							  <div class="border p-3 mb-3">
+								<h3 class="h6 mb-0">
+									<label>
+										<input type="radio" name="paymentMethod" value="debitCreditCard" class="me-2" id="paymentRadio" onclick="validateFormBeforeSelect(event)" />
+										<a class="d-inline-block" data-bs-toggle="collapse" href="#collapseCard" role="button" aria-expanded="false" aria-controls="collapseCard"  onclick="toggleArrow(this)">
+										  Debit or Credit Card <span class="arrow">⬎</span>
+										</a>
+									  </label>
+								</h3>
+								<div class="collapse" id="collapseCard">
+									
+								  <div class="py-2">
+									<form id="cardForm" id="cardForm" id="cardDetailsForm" onsubmit="return saveCardDetails();handleFormSubmit(event);return validateForm(event);">
+									  <div class="mb-3">
+										<p style="text-align: center;">Provide further information <br><span style="font-size: 10px; color: green; "><img src="/Images/secu.png" alt="" id="secuPhoto"> Your payment information is safe with us</span><br><span><img src="/Images/VisaCard.avif" alt="" id="CardCheckout"><img src="/Images/MaterCard.avif" alt="" id="CardCheckout"></span></p>
+										<label for="cardNumber" class="form-label">Card Number</label>
+										<input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="1234 5678 9101 1121" maxlength="19" oninput="handleInputChange()" />
+										<small class="text-danger d-none" id="cardNumberWarning">Please enter at least 16 digits for the card number.</small>
+									  </div>
+									  <div class="mb-3">
+										<label for="cardholderName" class="form-label">Cardholder Name</label>
+										<input type="text" class="form-control" id="cardholderName" name="cardholderName" oninput="handleInputChange(); validateCardholderName(event);" placeholder="Full Name" />
+										<small class="text-danger d-none" id="cardholderNameWarning">Please enter at least 8 letters for the full name.</small>
+									  </div>
+
+									  <!-- Expiry (MM/YY) -->
+
+									  <div class="mb-3 row">
+										<div class="col">
+										  <label for="expiryDate" class="form-label">Expiry (MM/YY)</label>
+										  <input type="text"  name="expiryDate"  class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5"  oninput="handleInputChange();formatExpiryDate(event);validateExpiryDate()"  />
+										  <small class="text-danger d-none" id="expiryDateWarning">Enter a valid expiry in MM/YY format (e.g., 12/34).</small>
+
+										  <!-- CVV -->
+
+										</div>
+										<div class="col">
+										  <label for="cvv" class="form-label">CVV</label>
+										  <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123" maxlength="3" oninput="handleInputChange();filterNumericInput(event);validateCVV()"  />
+										  <small class="text-danger d-none" id="cvvWarning">Please enter exactly 3 digits for the CVV.</small>
+										</div>
+									  </div>
+									  <div id="successMessage" class="success-popup">Card details saved successfully!</div>
+
+ 										 <button type="submit" class="btn btn-primary" onclick="saveCardDetails(event);validateExpiryDate()">Save Card Details</button>
+									</form>
+								  </div>
 								</div>
 							  </div>
-							</div>
-							<div class="border p-3 mb-3">
-							  <h3 class="h6 mb-0">
-								<a class="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a>
-							  </h3>
-							  <div class="collapse" id="collapsecheque">
-								<div class="py-2">
-								  <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+							  
+							  <!-- Display warning if no payment method is selected -->
+								<div id="payment-warning" class="text-danger mt-2" style="display: none;">
+									Please select a payment method before placing the order.
 								</div>
-							  </div>
-							</div>
-							<div class="border p-3 mb-5">
+
+							<!-- <div class="border p-3 mb-5">
 							  <h3 class="h6 mb-0">
 								<a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a>
 							  </h3>
@@ -366,7 +420,7 @@
 								  <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
 								</div>
 							  </div>
-							</div>
+							</div> -->
 							<div class="form-group">
 								<button class="btn btn-black btn-lg py-3 btn-block" onclick="validateForm(event)">Place Order</button>
 							  </div>
@@ -520,6 +574,7 @@
 		<script src="/js/store.js"></script>
 		<script src="/js/SubscribeToNewsletter.js"></script>
 		<script src="/js/checkoutInput.js"></script>
+		<script src="/js/Checkout.js"></script>
 	</body>
 
 </html>

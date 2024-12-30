@@ -145,3 +145,95 @@ td, th {
         background: #ffffff!important;
         margin-top: 0%!important;
       }
+
+      .mt-2{
+        margin-top: .5rem !important;
+        margin-bottom: 15px!important;
+      }
+
+
+      /* Base style for the disabled button */
+.disabled-icon {
+  opacity: 0.6 ; /* Visually indicate the disabled state */
+  cursor: not-allowed ; /* Show not-allowed cursor */
+
+}
+
+/* Default state for a disabled button */
+/* Default state for the disabled button */
+/* Apply a subtle "lift" effect and opacity change when the button is hovered */
+#button-addon2 {
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Smooth transition for both transform and opacity */
+}
+
+/* Hover effect: Move the button up and reduce opacity */
+#button-addon2:hover {
+  transform: translateY(-1px); /* Moves the button up slightly */
+  opacity: 0.5; /* Makes the button slightly transparent */
+}
+
+/* Active effect: Slightly move the button down and maintain opacity */
+#button-addon2:active {
+  transform: translateY(2px); /* Moves the button down slightly to simulate a press effect */
+  opacity: 0.7; /* Optional: can make the button a bit less transparent when clicked */
+}
+
+/* Disabled button style */
+#button-addon2[disabled] {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: translateY(0); /* Ensure the button stays in place when disabled */
+  opacity: 0.5; /* Make the button semi-transparent when disabled */
+}
+
+/* Style for the disabled icon */
+.disabled-icon {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+/* Style for the enabled button */
+#button-addon2:not([disabled]) {
+  background-color: #000;
+  color: #fff;
+}
+
+
+/* ikona za card secur */
+
+#secuPhoto{
+  width: 11px;
+}
+
+#CardCheckout{
+  width: 26px;
+}
+
+.success-popup {
+  display: none; /* Initially hidden */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px 20px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

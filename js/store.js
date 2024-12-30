@@ -264,22 +264,54 @@ document.addEventListener('DOMContentLoaded', function() {
             checkoutTableBody.innerHTML += subtotalRow;
 
             // Apply coupon functionality
-            applyCouponButton.addEventListener('click', function() {
-                let couponCode = couponInput.value.trim();
-                console.log('Coupon code entered:', couponCode); // Debugging message
+            const couponInput = document.getElementById('c_code');
+const applyCouponButton = document.getElementById('button-addon2');
+const disabledIcon = document.getElementById('disabled-icon');
 
-                if (couponCode === '1234567') { // Check for a valid coupon code
-                    let discount = 0.10;
-                    let discountAmount = subtotal * discount;
-                    let discountedTotal = subtotal - discountAmount;
+// Function to handle enabling/disabling the Apply button
+function handleButtonState() {
+    let couponCode = couponInput.value.trim();
+    
+    // If the input is empty, disable the button and show the icon
+    if (couponCode === '') {
+        applyCouponButton.disabled = true;
+        applyCouponButton.style.cursor = 'not-allowed';
+        disabledIcon.style.display = 'inline';
+    } else {
+        applyCouponButton.disabled = false;
+        applyCouponButton.style.cursor = 'pointer';
+        disabledIcon.style.display = 'none';
+    }
+}
 
-                    // Update order total and show alert
-                    document.getElementById('order-total').textContent = `€${discountedTotal.toFixed(2)}`;
-                    alert(`Coupon applied! 10% You saved €${discountAmount.toFixed(2)}.`);
-                } else {
-                    alert('Invalid coupon code');
-                }
-            });
+// Event listener for when the user types into the input field
+couponInput.addEventListener('input', function() {
+    handleButtonState();
+});
+
+// Ensure the input field is empty and button state is correct on page load
+window.addEventListener('load', function() {
+    couponInput.value = ''; // Clear the input field
+    handleButtonState(); // Apply the correct button state on page load
+});
+
+// Apply coupon functionality
+applyCouponButton.addEventListener('click', function() {
+    let couponCode = couponInput.value.trim();
+    console.log('Coupon code entered:', couponCode); // Debugging message
+
+    if (couponCode === '1234567') { // Check for a valid coupon code
+        let discount = 0.10;
+        let discountAmount = subtotal * discount;
+        let discountedTotal = subtotal - discountAmount;
+
+        // Update order total and show alert
+        document.getElementById('order-total').textContent = `€${discountedTotal.toFixed(2)}`;
+        alert(`Coupon applied! 10% You saved €${discountAmount.toFixed(2)}.`);
+    } else {
+        alert('Invalid coupon code');
+    }
+});
         }
     }
 
