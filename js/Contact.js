@@ -63,10 +63,18 @@
     const errorMessage = field.nextElementSibling;
 
     if (!field.value.trim()) {
-      errorMessage.style.display = 'block';  // Show error if field is empty
+      errorMessage.textContent = `${fieldId === 'fname' || fieldId === 'lname' ? 'First and last name' : 'This field'} is required`;
+      errorMessage.style.display = 'block'; // Show error if field is empty
+      isValid = false;
+    } else if (
+      (fieldId === 'fname' || fieldId === 'lname' || fieldId === 'subject') && 
+      field.value.trim().length < 4
+    ) {
+      errorMessage.textContent = `${fieldId === 'fname' || fieldId === 'lname' ? 'Name' : 'Subject'} must be at least 4 characters`;
+      errorMessage.style.display = 'block'; // Show error if input is too short
       isValid = false;
     } else {
-      errorMessage.style.display = 'none';  // Hide error if field is filled
+      errorMessage.style.display = 'none'; // Hide error if field is valid
     }
   });
 
@@ -76,10 +84,18 @@
 // Function to handle real-time validation for a single field
 function validateField(field) {
   const errorMessage = field.nextElementSibling;
-  if (field.value.trim()) {
-    errorMessage.style.display = 'none';  // Hide error message when input is filled
+
+  if (!field.value.trim()) {
+    errorMessage.textContent = `${field.id === 'fname' || field.id === 'lname' ? 'First and last name' : 'This field'} is required`;
+    errorMessage.style.display = 'block'; // Show error if field is empty
+  } else if (
+    (field.id === 'fname' || field.id === 'lname' || field.id === 'subject') &&
+    field.value.trim().length < 4
+  ) {
+    errorMessage.textContent = `${field.id === 'fname' || field.id === 'lname' ? 'Name' : 'Subject'} must be at least 4 characters`;
+    errorMessage.style.display = 'block'; // Show error if input is too short
   } else {
-    errorMessage.style.display = 'block';  // Show error message if input is cleared
+    errorMessage.style.display = 'none'; // Hide error message when input is valid
   }
 }
 
@@ -92,7 +108,7 @@ window.onload = function () {
     
     // Add 'input' event listener for real-time validation
     field.addEventListener('input', function () {
-      validateField(field);  // Call the validation function when user types
+      validateField(field); // Call the validation function when user types
     });
   });
-}
+};

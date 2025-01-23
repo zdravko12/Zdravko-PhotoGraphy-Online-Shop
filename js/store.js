@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let row = `
                 <tr data-index="${index}">
                     <td>${item.title}</td>
-                    <td class="product-image"><img class="cart-product-image" src="${item.image}" alt="Product Image"></td>
+                    <td class="product-image"><a href="##"><img class="cart-product-image" src="${item.image}" alt="Product Image"></a></td>
                     <td>${item.material}</td>
                     <td><strong class="mx-2">x</strong>${item.quantity}</td>
                     <td>${item.dimensions}</td>

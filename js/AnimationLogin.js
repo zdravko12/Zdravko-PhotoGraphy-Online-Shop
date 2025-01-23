@@ -475,6 +475,7 @@ document.getElementById('signUpSubmitBtn').addEventListener('click', function (e
   const password = document.getElementById('signUpPassword').value;
   const confirmPassword = document.getElementById('signUpConfirmPassword').value;
   
+  
 
   // Get error message elements
   const signUpUsernameError = document.getElementById('signUpUsernameError');
@@ -487,6 +488,7 @@ document.getElementById('signUpSubmitBtn').addEventListener('click', function (e
   signUpEmailError.textContent = '';
   signUpPasswordError.textContent = '';
   signUpConfirmPasswordError.textContent = '';
+  
   
 
   let isValid = true;
@@ -575,6 +577,12 @@ if (!isValid) return;
 .then(response => response.json())
 .then(data => {
     if (data.status === 'success') {
+      // ova button da go snema ako kliknma se registriravte ispesno 
+      const ButtomHideSignIn =  document.getElementById('aside_signIn_Btn'); 
+      
+      ButtomHideSignIn.style.display = 'none';
+       // ova button da go snema ako kliknma se registriravte ispesno 
+
       alert(data.message);
         document.getElementById('formContainer').innerHTML = `
             <div class="registration-success">

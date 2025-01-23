@@ -106,11 +106,16 @@ function addRealTimeValidation() {
   });
 }
 
-// Call real-time validation setup when the page loads
+// Add real-time validation setup when the page loads
 document.addEventListener('DOMContentLoaded', addRealTimeValidation);
 
+
+
+
+
+// Main validation function
 function validateForm(event) {
-    // Prevent the default behavior of the button (which is the redirection)
+    // Prevent the default behavior of the button (redirection)
     event.preventDefault();
 
     // Select the input fields and warnings
@@ -131,6 +136,10 @@ function validateForm(event) {
     const postalZipWarning = document.getElementById('c_postal_zip_warning');
     const addressWarning = document.getElementById('c_address_warning');
     const paymentWarning = document.getElementById("payment-warning");
+    const orderNotes = document.getElementById("c_order_notes");
+
+    // Load cart items from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     // Regular expressions for validation
     const phoneReg = /^\+\d{3}/;
@@ -140,11 +149,7 @@ function validateForm(event) {
     let isValid = true;
 
     // First Name validation
-    if (firstName.value.trim() === '') {
-        firstNameWarning.textContent = 'First name is required';
-        firstNameWarning.style.display = 'block';
-        isValid = false;
-    } else if (firstName.value.trim().length < 3) {
+    if (firstName.value.trim() === '' || firstName.value.trim().length < 3) {
         firstNameWarning.textContent = 'First name must be at least 3 letters';
         firstNameWarning.style.display = 'block';
         isValid = false;
@@ -153,11 +158,7 @@ function validateForm(event) {
     }
 
     // Last Name validation
-    if (lastName.value.trim() === '') {
-        lastNameWarning.textContent = 'Last name is required';
-        lastNameWarning.style.display = 'block';
-        isValid = false;
-    } else if (lastName.value.trim().length < 3) {
+    if (lastName.value.trim() === '' || lastName.value.trim().length < 3) {
         lastNameWarning.textContent = 'Last name must be at least 3 letters';
         lastNameWarning.style.display = 'block';
         isValid = false;
@@ -173,11 +174,7 @@ function validateForm(event) {
     }
 
     // Phone validation
-    if (phone.value.trim() === '') {
-        phoneWarning.textContent = 'Phone is required';
-        phoneWarning.style.display = 'block';
-        isValid = false;
-    } else if (!phoneReg.test(phone.value.trim())) {
+    if (phone.value.trim() === '' || !phoneReg.test(phone.value.trim())) {
         phoneWarning.textContent = 'Phone number must start with a prefix like +123';
         phoneWarning.style.display = 'block';
         isValid = false;
@@ -185,7 +182,7 @@ function validateForm(event) {
         phoneWarning.style.display = 'none';
     }
 
-    // Company Name validation (optional)
+    // Company Name validation
     if (companyName.value.trim() === '') {
         companyNameWarning.textContent = 'Company Name is required';
         companyNameWarning.style.display = 'block';
@@ -199,11 +196,7 @@ function validateForm(event) {
     }
 
     // Address validation
-    if (address.value.trim() === '') {
-        addressWarning.textContent = 'Address is required';
-        addressWarning.style.display = 'block';
-        isValid = false;
-    } else if (!numberReg.test(address.value.trim())) {
+    if (address.value.trim() === '' || !numberReg.test(address.value.trim())) {
         addressWarning.textContent = 'Address must contain a street number';
         addressWarning.style.display = 'block';
         isValid = false;
@@ -212,11 +205,7 @@ function validateForm(event) {
     }
 
     // State / Country validation
-    if (stateCountry.value.trim() === '') {
-        stateCountryWarning.textContent = 'State / Country is required';
-        stateCountryWarning.style.display = 'block';
-        isValid = false;
-    } else if (stateCountry.value.trim().length < 3) {
+    if (stateCountry.value.trim() === '' || stateCountry.value.trim().length < 3) {
         stateCountryWarning.textContent = 'State / Country must be at least 3 letters';
         stateCountryWarning.style.display = 'block';
         isValid = false;
@@ -225,11 +214,7 @@ function validateForm(event) {
     }
 
     // Postal / Zip validation
-    if (postalZip.value.trim() === '') {
-        postalZipWarning.textContent = 'Postal / Zip is required';
-        postalZipWarning.style.display = 'block';
-        isValid = false;
-    } else if (!twoNumbersReg.test(postalZip.value.trim())) {
+    if (postalZip.value.trim() === '' || !twoNumbersReg.test(postalZip.value.trim())) {
         postalZipWarning.textContent = 'Postal / Zip must contain at least 2 numbers';
         postalZipWarning.style.display = 'block';
         isValid = false;
@@ -252,14 +237,110 @@ function validateForm(event) {
         paymentWarning.style.display = 'none';
     }
 
-    // If the form is valid, proceed to the thank you page
-    if (isValid) {
-        window.location.href = '/Html-Page/thankyou.html';  // Redirect to thank you page
-    } else {
-        return false;  // Prevent redirection if the form is not valid
+    // If the payment method is "debitCreditCard", validate card details
+    let cardDetails = null;
+    if (selectedMethod && selectedMethod.value === "debitCreditCard") {
+        const cardNumber = document.getElementById("cardNumber").value.trim();
+        const cardholderName = document.getElementById("cardholderName").value.trim();
+        const expiryDate = document.getElementById("expiryDate").value.trim();
+        const cvv = document.getElementById("cvv").value.trim();
+
+        // Card number validation
+        if (cardNumber === "" || cardNumber.length !== 16) {
+            document.getElementById("cardNumberWarning").style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById("cardNumberWarning").style.display = 'none';
+        }
+
+        // Cardholder name validation
+        if (cardholderName === "") {
+            document.getElementById("cardholderNameWarning").style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById("cardholderNameWarning").style.display = 'none';
+        }
+
+        // Expiry date validation (MM/YY format)
+        if (expiryDate === "" || !/^\d{2}\/\d{2}$/.test(expiryDate)) {
+            document.getElementById("expiryDateWarning").style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById("expiryDateWarning").style.display = 'none';
+        }
+
+        // CVV validation
+        if (cvv === "" || cvv.length !== 3) {
+            document.getElementById("cvvWarning").style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById("cvvWarning").style.display = 'none';
+        }
+
+        // If card details are valid, store them in cardDetails
+        if (isValid) {
+            cardDetails = {
+                cardNumber: cardNumber,
+                cardholderName: cardholderName,
+                expiryDate: expiryDate,
+                cvv: cvv
+            };
+        }
     }
 
-    return isValid; // Return whether the form is valid
+     // If the form is valid, proceed with saving to the database
+     if (isValid) {
+        const orderDetails = {
+            personalDetails: {
+                firstName: firstName.value.trim(),
+                lastName: lastName.value.trim(),
+                email: email.value.trim(),
+                phone: phone.value.trim(),
+                companyName: companyName.value.trim(),
+                address: address.value.trim(),
+                stateCountry: stateCountry.value.trim(),
+                postalZip: postalZip.value.trim(),
+                country: country.value,
+                orderNotes: orderNotes.value.trim()
+            },
+            paymentMethod: selectedMethod ? selectedMethod.value : null,
+            cardDetails: cardDetails, // Save card details if available
+            cartItems: cartItems
+        };
+
+        // Send data to the server using fetch
+        fetch('http://localhost/Html-Page/php/CheckoutDb.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderDetails),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text(); // Get response as plain text
+            })
+            .then(text => {
+                try {
+                    const data = JSON.parse(text); // Attempt to parse JSON
+                    if (data.success) {
+                        // Redirect to thank you page
+                        window.location.href = '/Html-Page/thankyou.html';
+                    } else {
+                        alert(`Failed to place the order: ${data.message}`);
+                    }
+                } catch (e) {
+                    console.error('Invalid JSON response:', text);
+                    alert('An unexpected error occurred. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while placing the order. Please try again later.');
+            });
+    }
 }
 
 // Attach the validateForm function to the form's submit event
@@ -394,5 +475,53 @@ function hideWarning() {
 
 //     return isValid;
 // }
+// Reference the table body MODAL
 
-  
+
+
+// Add event listener to the checkout table body
+// Reference the table body
+document.addEventListener('DOMContentLoaded', function () {
+    const checkoutTableBody = document.getElementById('checkoutTableBody');
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modal-image');
+    const modalProductName = document.getElementById('modal-product-name');
+
+    let currentSlideIndex = 0;
+    let images = []; // Array to store images for the current product
+
+    // Open modal with images
+    checkoutTableBody.addEventListener('click', function (e) {
+        if (e.target.classList.contains('cart-product-image')) {
+            const image = e.target;
+            const row = image.closest('tr');
+            const productName = row.querySelector('td:first-child').textContent;
+
+            // Find all images for this product in the same row or related elements
+            const productImages = row.querySelectorAll('.cart-product-image');
+
+            // Populate the images array with the sources of these images
+            images = Array.from(productImages).map(img => img.src);
+
+            currentSlideIndex = 0;
+
+            // Update modal content
+            modalProductName.textContent = productName;
+            modalImage.src = images[currentSlideIndex];
+            modal.style.display = 'block';
+        }
+    });
+
+    // Navigate to the next or previous slide
+    window.plusSlides = function (n) {
+        if (images.length > 0) {
+            currentSlideIndex = (currentSlideIndex + n + images.length) % images.length; // Loop around
+            modalImage.src = images[currentSlideIndex];
+        }
+    };
+
+    // Close the modal
+    window.closeModal = function (modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    };
+});

@@ -237,3 +237,102 @@ td, th {
     opacity: 0;
   }
 }
+
+/* Modal styling */
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content1 {
+ 
+  margin: 10% auto;
+  padding: 20px;
+  width: 60%;
+  text-align: center;
+}
+
+.image-container img {
+  width: 100%;
+  max-height: 580px;
+  object-fit: contain;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 110%;
+    transform: translateY(100%);
+    width: auto;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover,
+.next:hover {
+    color: #f1f1f1;
+}
+
+
+
+.modal-content {
+  position: relative!important;
+  max-width: 135%!important;
+  background-color: transparent!important;
+  border: none!important; 
+}
+
+
+/* ova popravka za sreach modal */
+.modal-content {
+ 
+  margin: 5% auto!important; 
+  padding: 20px!important;
+  border: 1px solid #888!important;
+  width: 80%!important;
+  display: block!important;
+}
+
+
+
+/* za slikata second  */
+.modal-content1 {
+  margin: 5% auto !important;
+  padding: 20px !important;
+  border: none;
+  width: 80% !important;
+  display: block !important;
+}
+
+
+
+
+
+.cart-product-image {
+  width: 100px; /* Set the desired width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.cart-product-image:hover{
+opacity: 0.7;
+}
